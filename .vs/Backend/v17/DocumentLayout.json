@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Amir-PC\\Desktop\\Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,14 +35,6 @@
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\backend\\backend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:backend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
@@ -46,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -58,12 +58,11 @@
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-29T19:47:37.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-29T19:47:37.768Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -76,20 +75,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\Backend\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-09-28T21:20:05.537Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Models\\LoginDto.cs",
               "RelativeDocumentMoniker": "Models\\LoginDto.cs",
@@ -97,12 +96,11 @@
               "RelativeToolTip": "Models\\LoginDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T21:19:22.506Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T21:19:22.506Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Models\\RegisterDto.cs",
               "RelativeDocumentMoniker": "Models\\RegisterDto.cs",
@@ -110,12 +108,11 @@
               "RelativeToolTip": "Models\\RegisterDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T21:18:54.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T21:18:54.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -123,12 +120,11 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T21:18:42.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T21:18:42.623Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "JwtHelper.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Utils\\JwtHelper.cs",
               "RelativeDocumentMoniker": "Utils\\JwtHelper.cs",
@@ -136,12 +132,11 @@
               "RelativeToolTip": "Utils\\JwtHelper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T21:18:20.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T21:18:20.954Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\Backend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
