@@ -17,25 +17,10 @@ CREATE TABLE Services (
     Description NVARCHAR(MAX) NOT NULL,
     Price DECIMAL(18, 2) NOT NULL,
     Category NVARCHAR(100),
-	Status NVARCHAR(20) CHECK (Status IN ('Active', 'Completed', 'Canceled')) DEFAULT 'Active',
-	CreatedDate DATETIME DEFAULT GETDATE(),
+    CreatedDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
 
 );
-
-
--- Create the Orders table
-CREATE TABLE Orders (
-    OrderId INT PRIMARY KEY IDENTITY(1,1),
-    ServiceId INT NOT NULL,
-    BuyerId INT NOT NULL,
-    OrderDate DATETIME DEFAULT GETDATE(),
-    Amount DECIMAL(18, 2) NOT NULL,
-    Status NVARCHAR(20) CHECK (Status IN ('Pending', 'Accepted', 'Rejected')) DEFAULT 'Pending', -- Pending, Completed, Cancelled 
-    FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId),
-    FOREIGN KEY (BuyerId) REFERENCES Users(UserId)
-);
-
 
 -- Create the Payments table
 CREATE TABLE Payments (
@@ -43,11 +28,42 @@ CREATE TABLE Payments (
     OrderId INT NOT NULL,
     PaymentDate DATETIME DEFAULT GETDATE(),
     Amount DECIMAL(18, 2) NOT NULL,
-    PaymentStatus NVARCHAR(50) NOT NULL, -- Paid, Failed  Status NVARCHAR(20) CHECK (Status IN ('Pending', 'Accepted', 'Rejected')) DEFAULT 'Pending',
+    PaymentStatus NVARCHAR(50) NOT NULL CHECK (PaymentStatus IN ('Paid', 'Failed')),
     FOREIGN KEY (OrderId) REFERENCES Orders(OrderId)
 );
-
-
+-- Create the Contracts table
+CREATE TABLE Contracts (
+    ContractId INT PRIMARY KEY IDENTITY(1,1),
+    ServiceId INT NOT NULL,
+    UserId INT NOT NULL,
+    Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Pending', 'Active', 'Completed', 'Cancelled')),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
+-- Create the Profiles table
+CREATE TABLE Profiles (
+    ProfileId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT NOT NULL,
+    Name NVARCHAR(200),
+    Image NVARCHAR(200),
+    Description NVARCHAR(MAX),
+    Bio NVARCHAR(MAX),
+    Skills NVARCHAR(MAX),
+    CvFile NVARCHAR(200),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
+-- Create the Proposals table
+CREATE TABLE Proposals (
+    ProposalId INT PRIMARY KEY IDENTITY(1,1),
+    ServiceId INT NOT NULL,
+    UserId INT NOT NULL,
+    ProposalDate DATETIME DEFAULT GETDATE(),
+    Status NVARCHAR(50) CHECK (Status IN ('Pending', 'Accepted', 'Rejected')) DEFAULT 'Pending',
+    FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
 -- Create the Reviews table
 CREATE TABLE Reviews (
     ReviewId INT PRIMARY KEY IDENTITY(1,1),
