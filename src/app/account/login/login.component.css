@@ -1,0 +1,102 @@
+:root{
+
+*{margin: 0 auto;}
+
+a{
+    text-decoration:none;
+    color: black;
+}
+
+.form1{
+    text-align: center;
+    padding-top: 70px;
+    box-sizing: 10px;
+    border: 1px groove lightgray ;
+    border-radius: 15px;
+    width: 35%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    }
+
+input{
+    width: 70%;
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-left: 40px;
+    background-image: url('../images/user.png'); 
+    background-size: 20px;
+    background-position-x: 10px;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+button{
+    width: 70%;
+    height: fit-content;
+    box-sizing: 5px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight:bold ;
+    font-size: 18px;
+    }
+.btn-primary1{
+    font-weight:bold ;
+    border : 3px solid green;
+    background-color: green;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: white;
+    
+}
+
+.btn-primary2{
+    border : 3px solid rgb(52, 116, 234);
+    background-color: rgb(52, 116, 234);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    padding-left: 40px;
+    background-image: url("../images/google.png");
+    background-size: 30px;
+    background-position-x: 3px;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    }
+
+.btn-primary3{
+    border: 3px solid black;  
+    background-color:white;
+    margin-bottom: 30px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;   
+    background-image: url("../images/apple.png");
+    background-size: 30px;
+    background-position-x: 25%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;     
+}
+
+.btn-primary4{
+    border:3px solid green;
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: green;
+    width: 40%;
+}
+
+.dont{
+    font-size: 18px;
+    color: gray;
+}
+
+.log{
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    font-weight: bolder;
+}
+
+}

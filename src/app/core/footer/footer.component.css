@@ -1,0 +1,13 @@
+:root{
+ .footer-container{
+    
+    height: 150px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}}
