@@ -6,8 +6,27 @@ import { Base } from '../_modules/base';
   providedIn: 'root'
 })
 export class AccountService {
-  constructor(public http:HttpClient , public base : Base) { }
-  login(email : string){
+  constructor(public http:HttpClient) { }
+  isAuth : boolean = false;
+  url : string =""
+  login(email : string ,pass :string){
+    this.http.get<string>(this.url,
+      {params:{'':email,'':pass}})
+      // {responseType:'text',params:{'':email,'':pass}})
+      .subscribe(
+        //ok
+        {next : t=>{
+      localStorage.setItem("token", t);
+      this.isAuth = true;
+        },
+        //error
+        error : e=>{
 
+        }
+    });
+  }
+  logout(){
+    localStorage.removeItem("token");
+    this.isAuth=false;
   }
 }

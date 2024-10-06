@@ -31,6 +31,9 @@ input{
     background-position-y: 50%;
     background-repeat: no-repeat;
 }
+#pass{
+    margin-top: 10px;
+}
 button{
     width: 70%;
     height: fit-content;

@@ -3,9 +3,11 @@
         <div class="container-sm">
           <p class="log">Log in to Upwork</p> 
           <form >
-          <input type="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required >
+          <input type="email" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required [(ngModel)]="user.Email">
           <div class="invalid-feedback">Please Enter Email</div>  
-          </form>
+          <input type="password" id="pass" placeholder="Password " class="form-control" aria-describedby="emailHelp" required [(ngModel)]="user.Password">
+          <div class="invalid-feedback">Please Enter password</div>  
+        </form>
         <div><button type="submit" class="btn btn-primary1">Continue</button></div> 
         <p class="dont">or</p>
         <div><button type="submit" class="btn btn-primary2"> Continue with google</button></div>
