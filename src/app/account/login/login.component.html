@@ -3,12 +3,12 @@
         <div class="container-sm">
           <p class="log">Log in to Upwork</p> 
           <form >
-          <input type="email" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required [(ngModel)]="user.Email">
-          <div class="invalid-feedback">Please Enter Email</div>  
-          <input type="password" id="pass" placeholder="Password " class="form-control" aria-describedby="emailHelp" required [(ngModel)]="user.Password">
+          <input type="text" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required name="Username" [(ngModel)]="user.Email">
+          <div class="invalid-feedback">Please Enter Username</div>  
+          <input type="password" id="pass" placeholder="Password " class="form-control" aria-describedby="emailHelp" required name="Password" [(ngModel)]="user.Password">
           <div class="invalid-feedback">Please Enter password</div>  
         </form>
-        <div><button type="submit" class="btn btn-primary1">Continue</button></div> 
+        <div><button type="submit" class="btn btn-primary1" (click)="login()">Continue</button></div> 
         <p class="dont">or</p>
         <div><button type="submit" class="btn btn-primary2"> Continue with google</button></div>
         <div><button type="submit" class="btn btn-primary3"> Continue with apple </button>
@@ -20,23 +20,3 @@
         <br>
        </div> 
 </div>
-<!-- <div class="form1">
-    <form >
-        <div class="container-sm">
-          <p class="log">Log in to Upwork</p> 
-          <input type="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required >
-          <div class="invalid-feedback">Please Enter Email</div>
-        </div>  
-        <div><button type="submit" class="btn btn-primary1">Continue</button></div> 
-        <p class="dont">or</p>
-        <div><button type="submit" class="btn btn-primary2"> Continue with google</button></div>
-        <div><button type="submit" class="btn btn-primary3"> Continue with apple </button>
-        </div>
-        <br><br><br><br><br>
-        <p class="dont"> Don't have an Upwork account? </p>
-       <div><button type="submit" class="btn btn-primary4">Sign Up </button>
-        <br>
-        <br>
-       </div> 
-      </form>
-</div> -->

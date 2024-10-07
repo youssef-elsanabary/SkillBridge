@@ -1,3 +1,3 @@
 export class Base {
-    baseUrl="";
+    baseUrl="https://localhost:7234/api/";
 }
