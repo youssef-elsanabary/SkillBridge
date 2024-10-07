@@ -50,21 +50,7 @@ namespace Backend.Controllers
             return Ok(new { token });
         }
 
-        // prototype
-        [HttpGet("client")]
-        [Authorize(Roles = "Client")]
-        public IActionResult ClientEndpoint()
-        {
-            return Ok();
-        }
-
-        // prototype
-        [HttpGet("freelancer")]
-        [Authorize(Roles = "Freelancer")]
-        public IActionResult FreelancerEndpoint()
-        {
-            return Ok();
-        }
+      
     }
 
 }

@@ -1,8 +1,10 @@
-
+using Backend.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Stripe;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Backend.Models;
 
 namespace Backend
 {
@@ -12,10 +14,13 @@ namespace Backend
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
+            // Load configuration values for JWT and Stripe
             var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+
+         
+            builder.Services.AddControllers();
+
+          
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -29,28 +34,43 @@ namespace Backend
                         ClockSkew = TimeSpan.Zero
                     };
                 });
+
+         
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+       
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+            });
+
            
-            // Register Swagger services
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddControllers();
+           
             builder.Services.AddSingleton<JwtHelper>();
 
             var app = builder.Build();
-
-            // Use Swagger middleware
+       
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseRouting();
-            app.UseDeveloperExceptionPage();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseRouting();  
+            app.UseCors();
 
+            app.UseAuthentication(); 
+            app.UseAuthorization();
+          
             app.MapControllers();
 
             app.Run();
