@@ -29,7 +29,9 @@ CREATE TABLE Payments (
     PaymentDate DATETIME DEFAULT GETDATE(),
     Amount DECIMAL(18, 2) NOT NULL,
     PaymentStatus NVARCHAR(50) NOT NULL CHECK (PaymentStatus IN ('Paid', 'Failed')),
-    FOREIGN KEY (OrderId) REFERENCES Orders(OrderId)
+    FOREIGN KEY (UserId) REFERENCES Users(UserId), 
+    FOREIGN KEY (ContractId) REFERENCES Contracts(ContractId) 
+
 );
 -- Create the Contracts table
 CREATE TABLE Contracts (
@@ -86,6 +88,5 @@ CREATE TABLE Messages (
     Content NVARCHAR(MAX) NOT NULL,
     SentDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (SenderId) REFERENCES Users(UserId),
-    FOREIGN KEY (ReceiverId) REFERENCES Users(UserId),
-    FOREIGN KEY (OrderId) REFERENCES Orders(OrderId)
+    FOREIGN KEY (ReceiverId) REFERENCES Users(UserId)
 );
