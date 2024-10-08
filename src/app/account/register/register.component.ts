@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../_services/account.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../_modules/user';
 
 @Component({
@@ -10,11 +10,16 @@ import { User } from '../../_modules/user';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
-  constructor(public accountService : AccountService,public router : Router){}
-  user : User = new User("","","","");
+export class RegisterComponent implements OnInit {
+  constructor(public accountService : AccountService,public router : Router ,public activatRoute : ActivatedRoute){}
+  userRole :string = "";
+  ngOnInit(): void {
+    this.userRole=this.activatRoute.snapshot.params['role']
+  }
+  
+  newuser : User = new User("youssef","youssef@gmail.com","123456",this.userRole);
   register(){
-    this.accountService.register(this.user)
+    this.accountService.register(this.newuser)
   }
 
 }

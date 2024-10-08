@@ -2,53 +2,50 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Base } from '../_modules/base';
 import { User } from '../_modules/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  constructor(public http:HttpClient) { }
+  constructor(public http:HttpClient , public router : Router) { }
   isAuth : boolean = false;
   loginUrl : string =`https://localhost:7234/api/auth/login`
   registerUrl : string =`https://localhost:7234/api/auth/register`
 
   register(user : User){
-    this.http.post<string>(this.registerUrl,
-      {
-        body:{
-          'username' : user.userName,
-          'email' : user.email,
-          'password' : user.password,
-          'role' : user.role
-        }}).subscribe(
+    this.http.post<string>(this.registerUrl,user).subscribe(
           //ok 
           {
             next : t => {
+              this.router.navigateByUrl("home");
+              alert("registration done")
               console.log("registration done");
             },//error
             error : r =>{
+              alert("registration failed")
               console.log("registration failed")
             }
           }
         )
   }
 
-  login(username : string ,pass :string){
-    this.http.post<string>(this.loginUrl,
-      {
-        body:{'Username':username,'Password':pass}})
+  login(userObj : any){
+    this.http.post<string>(this.loginUrl,userObj)
       // {responseType:'text',params:{'':email,'':pass}})
       .subscribe(
         //ok
         {next : t=>{
-          console.log("login done");
-          
-      localStorage.setItem("token", t);
-      this.isAuth = true;
+          alert("login done");
+          this.router.navigateByUrl("home");
+          localStorage.setItem("token", t);
+          this.isAuth = true;
         },
         //error
         error : e=>{
-          console.log("login failed");
+          alert("login failed");
+          console.log(e);
+          
         }
     });
   }
