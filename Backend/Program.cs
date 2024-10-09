@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
 
+
 namespace Backend
 {
     public class Program
@@ -14,13 +15,11 @@ namespace Backend
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Load configuration values for JWT and Stripe
-            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
 
-         
+            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
             builder.Services.AddControllers();
 
-          
+         
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -35,12 +34,11 @@ namespace Backend
                     };
                 });
 
-         
+          
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-       
+          
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>
@@ -49,7 +47,6 @@ namespace Backend
                           .AllowAnyHeader());
             });
 
-           
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -57,7 +54,8 @@ namespace Backend
             builder.Services.AddSingleton<JwtHelper>();
 
             var app = builder.Build();
-       
+
+            
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,12 +63,14 @@ namespace Backend
                 app.UseSwaggerUI();
             }
 
-            app.UseRouting();  
+            app.UseRouting();
             app.UseCors();
 
-            app.UseAuthentication(); 
+           
+
+            app.UseAuthentication();
             app.UseAuthorization();
-          
+
             app.MapControllers();
 
             app.Run();

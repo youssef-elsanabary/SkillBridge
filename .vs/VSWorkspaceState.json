@@ -1,8 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Backend"
+    "\\Backend",
+    "\\Backend\\Context",
+    "\\Backend\\Controllers",
+    "\\Backend\\Migrations",
+    "\\Backend\\Models",
+    "\\Backend\\obj",
+    "\\Backend\\Properties",
+    "\\Backend\\Utils"
   ],
-  "SelectedNode": "\\Backend\\appsettings.json",
+  "SelectedNode": "\\Backend\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

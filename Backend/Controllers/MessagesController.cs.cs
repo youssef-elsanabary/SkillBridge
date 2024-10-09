@@ -15,14 +15,14 @@ namespace Backend.Controllers
             _context = context;
         }
 
- 
+
         [HttpGet]
         public ActionResult<List<Message>> GetMessages()
         {
             return _context.Messages.ToList();
         }
 
-       
+
         [HttpPost]
         public ActionResult<Message> SendMessage(Message message)
         {
@@ -33,5 +33,4 @@ namespace Backend.Controllers
     }
 
 }
-
 
