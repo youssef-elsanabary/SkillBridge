@@ -1,4 +1,4 @@
-﻿// Helpers/JwtHelper.cs
+﻿
 using Backend.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

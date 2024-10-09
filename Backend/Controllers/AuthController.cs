@@ -1,6 +1,9 @@
 ﻿using Backend.Models;
+using Backend.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Backend.Controllers
 {
@@ -8,49 +11,54 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private static List<User> _users = new List<User>();
+        private readonly AppDbContext _context;
         private readonly JwtHelper _jwtHelper;
 
-        public AuthController(JwtHelper jwtHelper)
+        public AuthController(AppDbContext context, JwtHelper jwtHelper)
         {
+            _context = context;
             _jwtHelper = jwtHelper;
         }
 
-        // Register a new user
+    
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterDto dto)
+        public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
-            var existingUser = _users.FirstOrDefault(u => u.Username == dto.Username);
+           
+            var existingUser = _context.Users.FirstOrDefault(u => u.Username == dto.Username || u.Email == dto.Email);
             if (existingUser != null)
-                return BadRequest("Username already exists.");
+                return BadRequest("Username or email already exists.");
 
+           
             var user = new User
             {
-                Id = _users.Count + 1,
                 Username = dto.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 Email = dto.Email,
-                Role = dto.Role 
+                Role = dto.Role
             };
 
-            _users.Add(user);
+           
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+        
             var token = _jwtHelper.GenerateToken(user);
             return Ok(new { token });
         }
 
-        // Login with username and password
+        
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            var user = _users.FirstOrDefault(u => u.Username == dto.Username);
+            
+            var user = _context.Users.FirstOrDefault(u => u.Username == dto.Username);
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return Unauthorized("Invalid username or password.");
 
+           
             var token = _jwtHelper.GenerateToken(user);
             return Ok(new { token });
         }
-
-      
     }
-
 }
