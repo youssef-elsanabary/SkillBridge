@@ -12,20 +12,17 @@ namespace Backend.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly AppDbContext _context;
-
         public ServicesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // Get all services
         [HttpGet]
         public ActionResult<List<Service>> GetServices()
         {
             return _context.Services.ToList();
         }
 
-        // Get a single service by ID
         [HttpGet("{id}")]
         public ActionResult<Service> GetServiceById(int id)
         {
@@ -37,21 +34,17 @@ namespace Backend.Controllers
             return service;
         }
 
-        // Create a new service
         [HttpPost]
         public ActionResult<Service> CreateService(Service service)
         {
-            // Set CreatedDate to current date if not provided
             service.CreatedDate = DateTime.UtcNow;
 
             _context.Services.Add(service);
             _context.SaveChanges();
 
-            // Returns the newly created service with its ID
             return CreatedAtAction(nameof(GetServiceById), new { id = service.ServiceId }, service);
         }
 
-        // Update an existing service by ID
         [HttpPut("{id}")]
         public IActionResult UpdateService(int id, Service updatedService)
         {
@@ -61,7 +54,6 @@ namespace Backend.Controllers
                 return NotFound("Service not found.");
             }
 
-            // Update fields
             service.Title = updatedService.Title;
             service.Description = updatedService.Description;
             service.Price = updatedService.Price;
@@ -70,10 +62,9 @@ namespace Backend.Controllers
             service.UserId = updatedService.UserId;
 
             _context.SaveChanges();
-            return NoContent(); // Success with no content response
+            return NoContent(); 
         }
 
-        // Delete a service by ID
         [HttpDelete("{id}")]
         public IActionResult DeleteService(int id)
         {
@@ -85,7 +76,7 @@ namespace Backend.Controllers
 
             _context.Services.Remove(service);
             _context.SaveChanges();
-            return NoContent(); // Success with no content response
+            return NoContent(); 
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Backend.Controllers
     public class ProposalsController : ControllerBase
     {
         private readonly AppDbContext _context;
-
         public ProposalsController(AppDbContext context)
         {
             _context = context;

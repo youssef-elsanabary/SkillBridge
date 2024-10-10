@@ -13,23 +13,22 @@ namespace Backend.Controllers
     {
         private readonly AppDbContext _context;
         private readonly JwtHelper _jwtHelper;
-
         public AuthController(AppDbContext context, JwtHelper jwtHelper)
         {
             _context = context;
             _jwtHelper = jwtHelper;
         }
-
     
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
-        {
-           
-            var existingUser = _context.Users.FirstOrDefault(u => u.Username == dto.Username || u.Email == dto.Email);
+        {       
+            var existingUser = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
             if (existingUser != null)
-                return BadRequest("Username or email already exists.");
+                return BadRequest(" email already exists.");
 
-           
+            if (dto.Role != "Client" && dto.Role != "Freelancer")
+                return BadRequest("Role should be 'Client' or 'Freelancer'.");
+
             var user = new User
             {
                 Username = dto.Username,
@@ -37,8 +36,7 @@ namespace Backend.Controllers
                 Email = dto.Email,
                 Role = dto.Role
             };
-
-           
+        
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
@@ -46,17 +44,14 @@ namespace Backend.Controllers
             var token = _jwtHelper.GenerateToken(user);
             return Ok(new { token });
         }
-
-        
+     
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
-        {
-            
-            var user = _context.Users.FirstOrDefault(u => u.Username == dto.Username);
+        {        
+            var user = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return Unauthorized("Invalid username or password.");
-
-           
+       
             var token = _jwtHelper.GenerateToken(user);
             return Ok(new { token });
         }
