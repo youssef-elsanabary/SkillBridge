@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Base } from '../_modules/base';
 import { User } from '../_modules/user';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,40 +15,12 @@ export class AccountService {
   registerUrl : string =`https://localhost:7234/api/auth/register`
 
   register(user : User){
-    this.http.post<string>(this.registerUrl,user).subscribe(
-          //ok 
-          {
-            next : t => {
-              this.router.navigateByUrl("home");
-              alert("registration done")
-              console.log("registration done");
-            },//error
-            error : r =>{
-              alert("registration failed")
-              console.log("registration failed")
-            }
-          }
-        )
+    return this.http.post<string>(this.registerUrl,user);
   }
 
-  login(userObj : any){
-    this.http.post<string>(this.loginUrl,userObj)
+  login(userObj : any): Observable<HttpResponse<any>>{
+    return this.http.post<any>(this.loginUrl,userObj, { observe: 'response' });
       // {responseType:'text',params:{'':email,'':pass}})
-      .subscribe(
-        //ok
-        {next : t=>{
-          alert("login done");
-          this.router.navigateByUrl("home");
-          localStorage.setItem("token", t);
-          this.isAuth = true;
-        },
-        //error
-        error : e=>{
-          alert("login failed");
-          console.log(e);
-          
-        }
-    });
   }
   
   logout(){

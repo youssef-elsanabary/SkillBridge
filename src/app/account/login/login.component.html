@@ -1,22 +1,28 @@
 <app-header></app-header>
-<div class="form1">
-    
+@if (status == 401) {
+  
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Wrong UserName Or Password </strong>
+  </div>
+} 
+<div class="form1"> 
         <div class="container-sm">
           <p class="log">Log in to Upwork</p> 
           <form >
-          <input type="text" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required name="Username" [(ngModel)]="user.Email">
+          <input type="text" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required name="Username" [(ngModel)]="user.Username">
           <div class="invalid-feedback">Please Enter Username</div>  
           <input type="password" id="pass" placeholder="Password " class="form-control" aria-describedby="emailHelp" required name="Password" [(ngModel)]="user.Password">
           <div class="invalid-feedback">Please Enter password</div>  
         </form>
-        <div><button type="submit" class="btn btn-primary1" (click)="login()">Continue</button></div> 
-        <p class="dont">or</p>
-        <div><button type="submit" class="btn btn-primary2"> Continue with google</button></div>
-        <div><button type="submit" class="btn btn-primary3"> Continue with apple </button>
+        <div><button type="submit" class="btn-login btn-primary1" (click)="login()">Continue</button></div> 
+        <div class="goo"> <hr>  <span class="or">  or </span> <hr></div>
+        <div><button type="submit" class="btn-login btn-primary2"> Continue with google</button></div>
+        <div><button type="submit" class="btn-login btn-primary3"> Continue with apple </button>
         </div>
-        <br><br><br><br><br>
-        <p class="dont"> Don't have an Upwork account? </p>
-       <div><button type="submit" class="btn btn-primary4" (click)="navigateRegister()">Sign Up </button>
+        <div class="goo1"> <hr class="hr2">  <span class="or2">  Don't have an Upwork account? </span> <hr class="hr2"></div>
+        
+       <div><button type="submit" class="btn btn-login btn-primary4" (click)="navigateRegister()">Sign Up </button>
         <br>
         <br>
        </div> 
