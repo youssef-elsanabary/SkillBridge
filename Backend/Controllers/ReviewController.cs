@@ -9,19 +9,16 @@ namespace Backend.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly AppDbContext _context;
-
         public ReviewsController(AppDbContext context)
         {
             _context = context;
         }
-
    
         [HttpGet]
         public ActionResult<List<Review>> GetReviews()
         {
             return _context.Reviews.ToList();
         }
-
       
         [HttpPost]
         public ActionResult<Review> CreateReview(Review review)

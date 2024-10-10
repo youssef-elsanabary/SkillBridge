@@ -8,12 +8,10 @@ using System.Text;
 public class JwtHelper
 {
     private readonly IConfiguration _configuration;
-
     public JwtHelper(IConfiguration configuration)
     {
         _configuration = configuration;
     }
-
     public string GenerateToken(User user)
     {
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);

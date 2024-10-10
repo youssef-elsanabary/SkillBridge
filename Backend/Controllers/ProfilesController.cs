@@ -9,8 +9,7 @@ namespace Backend.Controllers
     public class ProfilesController : ControllerBase
     {
         private readonly AppDbContext _context;
-
-        public ProfilesController(AppDbContext context)
+       public ProfilesController(AppDbContext context)
         {
             _context = context;
         }
@@ -37,7 +36,26 @@ namespace Backend.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetProfile), new { id = profile.ProfileId }, profile);
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdateProfile(int id, [FromBody] Profile updatedProfile)
+        {
+            var profile = _context.Profiles.Find(id);
+            if (profile == null) return NotFound();
 
+            profile.Name = updatedProfile.Name;
+            profile.Image = updatedProfile.Image;
+            profile.Description = updatedProfile.Description;
+            profile.Bio = updatedProfile.Bio;
+            profile.Skills = updatedProfile.Skills;
+            profile.CvFile = updatedProfile.CvFile;
+
+            _context.Profiles.Update(profile);
+            _context.SaveChanges();
+
+            return Ok(profile);
+        }
     }
-    
+
 }
+    
+
