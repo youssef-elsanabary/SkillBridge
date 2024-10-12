@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Stripe;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using Backend.Models;
+using Backend.Utils;
 
 
 namespace Backend
@@ -35,6 +35,12 @@ namespace Backend
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            var stripeApiKey = builder.Configuration["Stripe:SecretKey"];
+
+            builder.Services.AddScoped<PaymentService>();
+            builder.Services.AddSingleton(new StripeClient(stripeApiKey));
+
+            builder.Services.AddSignalR();
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>
@@ -63,6 +69,7 @@ namespace Backend
        
             app.UseAuthentication();
             app.UseAuthorization();
+            app.MapHub<ChatHub>("/chatHub");
 
             app.MapControllers();
 
