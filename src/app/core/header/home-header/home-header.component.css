@@ -1,75 +1,104 @@
-header{grid-column: 1/3;
-    margin: 10px 20px 20px 10px;
+header{
+    grid-column: 1/3;
+    margin: 0px 20px 20px 10px;
     border-radius: 20px;
-height: 80px;
-
-;}
-.hamada{padding: 0px;
+    height: 80px;
+}
+.navText{
     border: 0px;
-    }
-    .hamadaa{border: 0px;
     font-size: 14px;
-    font-family: Neue Montreal;}
-    .dropdown-menu li{padding-top: .2px;
-        padding-bottom: .5px;}
-        .a-logo
+    font-family: Neue Montreal;
+}
+.dropdown-menu li{
+        padding-top: .2px;
+        padding-bottom: .5px;
+}
+.a-logo
 {
     width:100%;
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
-
-text-decoration-style:none;
-font-size: 22px;
-font-weight: 1000;
-font-family: cursive;
-font-style: italic;
-
-background-color:white;
-margin-bottom: 100px;
-
-
+    text-decoration-style:none;
+    font-size: 22px;
+    font-weight: 1000;
+    font-family: cursive;
+    font-style: italic;
+    background-color:white;
+    margin-bottom: 100px;
 }
-.a-logo:hover{text-decoration: none;}
-.a-logo{text-decoration:none;
+.a-logo:hover{
+    text-decoration: none;
+}
+.a-logo{
+    text-decoration:none;
     color: black;
-    
-    }
+}
 
-    .search
-{
-
-border-radius: 20px;
-
-  padding-left: 40px;
-  border :2px rgb(199, 198, 198) solid;
-
+.search{
+    height: 80%;
+    border-radius: 20px;
+    padding-left: 40px;
+    border :2px rgb(199, 198, 198) solid;
 }
 .search-btn{
+    height: 80%;
     background-color: rgb(255, 255, 255);
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-
     border-top-right-radius: 17px;
     border-bottom-right-radius: 17px;
     border :2px rgb(199, 198, 198) solid;
     border-left-style: none;
 }
-.search
-{
-
-border-radius: 20px;
-  padding-left: 40px;
-  border :2px rgb(199, 198, 198) solid;
-
+.profileImg{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: none;
+    margin-right: 13px;
+    background-image: url("../images/profilo.jpg");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
 }
-.search-btn{
-    background-color: rgb(255, 255, 255);
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-
-    border-top-right-radius: 17px;
-    border-bottom-right-radius: 17px;
-    border :2px rgb(199, 198, 198) solid;
-    border-left-style: none;
+.notfication{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: none;
+    margin-right: 13px;
+    background-image: url("../images/garas.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.portfolio{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: none;
+    margin-right: 13px;
+    background-image: url("../images/app.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.help{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: none;
+    margin-right: 13px;
+    background-image: url("../images/qyest2.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.row{
+    --bs-gutter-x: 0rem;
 }
