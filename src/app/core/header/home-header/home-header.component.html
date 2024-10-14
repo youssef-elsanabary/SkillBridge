@@ -1,7 +1,7 @@
 <header>
 <div class="row up-nav">
 <div class="logo  col-1">
-    <a class="a-logo" href="#" > upwork </a>
+    <a class="a-logo" [routerLink]="['/home']" > upwork </a>
   </div>
          <div class="dropdown col-1" style="margin-left: 5px ;">
     <button class=" btn-joo btn btn-white  dropdown-toggle  navText" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,9 +41,9 @@
      Manage finances
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Financi over view </a></li>
-      <li><a class="dropdown-item" href="#">Your reports</a></li>
-      <li><a class="dropdown-item" href="#">Billings and earnings</a></li>
+      <li><a class="dropdown-item" [routerLink]="['/home/finance/overview']">Financi over view </a></li>
+      <li><a class="dropdown-item" [routerLink]="['/home/finance/reports']">Your reports</a></li>
+      <li><a class="dropdown-item" [routerLink]="['/home']">Billings and earnings</a></li>
       <li><a class="dropdown-item" href="#">Billings and earnings</a></li>
 
       <li><a class="dropdown-item" href="#">Transaction and invoices</a></li>
