@@ -1,0 +1,27 @@
+<div class="container1">
+    <h1>Overview</h1>
+    <div class="tabs grid">
+        <ul class="nav nav-underline">
+            <li class="nav-item col-3">
+                <a class="nav-link active"  href="#" (click)="showContent('content1')">Work in progress<br><span class="amount">$0.00</span></a>
+            </li>
+            <li class="nav-item col-3">
+                <a class="nav-link" href="#" (click)="showContent('content2')">In review<br><span class="amount">$0.00</span></a>
+            </li>
+            <li class="nav-item col-3">
+                <a class="nav-link" href="#" (click)="showContent('content3')">Pending<br><span class="amount">$0.00</span></a>
+            </li>
+            <li class="nav-item col-3">
+                <a class="nav-link " href="#" (click)="showContent('content4')">Available<br><span class="amount">$0.00</span></a>
+            </li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+        <p *ngIf="currentContent === 'content1'" class="contentData">You have no work in progress</p>
+        <p *ngIf="currentContent === 'content2'" class="contentData">You have no work in review</p>
+        <p *ngIf="currentContent === 'content3'" class="contentData">You have no pending payments</p>
+        <p *ngIf="currentContent === 'content4'" class="contentData">You have no work avilable</p>
+        <p class="note">Note: this report is updated every hour.</p>
+    </div>
+</div>

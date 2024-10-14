@@ -12,5 +12,5 @@ import { RouterLink } from '@angular/router';
 })
 export class RoleComponent {
 
-  selectedUserType :  'freelancer' |'client' |null = null
+  selectedUserType :  'Freelancer' |'Client' |null = null
 }

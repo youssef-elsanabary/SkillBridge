@@ -10,9 +10,22 @@
         <div class="container-sm">
           <p class="log">Log in to Upwork</p> 
           <form >
-          <input type="text" id ="email" placeholder="Username or Email " class="form-control" aria-describedby="emailHelp" required name="Username" [(ngModel)]="user.Username">
-          <div class="invalid-feedback">Please Enter Username</div>  
-          <input type="password" id="pass" placeholder="Password " class="form-control" aria-describedby="emailHelp" required name="Password" [(ngModel)]="user.Password">
+          <input type="email" id ="name" class="form-control" name="email"
+            placeholder="Username or Email" aria-describedby="emailHelp" 
+            minlength="4" appForbiddenName="bob" required 
+            [(ngModel)]="user.Email" #email="ngModel">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" id="error">
+              <div *ngIf="email.hasError('required')" > Name is required.</div> 
+            </div>
+
+          <input type="password" id="pass" class="form-control" name="Password"
+          placeholder="Password "  aria-describedby="emailHelp" 
+          required minlength="4" appForbiddenName="bob"
+          [(ngModel)]="user.Password" #password ="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"  id="error">
+            <div *ngIf="password.hasError('required')" > password is required.</div>
+            <div *ngIf="password.hasError('minlength')"> Name must be at least 4 characters long.</div> 
+          </div>
           <div class="invalid-feedback">Please Enter password</div>  
         </form>
         <div><button type="submit" class="btn-login btn-primary1" (click)="login()">Continue</button></div> 

@@ -3,9 +3,8 @@
 <div class="parent">
     <div class="child">
         <div class="childRadio">
-            <img src="./role_images/clint.png" alt="" width="30px"
-                height="30px" class="img" >
-            <input type="radio" id="join-user" value="client" name="role" [(ngModel)]="selectedUserType"> 
+            
+            <input type="radio" id="join-user" value="Client" name="role" [(ngModel)]="selectedUserType"> 
         </div>
         <label for=""> <p class="childp">  I’m a client, hiring for a project</p> </label>
         <label for="join-user"> </label>
@@ -13,19 +12,18 @@
 
     <div  class="child">
         <div class="childRadio">
-            <img src="./role_images/free.png" alt="" width="30px"
-                 height="30px"  class="img">
-            <input type="radio" id="join-user" value="freelancer" name="role" [(ngModel)]="selectedUserType">
+            
+            <input type="radio" id="join-user" value="Freelancer" name="role" [(ngModel)]="selectedUserType">
         </div>
         <label for="">  <p class="childp"> I’m a freelancer, looking for work</p></label> 
         <label for="join"> </label>
     </div>
 </div>
-@if (selectedUserType === 'freelancer') {
+@if (selectedUserType === 'Freelancer') {
     <div class="btn-div"> 
         <button class="selectedbtn" [routerLink]="['/account/register',selectedUserType]">Apply as a Freelancer </button>
     </div>
-}@else if (selectedUserType === 'client') {
+}@else if (selectedUserType === 'Client') {
     <div class="btn-div">
          <button class="selectedbtn" [routerLink]="['/account/register',selectedUserType]" >Join as a Client </button>
         </div>

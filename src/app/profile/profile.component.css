@@ -1,0 +1,194 @@
+.main{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+.row{
+    --bs-gutter-x: 0rem;
+}
+.userImg{
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    border: none;
+    margin-right: 13px;
+    background-image: url("../account/images/user.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.pencil{
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid green;
+    margin-right: 13px;
+    background-image: url("../images/pencil.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.copy{
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid green;
+    margin-right: 13px;
+    background-image: url("../images/link.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.add{
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid green;
+    margin-right: 13px;
+    background-image: url("../images/add.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+/* First Div */
+.profile-container{
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+}
+img{
+    border: 1px solid black;
+    size: 100px;
+}
+.view{
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+    padding: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 2px 5px;
+}
+.setting{
+    border-radius: 10px;
+    background-color: green;
+    border: 2px solid green;
+    color: white;
+    padding: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px; 
+    margin: 2px 5px;
+}
+.share{
+    font-weight: 400;
+    color: green;
+}
+.location{
+    color: gray;
+}
+.btn-setting{
+    padding: 0%;
+}
+.userData{
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+}
+                /* userInfo */
+.userInfo{
+    background-color: white;
+}
+/* career */
+.career{
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid lightgray;
+}
+.career1{
+    margin-bottom: 20px;
+}
+.amount{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+        /* portfolio */
+.portfolio{
+    padding: 20px;
+    border-bottom: 2px solid lightgray;
+
+}
+/* draft */
+a{
+    color: gray;
+    font-size: 16px;
+}
+.nav{
+    --bs-nav-link-color: green;
+    --bs-nav-link-hover-color:green;
+}
+.nav-underline{
+    gap: 0px;
+    --bs-nav-underline-link-active-color:green;
+}
+
+hr{
+    border-top: 2px solid black;
+    margin-top: -1px;
+}
+.contentData{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: gray;
+}
+.content{
+    height: 200px;
+    font-size: small;
+    color: gray;
+    position: relative;
+}
+/* Work-history */
+.Work-history{
+    padding: 20px;
+    border-bottom: 2px solid lightgray;
+}
+.skill{
+    padding: 20px;
+    border-bottom: 2px solid lightgray;
+}
+.skillSpan{
+    border-radius: 15px;
+    background-color: lightgray;
+    color: gray;
+    padding: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+/* project-catalog */
+.project-catalog{
+    padding: 20px;
+    border-bottom: 2px solid lightgray;
+}
+                /* details */
+.details{
+    padding: 20px;
+    background-color: white;
+    border-right: 2px solid lightgray;
+}
+.ads{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.connects-link{
+    color: green;
+    text-decoration: underline;
+    font-weight: 600
+}

@@ -1,0 +1,47 @@
+.container1{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+
+}
+a{ 
+    color: gray;
+    font-size: 20px;
+}
+.nav{
+    --bs-nav-link-color: green;
+    --bs-nav-link-hover-color:green;
+}
+.nav-underline{
+    gap: 0px;
+    --bs-nav-underline-link-active-color:green;
+}
+.nav-link{
+    padding-bottom: 30px;
+}
+
+.amount{
+    color: black;
+    font-size: 28px ;
+    font-weight: bold;
+}
+hr{
+    border-top: 2px solid black;
+    margin-top: -1px;
+}
+.contentData{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: x-large;
+    font-weight: 600;
+    color: gray;
+}
+.content{
+    height: 250px;
+    font-size: small;
+    color: gray;
+    position: relative;
+}

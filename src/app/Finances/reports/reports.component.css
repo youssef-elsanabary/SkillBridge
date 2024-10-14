@@ -1,0 +1,38 @@
+.root{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+tr{
+   margin-bottom: 10px;
+}
+a{
+    color: green;
+    text-decoration: underline;
+    font-size: large;
+    font-weight: 600;
+}
+.weekly{
+    border-radius: 10px;
+    border: 2px solid green;
+    background-color: white;
+    color: green;
+    padding: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.weekly-client{
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    background-color: lightgray;
+    color: gray;
+    padding: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.gray{
+    color: gray;
+}
+.light{
+    color: lightgray;
+}

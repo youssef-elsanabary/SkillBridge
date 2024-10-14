@@ -51,6 +51,12 @@ hr{
 #pass{
     margin-top: 5px;
 }
+#error{
+    text-align: start;
+    width: 70%;
+    color: darkred;
+    margin-top: 7px;
+}
 .btn-login{
     width: 70%;
     height: fit-content;

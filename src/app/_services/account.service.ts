@@ -15,12 +15,11 @@ export class AccountService {
   registerUrl : string =`https://localhost:7234/api/auth/register`
 
   register(user : User){
-    return this.http.post<string>(this.registerUrl,user);
+    return this.http.post<User>(this.registerUrl,user,{ observe :'response'});
   }
 
   login(userObj : any): Observable<HttpResponse<any>>{
     return this.http.post<any>(this.loginUrl,userObj, { observe: 'response' });
-      // {responseType:'text',params:{'':email,'':pass}})
   }
   
   logout(){

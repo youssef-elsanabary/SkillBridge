@@ -20,6 +20,11 @@
     width: 250px;
     height :170px;
     padding: 15px; 
+    background-image: url("./role_images/free.png");
+    background-size: 11%;
+    background-position-x: 15%;
+    background-position-y: 5%;
+    background-repeat: no-repeat
 }
 .childRadio{
     position: relative;

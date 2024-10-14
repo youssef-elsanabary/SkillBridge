@@ -1,0 +1,140 @@
+<div class="main">
+    <div class="row profile-container ">
+        <div class="userData col-12 row">
+            <div class="image col-1"><div class="userImg rounded-circle"></div> </div>
+            <div class="title col-4">
+                <h3>YousefElsanabary</h3>
+                <p class="location"> Damietta, Egypt – 7:32 pm local time</p>
+            </div>
+            <div class="space col-3"></div>
+            <div class="btn-setting col-4">
+                <button class="view">See public view</button>
+                <button class="setting">Profile setting</button>
+            </div>  
+            <a href="#" class="share">Share</a>
+        </div>
+
+        <!-- details -->
+        <div class="details col-4">
+            <!-- ads -->
+            <div class="ads">
+                <h5>Promote with ads</h5>
+                <div class="row">
+                    <h6 class="col-10" >Availability badge</h6>
+                    <button class="rounded-circle col-1 pencil"></button>
+                </div>
+                <p class="location">Off</p>
+                <div class="row">
+                    <h6 class="col-10" >Boost your profile</h6>
+                    <button class="rounded-circle col-1 pencil"></button>
+                </div>
+                <p class="location">Off</p>
+            </div>
+            <!-- Coonects  -->
+             <div class="connects ads">
+                <h5>Connects : 0</h5>
+                <div class="row">
+                    <a href="#" class="connects-link col-5">View details</a>
+                    <hr class="horizontal-line col-2">
+                    <a href="#" class="connects-link col-5">Buy Connects</a>
+                </div>
+             </div>
+             <!-- Video introduction -->
+              <div class="row">
+                <h5 class="col-10">Video introduction</h5>
+                <button class="rounded-circle col-1 add"></button>
+              </div>
+              <!-- Hours per week -->
+               <div class="Hours-per-week">
+                <div class="row">
+                    <h5 class="col-10">Hours per week</h5>
+                    <button class="rounded-circle col-2 pencil"></button>
+                </div>
+                    <p class="location">As Needed - Open to Offers<br>Open to contract to hire</p>
+               </div>
+                <!-- Languages -->
+                <div class="Languages">
+                    <div class="row">
+                        <h5 class="col-9">Languages</h5>
+                        <div class="language-button col-3 ">
+                            <button class="rounded-circle add"></button>
+                            <button class="rounded-circle pencil"></button>
+                        </div>
+                    </div>
+                    <p class="location">English: Conversational <br>Arabic: Native or Bilingual</p>
+                </div>
+        </div>
+        
+
+        <!-- userInfo -->
+        <div class="userInfo col-8">
+            <!-- career -->
+        <div class="career">
+            <div class="career1 row">
+                <h5 class="col-4">Fullstack .NET Developer</h5>
+                <button class="rounded-circle col-1 pencil"></button>
+                <span class="space col-4"></span>
+                <p class="col-1 amount">$12.00/hr</p>
+                <button class="rounded-circle col-1 pencil"></button>
+                <button class="rounded-circle col-1 copy"></button>
+            </div>
+            <div class="career-info row">
+                <p class="col-10 location">
+                    I am a full stack .Net developer. I graduated from the Faculty of Computers and Information, Mansoura University in 2022
+                </p>
+                <span class="col-1"></span>
+                <button class="rounded-circle col-1 pencil"></button>
+            </div>
+        </div>
+            <!-- portfolio -->
+         <div class="portfolio">
+            <!-- edit -->
+            <div class="row" >
+                <h5 class="col-11">Portfolio</h5>
+                <button class="rounded-circle col-1 add"></button>
+            </div>
+            <!-- draft -->
+            <div class="draft">
+                <div class="tabs grid">
+                    <ul class="nav nav-underline">
+                        <li class="nav-item col-3">
+                            <a class="nav-link "  href="#" (click)="showContent('content1')">Published</a>
+                        </li>
+                        <li class="nav-item col-3">
+                            <a class="nav-link" href="#" (click)="showContent('content2')">Draft</a>
+                        </li>
+                  </ul>
+                  <hr>
+                </div>
+                <div class="content">
+                    <p *ngIf="currentContent === 'content1'" class="contentData">Add a project. Talent are hired 9x more often if they’ve published a portfolio.</p>
+                    <p *ngIf="currentContent === 'content2'" class="contentData">No drafts yet. When you create a new project, you can now save as you go.</p>
+                </div>
+            </div>
+         </div>
+            <!-- Work history -->
+            <div class="Work-history">
+                <h5>Work history</h5>
+                <p class="location">No items</p>
+            </div>
+
+            <!-- skills -->
+             <div class="skill">
+                <div class="skillBar row">
+                    <h5 class="col-11">Skills</h5>
+                    <button class="rounded-circle col-1 pencil"></button>
+                </div>
+                <div class="skillItems">
+                    <span class="skillSpan">Html</span>
+                </div>
+             </div>
+             <!-- project Cataloge -->
+              <div class="project-catalog">
+                <h5>Your project catalog</h5>
+                <p class="location">Projects are a new way to earn on Upwork that helps you do more of the work you love to do. Create project offerings that highlight your strengths and attract more clients.</p>
+                <button class="view" style="margin-left: 25px;">Manage projects </button>
+            </div>
+        </div>
+        
+    </div>
+</div>
