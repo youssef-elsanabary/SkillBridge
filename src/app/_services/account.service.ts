@@ -5,6 +5,7 @@ import { User } from '../_modules/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,11 +20,13 @@ export class AccountService {
   }
 
   login(userObj : any): Observable<HttpResponse<any>>{
+    this.isAuth = true
     return this.http.post<any>(this.loginUrl,userObj, { observe: 'response' });
   }
   
   logout(){
     localStorage.removeItem("token");
     this.isAuth=false;
+    this.router.navigateByUrl("/account/login")
   }
 }

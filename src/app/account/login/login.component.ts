@@ -7,6 +7,8 @@ import { FooterComponent } from "../../core/footer/footer.component";
 import { HeaderComponent } from "../../core/header/header.component";
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Component({
   selector: 'app-login',
@@ -29,20 +31,24 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
   user : Login = new Login("","")
   login(){
+    this.isAuth = true;
     this.sub = this.accountService.login(this.user).subscribe(
       //ok
       {next : response=>{
-        console.log(response);
-        console.log("1"+""+this.isAuth);
-        this.isAuth = true;
-        console.log("2"+""+this.isAuth);
-
-        this.status = response.status;
-        this.router.navigateByUrl("/home");
+        // this.status = response.status;
         localStorage.setItem("token", response.body.token);
+        let t : {unique_name :string , role : string} =jwtDecode(response.body.token)
+        if(t.role == "Client"){
+          this.router.navigateByUrl("/home/HomeClient")
+        }else{
+          this.router.navigateByUrl("/home");
+        }
+
       },
       //error
       error : e=>{
+        this.isAuth=false
+        alert("Login Failed")
       }
   });
   }

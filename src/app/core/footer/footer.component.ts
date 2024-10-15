@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,5 +10,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class FooterComponent {
-
+  constructor(private router :Router){}
+  url : string = "";
+  ngOnInit(): void {
+    this.url = this.router.url
+    console.log("footerurl" + " " +this.url);
+    
+  }
 }

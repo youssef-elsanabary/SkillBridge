@@ -37,14 +37,16 @@ export class RegisterComponent implements OnInit,OnDestroy {
       {
         next : (t) => {
           this.accountService.isAuth = true;
-          this.router.navigateByUrl("home");
+          alert("Registration Done")
+          this.router.navigateByUrl("account/login")
+          // if(this.newuser.role=="Client"){
+          //   this.router.navigateByUrl("HomeClient")
+          // }else{
+          // this.router.navigateByUrl("home");
+          // }
         },//error
         error : r =>{
-          console.log("userRole : "+this.userRole);
-          console.log(this.newuser);
-          console.log(r);
-          // alert("registration failed");
-          console.log("registration failed")
+          alert("Registration Failed")
         }
       }
     )

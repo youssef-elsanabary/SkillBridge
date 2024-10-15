@@ -1,0 +1,23 @@
+.HomeContainer{
+    border: 1px solid lightgray;
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
+.addContainer{
+    padding-bottom: 20px;
+    margin: auto;
+    border-bottom: 1px solid whitesmoke;
+}
+.addService{
+    padding: 5px;
+    background-color: white;
+    border: 2px solid green;
+    border-radius: 15px;
+    width: 70%;
+    color: green;
+}
+.addService:hover{
+    background-color: whitesmoke;
+}
+

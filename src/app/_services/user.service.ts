@@ -6,6 +6,5 @@ import { Base } from '../_modules/base';
   providedIn: 'root'
 })
 export class UserService {
-  
   constructor(public http:HttpClient, public base : Base) { }
 }

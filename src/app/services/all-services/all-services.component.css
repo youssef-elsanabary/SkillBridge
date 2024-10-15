@@ -1,0 +1,114 @@
+.edit{
+    position: absolute ;
+    right: 60px;  top: 20px;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid green;
+    margin-right: 13px;
+    background-image: url("../images/star.png");
+    background-size: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+.small1{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.small2{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+.small3{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+.type1{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color:black;
+}
+.type2{
+    color: black;
+    text-decoration-line: none;
+}
+.type2:hover{
+    color: rgb(6, 180, 6);
+    text-decoration-line: solid;
+}
+.information{
+    width: 100%;
+    background-color:white;
+    padding: 15px;
+    /* border-bottom-left-radius: 0px; */
+    /* border-bottom-right-radius :0px; */
+    border-bottom: 1px solid whitesmoke;
+    /* border-bottom-width :0.666667px; */
+    /* border-top-left-radius: 0px; */
+    /* border-top-right-radius: 0px; */
+    box-sizing: border-box; 
+    font-family: Neue Montreal;
+     /* position: relative;  */
+}
+
+.paragraph-1{
+    color: #737271;
+}
+
+.information:hover{
+    background-color: #ececeb;
+}
+
+.btn-1{
+    border-radius: 20px;
+    color:#605f5f;
+    background:#d3d2d1;
+    border:0 ;
+    padding: 2px 12px;
+    margin-bottom: 20px;
+}
+
+.last{
+    margin-right: 30px;
+    text-decoration: none;
+    color:#605f5f;
+    font-size: 14px;
+}
+
+.text-55{
+    padding-left: 25px;
+}
+.text-56{
+    padding-left: 56px;
+    margin-left: 5px;
+}
+.heart-img{
+    position: absolute;
+     right: 10px; top: 20px;
+    }
+
+.img-15{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+}
+
+.img-16{
+    height: 5
+    0px;
+    width: 50px;
+    bottom: -16px;
+    margin-right: 5px;
+    position: absolute;
+}
+.img-parent12{
+    position: relative ;
+}

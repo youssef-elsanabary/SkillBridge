@@ -1,9 +1,15 @@
+@if(url =="/"||url =="/account/login") {
 <footer>
     <div class="footer-container">
-        © 2015 - 2024 Upwork® Global Inc. • Privacy Policy
+       <p> © 2015 - 2024 Upwork® Global Inc. • Privacy Policy </p>
     </div>
 </footer>
-<!-- <footer class="footer">
+}@else if (url =="/account/role"||url =="/account/register/Client"||url=="/account/register/Freelancer") {
+   <footer> <div>
+    
+   </div> </footer>
+}@else {
+<footer class="footer">
           
             
     <div class="first-list">
@@ -22,7 +28,7 @@
    </div> 
     <div class="third-list"> 
        <ul>
-           <li><a href=""></a>Terms of Service </li> 
+           <li><a href="">Terms of Service</a> </li> 
            <li> <a href="">Privacy Policy</a></li> 
           <li><a href="">CA Notice at Collection</a></li> 
           <li><a href="">Cookie Settings</a></li> 
@@ -36,10 +42,7 @@
           <li><a href="#">Enterprise Solutions</a></li>
        </ul>  
     </div> 
-    
-   
 
-    
 <div class="row containerb">
     <div clas="starter" >
      <span class="flow">Follow us </span>
@@ -49,20 +52,14 @@
       <button class="button55"><a href="#" class="fa fa-youtube"></a></button>
        <button class="button55"><a href="#" class="fa fa-instagram"></a></button>
      </div>
-
      <div  class="ender">
-       <span class="Mobile">Mobile app  </span>
-
-       <button class="button55">
-         
-       
-     </button>
-       <button class="button55"></button>
-     
-       </div>
+        <span class="Mobile">Mobile app  </span>
+        <button class="button55">  
+        </button>
+        <button class="button55"></button>
+        </div>
      </div>
-    
-
     <hr class="horizontal">
     <div class="glob">© 2015 - 2024 Upwork® Global Inc.</div>
-</footer> -->
+</footer>
+}

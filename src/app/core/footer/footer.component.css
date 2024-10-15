@@ -1,13 +1,96 @@
-:root{
- .footer-container{
-    
+.footer-container{
     height: 150px;
     background-color: black;
     color: white;
     text-align: center;
     border-radius: 15px;
     width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     margin-bottom: 25px;
-}}
+}
+a{
+    color: black(172, 81, 81);
+}
+.footer{
+    grid-column: 1/3;
+    height: 380px;
+    border-radius: 10px;
+    background-color: black;
+    margin:20px;
+    display: grid;
+    justify-content:space-between;
+    grid-template-columns: 4(1fr);
+    padding-top:50px;
+}
+.first-list{
+    grid-column: 1/2;
+    padding-left: 50px; 
+}
+.second-list{
+    grid-column: 2/3;
+}
+.third-list{
+    grid-column: 3/4;
+}
+.forth-list{
+    grid-column: 4/5;
+    padding-right: 170px;
+}
+li{
+    color: white;
+    padding-bottom: 10px;
+}
+ul{
+    color: white;
+    list-style: none; 
+}
+.glob{
+    grid-column: 1/5;  
+    justify-self: center;
+    color: white;
+}
+hr{
+    border: .1 thin rgb(255, 255, 255); 
+    display: block;
+}
+.horizontal{
+    border-top: 2px solid rgb(255, 255, 255);
+    grid-column: 1/5;
+    margin-left: 82px;
+    margin-right:70px; 
+}
+.button55{
+    background-color: #000000;
+    border: light;
+    border-color: rgb(173, 172, 172);
+    color: white;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 2px;
+    border-radius: 50%;
+}
+.Mobile{color: white;
+    margin-right: 10px;}
+
+.button-container{ grid-column: 1/3;
+    justify-content: space-between;
+}
+.containerb{
+
+    grid-column:1/5;
+    display: grid;
+    grid-template-columns:repeat(12 fr)
+
+}
+.stater{grid-column: 1/5;}
+
+.ender{grid-column: 11/12;}
+.fa:hover {
+    opacity: 0.7;
+  }
+  .flow{ margin-left: 82px;
+    margin-right: 10px;
+    color: white;}

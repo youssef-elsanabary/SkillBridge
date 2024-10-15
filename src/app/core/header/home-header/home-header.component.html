@@ -120,22 +120,16 @@
 <button class=" btn rounded-circle profileImg  dropdown-item " type="button" data-bs-toggle="dropdown" aria-expanded="false">
 </button>
 <ul class="dropdown-menu">
-<li><a class="dropdown-item" href="#">Financi over view </a></li>
-<li><a class="dropdown-item" href="#">Your reports</a></li>
-<li><a class="dropdown-item" href="#">Billings and earnings</a></li>
-<li><a class="dropdown-item" href="#">Billings and earnings</a></li>
+<li><a class="dropdown-item" [routerLink]="['/home/profile']">Your Profile </a></li>
+<li><a class="dropdown-item" href="#">Status and trends</a></li>
 
-<li><a class="dropdown-item" href="#">Transaction and invoices</a></li>
-
-<li><a class="dropdown-item" href="#">Certificate of earnings</a></li>
 <li><a class="dropdown-item" href="#"><hr class="line-hr"></a></li>
-
-<li><a class="dropdown-item" href="#">PAYMENTS</a></li>
-<li><a class="dropdown-item" href="#">Withdraw earnings</a></li>
+<li><a class="dropdown-item" href="#">Membership plans</a></li>
+<li><a class="dropdown-item" href="#">Connects</a></li>
+<li><a class="dropdown-item" href="#">Theme : Light </a></li>
+<li><a class="dropdown-item" href="#">Account setting</a></li>
 <li><a class="dropdown-item" href="#"><hr class="line-hr"></a></li>
-<li><a class="dropdown-item" href="#">Taxes</a></li>
-<li><a class="dropdown-item" href="#">Tax forms</a></li>
-<li><a class="dropdown-item" href="#">Tax information</a></li>
+<li><a class="dropdown-item" [routerLink]="['/account/logout']">Logout</a></li>
 
 </ul>
 </div> 

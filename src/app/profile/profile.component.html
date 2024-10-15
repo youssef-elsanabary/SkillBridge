@@ -3,8 +3,8 @@
         <div class="userData col-12 row">
             <div class="image col-1"><div class="userImg rounded-circle"></div> </div>
             <div class="title col-4">
-                <h3>YousefElsanabary</h3>
-                <p class="location"> Damietta, Egypt – 7:32 pm local time</p>
+                <h3 ngDefaultControl [(ngModel)]="profile.name" name="getName"></h3>
+                <p class="location"> Damietta, Egypt –<span class="location" [(ngModel)]="currentTime" ngDefaultControl name="gettime"></span> </p>
             </div>
             <div class="space col-3"></div>
             <div class="btn-setting col-4">
@@ -12,6 +12,34 @@
                 <button class="setting">Profile setting</button>
             </div>  
             <a href="#" class="share">Share</a>
+                    <!-- edit profile -->
+            <button class="rounded-circle col-1 pencil" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="post">
+              <input ngDefaultControl required class="view" type="text" placeholder="name" [(ngModel)]="newProfile.name" name="Name">
+              <input ngDefaultControl required class="view" type="text" placeholder="Image" [(ngModel)]="newProfile.image" name="Image">
+              <input ngDefaultControl required class="view" type="text" placeholder="Description" [(ngModel)]="newProfile.description" name="description">
+              <input ngDefaultControl required class="view" type="text" placeholder="bio" [(ngModel)]="newProfile.bio" name="bio">
+              <input ngDefaultControl required class="view" type="text" placeholder="skills" [(ngModel)]="newProfile.skills" name="skills">
+              <input ngDefaultControl required class="view" type="text" placeholder="cv" [(ngModel)]="newProfile.cvFile" name="cvFile">
+          </form>
+          <button  class="view">DataCreated : {{newProfile.dataCreated}}</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="save()" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
         </div>
 
         <!-- details -->
@@ -40,12 +68,12 @@
                 </div>
              </div>
              <!-- Video introduction -->
-              <div class="row">
+              <div class="row career1">
                 <h5 class="col-10">Video introduction</h5>
                 <button class="rounded-circle col-1 add"></button>
               </div>
-              <!-- Hours per week -->
-               <div class="Hours-per-week">
+              <!-- Hours per week --> 
+               <div class="Hours-per-week career1">
                 <div class="row">
                     <h5 class="col-10">Hours per week</h5>
                     <button class="rounded-circle col-2 pencil"></button>
@@ -53,7 +81,7 @@
                     <p class="location">As Needed - Open to Offers<br>Open to contract to hire</p>
                </div>
                 <!-- Languages -->
-                <div class="Languages">
+                <div class="Languages career1">
                     <div class="row">
                         <h5 class="col-9">Languages</h5>
                         <div class="language-button col-3 ">
@@ -63,15 +91,44 @@
                     </div>
                     <p class="location">English: Conversational <br>Arabic: Native or Bilingual</p>
                 </div>
+                <!-- Verifications -->
+                 <div class="Verifications career1">
+                    <h5>Verifications</h5>
+                    <div class="row">
+                        <h6 class="col-10">Military veteran</h6>
+                        <button class="rounded-circle col-1 add"></button>
+                    </div>
+                 </div>
+                 <!-- Licenses -->
+                 <div class="row career1">
+                    <h6 class="col-10">Licenses</h6>
+                    <button class="rounded-circle col-1 add"></button>
+                </div>
+                <!-- Education -->
+                <div class="Languages career1">
+                    <div class="row">
+                        <h5 class="col-10">Education</h5>
+                        <button class="rounded-circle add col-1"></button>
+                    </div>
+                        <div class="row ">
+                            <p class="col-9">
+                                Mansoura University <br>
+                                Bachelor's degree, Computer science <br>
+                                2018-2022
+                            </p>
+                            <button class="rounded-circle add col-1"></button>
+                            <button class="rounded-circle pencil col-1"></button>
+                        </div>
+                </div>
+                <!--  -->
         </div>
-        
 
         <!-- userInfo -->
         <div class="userInfo col-8">
             <!-- career -->
         <div class="career">
             <div class="career1 row">
-                <h5 class="col-4">Fullstack .NET Developer</h5>
+                <h5 class="col-4" ngDefaultControl [(ngModel)]="profile.bio" name="getbio">Fullstack .NET Developer</h5>
                 <button class="rounded-circle col-1 pencil"></button>
                 <span class="space col-4"></span>
                 <p class="col-1 amount">$12.00/hr</p>
@@ -79,7 +136,7 @@
                 <button class="rounded-circle col-1 copy"></button>
             </div>
             <div class="career-info row">
-                <p class="col-10 location">
+                <p class="col-10 location" ngDefaultControl [(ngModel)]="profile.description" name="getdiscrp">
                     I am a full stack .Net developer. I graduated from the Faculty of Computers and Information, Mansoura University in 2022
                 </p>
                 <span class="col-1"></span>
@@ -107,7 +164,7 @@
                   <hr>
                 </div>
                 <div class="content">
-                    <p *ngIf="currentContent === 'content1'" class="contentData">Add a project. Talent are hired 9x more often if they’ve published a portfolio.</p>
+                    <p *ngIf="currentContent === 'content1'" class="contentData" ngDefaultControl [(ngModel)]="profile.cvFile" name="getcv">Add a project. Talent are hired 9x more often if they’ve published a portfolio.</p>
                     <p *ngIf="currentContent === 'content2'" class="contentData">No drafts yet. When you create a new project, you can now save as you go.</p>
                 </div>
             </div>
@@ -121,7 +178,7 @@
             <!-- skills -->
              <div class="skill">
                 <div class="skillBar row">
-                    <h5 class="col-11">Skills</h5>
+                    <h5 class="col-11" [(ngModel)]="profile.skills" ngDefaultControl name="skill">Skills</h5>
                     <button class="rounded-circle col-1 pencil"></button>
                 </div>
                 <div class="skillItems">
