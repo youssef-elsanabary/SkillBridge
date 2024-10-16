@@ -10,6 +10,6 @@
     "\\Backend\\Properties",
     "\\Backend\\Utils"
   ],
-  "SelectedNode": "\\Backend\\Backend.sln",
+  "SelectedNode": "\\Backend\\Context\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -42,7 +42,7 @@ namespace Backend.Controllers
 
         
             var token = _jwtHelper.GenerateToken(user);
-            return Ok(new { token });
+            return Ok(new { token, userId = user.Id });
         }
      
         [HttpPost("login")]
@@ -53,7 +53,7 @@ namespace Backend.Controllers
                 return Unauthorized("Invalid username or password.");
        
             var token = _jwtHelper.GenerateToken(user);
-            return Ok(new { token });
+            return Ok(new { token, userId = user.Id });
         }
     }
 }
