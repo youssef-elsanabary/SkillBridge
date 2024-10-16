@@ -3,16 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\controllers\\messagescontroller.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\messagescontroller.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\utils\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:utils\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\migrations\\20241009064000_updateauth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -28,16 +64,8 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Amir-PC\\Desktop\\Backend\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F7486C5-228A-41BB-8C67-72BEA16E6AFC}|Backend.csproj|c:\\users\\amir-pc\\desktop\\skillbridge\\backend\\utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,60 +87,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAQwCUAAABGAAAA",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T06:56:30.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T18:34:54.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Profile.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\Profile.cs",
+              "RelativeDocumentMoniker": "Models\\Profile.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\Profile.cs",
+              "RelativeToolTip": "Models\\Profile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T20:26:34.771Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "20241009064000_Updateauth.cs",
-              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Migrations\\20241009064000_Updateauth.cs",
-              "RelativeDocumentMoniker": "Migrations\\20241009064000_Updateauth.cs",
-              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Migrations\\20241009064000_Updateauth.cs",
-              "RelativeToolTip": "Migrations\\20241009064000_Updateauth.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfilesController.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "Controllers\\ProfilesController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T06:41:42.75Z"
+              "WhenOpened": "2024-10-14T20:26:11.582Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Models\\Message.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\Message.cs",
+              "RelativeToolTip": "Models\\Message.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T19:48:12.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Utils\\PaymentService.cs",
+              "RelativeDocumentMoniker": "Utils\\PaymentService.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Utils\\PaymentService.cs",
+              "RelativeToolTip": "Utils\\PaymentService.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAwwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T19:04:41.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Controllers\\PaymentController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T19:03:38.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Context\\AppDbContext.cs",
               "RelativeToolTip": "Context\\AppDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAKAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAA3wCEAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T06:38:36.889Z"
+              "WhenOpened": "2024-10-09T06:38:36.889Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ServicesController.cs",
-              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ServicesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
-              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ServicesController.cs",
-              "RelativeToolTip": "Controllers\\ServicesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T11:58:32.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "Models\\Payment.cs",
@@ -124,20 +188,79 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\ChatHub.cs",
+              "RelativeDocumentMoniker": "ChatHub.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\ChatHub.cs",
+              "RelativeToolTip": "ChatHub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T11:37:11.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MessagesController.cs.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\MessagesController.cs.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessagesController.cs.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\MessagesController.cs.cs",
+              "RelativeToolTip": "Controllers\\MessagesController.cs.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T08:58:07.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwCUAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T06:56:30.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "Controllers\\ServicesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T11:58:32.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20241009064000_Updateauth.cs",
+              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Migrations\\20241009064000_Updateauth.cs",
+              "RelativeDocumentMoniker": "Migrations\\20241009064000_Updateauth.cs",
+              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Migrations\\20241009064000_Updateauth.cs",
+              "RelativeToolTip": "Migrations\\20241009064000_Updateauth.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T06:41:42.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAB9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-28T21:20:05.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T21:20:05.537Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "JwtHelper.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Utils\\JwtHelper.cs",
               "RelativeDocumentMoniker": "Utils\\JwtHelper.cs",
@@ -149,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "Backend",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Backend.csproj",
               "RelativeDocumentMoniker": "Backend.csproj",
@@ -160,20 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\ChatHub.cs",
-              "RelativeDocumentMoniker": "ChatHub.cs",
-              "ToolTip": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\ChatHub.cs",
-              "RelativeToolTip": "ChatHub.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T11:37:11.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "StripeSettings.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\StripeSettings.cs",
               "RelativeDocumentMoniker": "StripeSettings.cs",
@@ -185,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\LoginDto.cs",
               "RelativeDocumentMoniker": "Models\\LoginDto.cs",
@@ -197,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\RegisterDto.cs",
               "RelativeDocumentMoniker": "Models\\RegisterDto.cs",
@@ -209,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 15,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Amir-PC\\Desktop\\SkillBridge\\Backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",

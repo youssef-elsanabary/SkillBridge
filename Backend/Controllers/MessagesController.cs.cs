@@ -1,6 +1,7 @@
 ﻿using Backend.Context;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Backend.Controllers
 {
@@ -9,9 +10,12 @@ namespace Backend.Controllers
     public class MessagesController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public MessagesController(AppDbContext context)
+        private readonly IHubContext<ChatHub> _hubContext;
+
+        public MessagesController(AppDbContext context, IHubContext<ChatHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         [HttpGet]
@@ -21,13 +25,15 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Message> SendMessage(Message message)
+        public async Task<ActionResult<Message>> SendMessage(Message message)
         {
             _context.Messages.Add(message);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+
+
+            await _hubContext.Clients.All.SendAsync("ReceiveMessage", message.SenderId, message.Content);
+
             return message;
         }
     }
-
 }
-
