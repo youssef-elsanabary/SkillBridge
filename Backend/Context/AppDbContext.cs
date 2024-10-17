@@ -13,7 +13,6 @@ namespace Backend.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Contract> Contracts { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Proposal> Proposals { get; set; }
@@ -31,12 +30,6 @@ namespace Backend.Context
                 .HasMany(u => u.Contracts)
                 .WithOne(c => c.User)
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Profile)
-                .WithOne(p => p.User)
-                .HasForeignKey<Profile>(p => p.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<User>()

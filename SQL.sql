@@ -6,6 +6,11 @@ CREATE TABLE Users (
     PasswordHash NVARCHAR(200) NOT NULL,
     UserType NVARCHAR(50) NOT NULL CHECK (UserType IN ('Freelancer', 'Client')),
     CreatedDate DATETIME DEFAULT GETDATE()
+    Image NVARCHAR(200),
+    Description NVARCHAR(MAX),
+    Bio NVARCHAR(MAX),
+    Skills NVARCHAR(MAX),
+    CvFile NVARCHAR(200)
 );
 
 
@@ -41,19 +46,6 @@ CREATE TABLE Contracts (
     Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Pending', 'Active', 'Completed', 'Cancelled')),
     CreatedDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId),
-    FOREIGN KEY (UserId) REFERENCES Users(UserId)
-);
--- Create the Profiles table
-CREATE TABLE Profiles (
-    ProfileId INT PRIMARY KEY IDENTITY(1,1),
-    UserId INT NOT NULL,
-    Name NVARCHAR(200),
-    Image NVARCHAR(200),
-    Description NVARCHAR(MAX),
-    Bio NVARCHAR(MAX),
-    Skills NVARCHAR(MAX),
-    CvFile NVARCHAR(200),
-    CreatedDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
 -- Create the Proposals table
