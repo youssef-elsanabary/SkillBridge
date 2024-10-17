@@ -18,8 +18,17 @@ namespace Backend.Models
         [Required]
         public string Role { get; set; }
 
+        public string Image { get; set; }
+  
+        public string Description { get; set; }
+
+        public string Bio { get; set; }
+
+        public string Skills { get; set; }
+
+        public string CvFile { get; set; }
+
         public virtual List<Service>? Services { get; set; } = new List<Service>();
-        public virtual Profile? Profile { get; set; }
         public virtual List<Contract>? Contracts { get; set; } = new List<Contract>();
         public virtual List<Message>? SentMessages { get; set; } = new List<Message>();
         public virtual List<Message>? ReceivedMessages { get; set; } = new List<Message>();

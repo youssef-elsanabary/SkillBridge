@@ -13,7 +13,7 @@ namespace Backend.Models
         [Required]
         public DateTime ProposalDate { get; set; }
         [Required]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         public virtual Service? Service { get; set; }
         public virtual User? User { get; set; }
