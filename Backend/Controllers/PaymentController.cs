@@ -1,8 +1,10 @@
 ﻿using Backend.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class PaymentsController : ControllerBase
 {
     private readonly PaymentService _paymentService;

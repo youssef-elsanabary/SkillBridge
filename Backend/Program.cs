@@ -5,6 +5,8 @@ using Stripe;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Backend.Utils;
+using Backend.Repositories;
+using Backend.Repository;
 
 
 namespace Backend
@@ -31,7 +33,17 @@ namespace Backend
                         ClockSkew = TimeSpan.Zero
                     };
                 });
-          
+            builder.Services.AddAuthorization();
+
+            // Register repositories for DI
+            builder.Services.AddScoped<IContractRepository, ContractRepository>();
+            builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+            builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+            builder.Services.AddScoped<IProposalRepository, ProposalRepository>();
+            builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
