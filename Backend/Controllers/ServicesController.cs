@@ -1,14 +1,7 @@
-﻿using Backend.Context;
+﻿
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Backend.Models;
 using Backend.Repository;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers

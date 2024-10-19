@@ -1,54 +1,58 @@
 ﻿using Backend.Context;
 using Backend.Models;
-using global::Backend.Context;
-using global::Backend.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace Backend.Repository
 {
-        public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
+    {
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context)
         {
-            private readonly AppDbContext _context;
+            _context = context;
+        }
 
-            public UserRepository(AppDbContext context)
-            {
-                _context = context;
-            }
+        public async Task<IEnumerable<User>> GetUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
 
-            public IEnumerable<User> GetUsers()
-            {
-                return _context.Users.ToList();
-            }
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
 
-            public User GetUserById(int id)
-            {
-                return _context.Users.Find(id);
-            }
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
 
-            public void AddUser(User user)
-            {
-                _context.Users.Add(user);
-            }
+        public async Task AddUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+        }
 
-            public void UpdateUser(User user)
-            {
-                _context.Users.Update(user);
-            }
+        public async Task UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+        }
 
-            public void DeleteUser(int id)
+        public async Task DeleteUserAsync(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
             {
-                var user = _context.Users.Find(id);
-                if (user != null)
-                {
-                    _context.Users.Remove(user);
-                }
-            }
-
-            public void Save()
-            {
-                _context.SaveChanges();
+                _context.Users.Remove(user);
             }
         }
+
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
-
-
+}

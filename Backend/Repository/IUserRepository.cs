@@ -1,18 +1,19 @@
 ﻿using Backend.Models;
-using global::Backend.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
-        public interface IUserRepository
-        {
-            IEnumerable<User> GetUsers();
-            User GetUserById(int id);
-            void AddUser(User user);
-            void UpdateUser(User user);
-            void DeleteUser(int id);
-            void Save();
-        }
+    public interface IUserRepository
+    {
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByEmailAsync(string email);
+        Task AddUserAsync(User user);
+        Task UpdateUserAsync(User user);
+        Task DeleteUserAsync(int id);
+        Task SaveAsync();
     }
+}
 
 

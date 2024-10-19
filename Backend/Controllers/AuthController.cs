@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
 using Backend.DTO;
+using AutoMapper;
+using Backend.Repository;
 
 namespace Backend.Controllers
 {
@@ -12,45 +14,44 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUserRepository _userRepository;
         private readonly JwtHelper _jwtHelper;
-        public AuthController(AppDbContext context, JwtHelper jwtHelper)
+        private readonly IMapper _mapper;
+
+
+        public AuthController(IUserRepository userRepository, JwtHelper jwtHelper, IMapper mapper)
         {
-            _context = context;
+            _userRepository = userRepository;
             _jwtHelper = jwtHelper;
+            _mapper = mapper;
         }
-    
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
-        {       
-            var existingUser = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
+        {
+            var existingUser = await _userRepository.GetUserByEmailAsync(dto.Email);
             if (existingUser != null)
-                return BadRequest(" email already exists.");
+                return BadRequest("Email already exists.");
 
             if (dto.Role != "Client" && dto.Role != "Freelancer")
                 return BadRequest("Role should be 'Client' or 'Freelancer'.");
 
-            var user = new User
-            {
-                Username = dto.Username,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                Email = dto.Email,
-                Role = dto.Role
-            };
-        
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            var user = _mapper.Map<User>(dto);
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+
+            await _userRepository.AddUserAsync(user);
+            await _userRepository.SaveAsync();
 
             return Ok(new { userId = user.Id });
         }
-     
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
-        {        
-            var user = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
+        {
+            var user = await _userRepository.GetUserByEmailAsync(dto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return Unauthorized("Invalid username or password.");
-       
+
             var token = _jwtHelper.GenerateToken(user);
             return Ok(new { token, userId = user.Id });
         }
