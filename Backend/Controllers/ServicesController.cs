@@ -4,51 +4,61 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Backend.Models;
+using Backend.Repository;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ServicesController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public ServicesController(AppDbContext context)
+        private readonly IServiceRepository _repository;
+
+        public ServicesController(IServiceRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [HttpGet]
-        public ActionResult<List<Service>> GetServices()
+        public IActionResult GetServices()
         {
-            return _context.Services.ToList();
+            var services = _repository.GetAll();
+            return Ok(services);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Service> GetServiceById(int id)
+        public IActionResult GetServiceById(int id)
         {
-            var service = _context.Services.Find(id);
+            var service = _repository.GetById(id);
             if (service == null)
             {
                 return NotFound("Service not found.");
             }
-            return service;
+            return Ok(service);
         }
 
         [HttpPost]
-        public ActionResult<Service> CreateService(Service service)
+        public IActionResult CreateService([FromBody] Service service)
         {
             service.CreatedDate = DateTime.UtcNow;
-
-            _context.Services.Add(service);
-            _context.SaveChanges();
-
-            return CreatedAtAction(nameof(GetServiceById), new { id = service.ServiceId }, service);
+            _repository.Add(service);
+            if (_repository.SaveChanges())
+            {
+                return CreatedAtAction(nameof(GetServiceById), new { id = service.ServiceId }, service);
+            }
+            return BadRequest("Could not save the service.");
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateService(int id, Service updatedService)
+        public IActionResult UpdateService(int id, [FromBody] Service updatedService)
         {
-            var service = _context.Services.Find(id);
+            var service = _repository.GetById(id);
             if (service == null)
             {
                 return NotFound("Service not found.");
@@ -61,22 +71,30 @@ namespace Backend.Controllers
             service.Status = updatedService.Status;
             service.UserId = updatedService.UserId;
 
-            _context.SaveChanges();
-            return NoContent(); 
+            _repository.Update(service);
+            if (_repository.SaveChanges())
+            {
+                return NoContent();
+            }
+            return BadRequest("Could not update the service.");
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteService(int id)
         {
-            var service = _context.Services.Find(id);
+            var service = _repository.GetById(id);
             if (service == null)
             {
                 return NotFound("Service not found.");
             }
 
-            _context.Services.Remove(service);
-            _context.SaveChanges();
-            return NoContent(); 
+            _repository.Delete(service);
+            if (_repository.SaveChanges())
+            {
+                return NoContent();
+            }
+            return BadRequest("Could not delete the service.");
         }
     }
 }
+

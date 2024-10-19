@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
+using Backend.DTO;
 
 namespace Backend.Controllers
 {
@@ -40,9 +41,7 @@ namespace Backend.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-        
-            var token = _jwtHelper.GenerateToken(user);
-            return Ok(new { token, userId = user.Id });
+            return Ok(new { userId = user.Id });
         }
      
         [HttpPost("login")]

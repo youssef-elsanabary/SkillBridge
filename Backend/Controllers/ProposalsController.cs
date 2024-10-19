@@ -1,42 +1,49 @@
-﻿using Backend.Context;
-using Backend.Models;
+﻿using Backend.Models;
+using Backend.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
     public class ProposalsController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public ProposalsController(AppDbContext context)
+        private readonly IProposalRepository _repository;
+
+        public ProposalsController(IProposalRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [HttpGet]
         public IActionResult GetProposals()
         {
-            var proposals = _context.Proposals.ToList();
+            var proposals = _repository.GetAll();
             return Ok(proposals);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetProposal(int id)
         {
-            var proposal = _context.Proposals.Find(id);
-            if (proposal == null) return NotFound();
+            var proposal = _repository.GetById(id);
+            if (proposal == null)
+            {
+                return NotFound();
+            }
             return Ok(proposal);
         }
 
         [HttpPost]
         public IActionResult CreateProposal([FromBody] Proposal proposal)
         {
-            _context.Proposals.Add(proposal);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(GetProposal), new { id = proposal.ProposalId }, proposal);
+            _repository.Add(proposal);
+            if (_repository.SaveChanges())
+            {
+                return CreatedAtAction(nameof(GetProposal), new { id = proposal.ProposalId }, proposal);
+            }
+            return BadRequest("Could not create the proposal.");
         }
-
     }
-
 }

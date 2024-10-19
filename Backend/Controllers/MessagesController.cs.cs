@@ -1,39 +1,38 @@
-﻿using Backend.Context;
-using Backend.Models;
+﻿using Backend.Models;
+using Backend.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class MessagesController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly IHubContext<ChatHub> _hubContext;
+        private readonly IMessageRepository _repository;
 
-        public MessagesController(AppDbContext context, IHubContext<ChatHub> hubContext)
+        public MessagesController(IMessageRepository repository)
         {
-            _context = context;
-            _hubContext = hubContext;
+            _repository = repository;
         }
 
         [HttpGet]
-        public ActionResult<List<Message>> GetMessages()
+        public IActionResult GetMessages()
         {
-            return _context.Messages.ToList();
+            var messages = _repository.GetAll();
+            return Ok(messages);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Message>> SendMessage(Message message)
+        public IActionResult CreateMessage([FromBody] Message message)
         {
-            _context.Messages.Add(message);
-            await _context.SaveChangesAsync();
-
-
-            await _hubContext.Clients.All.SendAsync("ReceiveMessage", message.SenderId, message.Content);
-
-            return message;
+            _repository.Add(message);
+            if (_repository.SaveChanges())
+            {
+                return CreatedAtAction(nameof(GetMessages), message);
+            }
+            return BadRequest("Could not send the message.");
         }
     }
 }

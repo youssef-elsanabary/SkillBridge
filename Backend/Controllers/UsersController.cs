@@ -1,30 +1,34 @@
-﻿using Backend.Context;
+﻿using Backend.DTO;
 using Backend.Models;
+using Backend.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public UsersController(AppDbContext context)
+        public UsersController(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
+
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var users = _context.Users.ToList();
+            var users = _userRepository.GetUsers();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
             return Ok(user);
         }
@@ -32,46 +36,43 @@ namespace Backend.Controllers
         [HttpPost]
         public IActionResult CreateUser([FromBody] User user)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _userRepository.AddUser(user);
+            _userRepository.Save();
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
             user.Username = updatedUser.Username;
             user.Email = updatedUser.Email;
             user.Role = updatedUser.Role;
 
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _userRepository.UpdateUser(user);
+            _userRepository.Save();
             return Ok(user);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
-            _context.Users.Remove(user);
-            _context.SaveChanges();
+            _userRepository.DeleteUser(id);
+            _userRepository.Save();
             return NoContent();
         }
 
-        [HttpGet("profile/{id}")]
+        [HttpGet("{id}/profiles")]
         public IActionResult GetUserProfile(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
             var profileDto = new ProfileDto
@@ -87,10 +88,10 @@ namespace Backend.Controllers
             return Ok(profileDto);
         }
 
-        [HttpPost("profile/{id}")]
+        [HttpPost("{id}/profiles")]
         public IActionResult CreateUserProfile(int id, [FromBody] ProfileDto profileDto)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
             user.Image = profileDto.Image;
@@ -99,15 +100,15 @@ namespace Backend.Controllers
             user.Skills = profileDto.Skills;
             user.CvFile = profileDto.CvFile;
 
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _userRepository.UpdateUser(user);
+            _userRepository.Save();
             return CreatedAtAction(nameof(GetUserProfile), new { id = user.Id }, profileDto);
         }
 
-        [HttpPut("profile/{id}")]
+        [HttpPut("{id}/profiles")]
         public IActionResult UpdateUserProfile(int id, [FromBody] ProfileDto profileDto)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
             user.Image = profileDto.Image;
@@ -116,15 +117,15 @@ namespace Backend.Controllers
             user.Skills = profileDto.Skills;
             user.CvFile = profileDto.CvFile;
 
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _userRepository.UpdateUser(user);
+            _userRepository.Save();
             return Ok(profileDto);
         }
 
-        [HttpDelete("profile/{id}")]
+        [HttpDelete("{id}/profiles")]
         public IActionResult DeleteUserProfile(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null) return NotFound();
 
             user.Image = null;
@@ -133,8 +134,8 @@ namespace Backend.Controllers
             user.Skills = null;
             user.CvFile = null;
 
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _userRepository.UpdateUser(user);
+            _userRepository.Save();
             return NoContent();
         }
     }
