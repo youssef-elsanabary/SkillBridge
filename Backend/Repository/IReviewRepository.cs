@@ -1,12 +1,13 @@
 ﻿using Backend.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
     public interface IReviewRepository
     {
-        List<Review> GetAll();
-        void Add(Review review);
-        bool SaveChanges();
+        Task<List<Review>> GetAllAsync();
+        Task AddAsync(Review review);
+        Task<bool> SaveChangesAsync();
     }
 }

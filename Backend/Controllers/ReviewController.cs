@@ -2,6 +2,8 @@
 using Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -18,17 +20,17 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetReviews()
+        public async Task<IActionResult> GetReviews()
         {
-            var reviews = _repository.GetAll();
+            var reviews = await _repository.GetAllAsync();
             return Ok(reviews);
         }
 
         [HttpPost]
-        public IActionResult CreateReview([FromBody] Review review)
+        public async Task<IActionResult> CreateReview([FromBody] Review review)
         {
-            _repository.Add(review);
-            if (_repository.SaveChanges())
+            await _repository.AddAsync(review);
+            if (await _repository.SaveChangesAsync())
             {
                 return CreatedAtAction(nameof(GetReviews), review);
             }

@@ -2,7 +2,7 @@
 using Backend.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Backend.Repository;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
@@ -15,24 +15,29 @@ namespace Backend.Repository
             _context = context;
         }
 
-        public List<Proposal> GetAll()
+        public async Task<List<Proposal>> GetAllAsync()
         {
-            return _context.Proposals.ToList();
+            return await Task.FromResult(_context.Proposals.ToList());
         }
 
-        public Proposal GetById(int id)
+        public async Task<Proposal> GetByIdAsync(int id)
         {
-            return _context.Proposals.Find(id);
+            return await Task.FromResult(_context.Proposals.Find(id));
         }
 
-        public void Add(Proposal proposal)
+        public async Task<List<Proposal>> GetByServiceIdAsync(int serviceId) 
         {
-            _context.Proposals.Add(proposal);
+            return await Task.FromResult(_context.Proposals.Where(p => p.ServiceId == serviceId).ToList());
         }
 
-        public bool SaveChanges()
+        public async Task AddAsync(Proposal proposal)
         {
-            return _context.SaveChanges() > 0;
+            await Task.Run(() => _context.Proposals.Add(proposal));
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return await Task.FromResult(_context.SaveChanges() > 0);
         }
     }
 }

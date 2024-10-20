@@ -1,50 +1,54 @@
 ﻿using Backend.Context;
 using Backend.Models;
+using Backend.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
-        public class ServiceRepository : IServiceRepository
+    public class ServiceRepository : IServiceRepository
+    {
+        private readonly AppDbContext _context;
+        public ServiceRepository(AppDbContext context)
         {
-            private readonly AppDbContext _context;
+            _context = context;
+        }
+        public async Task<List<Service>> GetAllAsync()
+        {
+            return await _context.Services.ToListAsync();
+        }
 
-            public ServiceRepository(AppDbContext context)
-            {
-                _context = context;
-            }
+        public async Task<Service> GetByIdAsync(int id)
+        {
+            return await _context.Services.FindAsync(id);
+        }
 
-            public List<Service> GetAll()
-            {
-                return _context.Services.ToList();
-            }
+        public async Task<List<Service>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Services
+                                 .Where(s => s.UserId == userId)
+                                 .ToListAsync();
+        }
 
-            public Service GetById(int id)
-            {
-                return _context.Services.Find(id);
-            }
+        public async Task AddAsync(Service service)
+        {
+            await _context.Services.AddAsync(service);
+        }
 
-            public void Add(Service service)
-            {
-                _context.Services.Add(service);
-            }
+        public async Task UpdateAsync(Service service)
+        {
+            _context.Services.Update(service);
+        }
 
-            public void Update(Service service)
-            {
-                _context.Services.Update(service);
-            }
-
-            public void Delete(Service service)
-            {
-                _context.Services.Remove(service);
-            }
-
-            public bool SaveChanges()
-            {
-                return _context.SaveChanges() > 0;
-            }
+        public async Task DeleteAsync(Service service)
+        {
+            _context.Services.Remove(service);
+        }
+        public async Task<bool> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
-
-
-
+}

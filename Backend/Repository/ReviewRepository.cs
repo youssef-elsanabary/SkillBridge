@@ -3,8 +3,10 @@ using Backend.Models;
 using Backend.Repository;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore; 
 
-namespace Backend.Repository
+namespace Backend.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
@@ -15,19 +17,19 @@ namespace Backend.Repository
             _context = context;
         }
 
-        public List<Review> GetAll()
+        public async Task<List<Review>> GetAllAsync()
         {
-            return _context.Reviews.ToList();
+            return await _context.Reviews.ToListAsync();
         }
 
-        public void Add(Review review)
+        public async Task AddAsync(Review review)
         {
-            _context.Reviews.Add(review);
+            await _context.Reviews.AddAsync(review);
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChangesAsync()
         {
-            return _context.SaveChanges() > 0;
+            return await Task.FromResult(_context.SaveChanges() > 0);
         }
     }
 }

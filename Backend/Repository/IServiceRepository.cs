@@ -1,18 +1,17 @@
 ﻿using Backend.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
-        public interface IServiceRepository
-        {
-            List<Service> GetAll();
-            Service GetById(int id);
-            void Add(Service service);
-            void Update(Service service);
-            void Delete(Service service);
-            bool SaveChanges();
-        }
+    public interface IServiceRepository
+    {
+        Task<List<Service>> GetAllAsync(); 
+        Task<Service> GetByIdAsync(int id);
+        Task<List<Service>> GetByUserIdAsync(int userId); 
+        Task AddAsync(Service service); 
+        Task UpdateAsync(Service service); 
+        Task DeleteAsync(Service service); 
+        Task<bool> SaveChangesAsync(); 
     }
-
-
-
+}

@@ -1,8 +1,9 @@
-﻿
-using Backend.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Backend.Models;
 using Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -19,75 +20,87 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetServices()
+        public async Task<IActionResult> GetAllServices()
         {
-            var services = _repository.GetAll();
+            var services = await _repository.GetAllAsync();
             return Ok(services);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetServiceById(int id)
+        public async Task<IActionResult> GetServiceById(int id)
         {
-            var service = _repository.GetById(id);
+            var service = await _repository.GetByIdAsync(id);
             if (service == null)
             {
-                return NotFound("Service not found.");
+                return NotFound($"Service with ID {id} not found.");
             }
             return Ok(service);
         }
 
-        [HttpPost]
-        public IActionResult CreateService([FromBody] Service service)
+        [HttpGet("users/{userId}")]
+        public async Task<IActionResult> GetServicesByUserId(int userId)
         {
-            service.CreatedDate = DateTime.UtcNow;
-            _repository.Add(service);
-            if (_repository.SaveChanges())
+            var services = await _repository.GetByUserIdAsync(userId);
+            if (services == null || services.Count == 0)
+            {
+                return NotFound($"No services found for user with ID {userId}.");
+            }
+            return Ok(services);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateService([FromBody] Service service)
+        {
+            await _repository.AddAsync(service);
+            if (await _repository.SaveChangesAsync())
             {
                 return CreatedAtAction(nameof(GetServiceById), new { id = service.ServiceId }, service);
             }
-            return BadRequest("Could not save the service.");
+            return BadRequest("Could not create the service.");
         }
 
+
         [HttpPut("{id}")]
-        public IActionResult UpdateService(int id, [FromBody] Service updatedService)
+        public async Task<IActionResult> UpdateService(int id, [FromBody] Service updatedService)
         {
-            var service = _repository.GetById(id);
+            var service = await _repository.GetByIdAsync(id);
             if (service == null)
             {
-                return NotFound("Service not found.");
+                return NotFound($"Service with ID {id} not found.");
             }
 
             service.Title = updatedService.Title;
             service.Description = updatedService.Description;
             service.Price = updatedService.Price;
-            service.Category = updatedService.Category;
-            service.Status = updatedService.Status;
             service.UserId = updatedService.UserId;
 
-            _repository.Update(service);
-            if (_repository.SaveChanges())
+            await _repository.UpdateAsync(service);
+
+            if (await _repository.SaveChangesAsync())
             {
-                return NoContent();
+                return Ok(service);
             }
+
             return BadRequest("Could not update the service.");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteService(int id)
+        public async Task<IActionResult> DeleteService(int id)
         {
-            var service = _repository.GetById(id);
+            var service = await _repository.GetByIdAsync(id);
             if (service == null)
             {
-                return NotFound("Service not found.");
+                return NotFound($"Service with ID {id} not found.");
             }
 
-            _repository.Delete(service);
-            if (_repository.SaveChanges())
+            await _repository.DeleteAsync(service);
+
+            if (await _repository.SaveChangesAsync())
             {
                 return NoContent();
             }
+
             return BadRequest("Could not delete the service.");
         }
     }
 }
-
