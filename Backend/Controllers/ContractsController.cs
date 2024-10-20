@@ -4,6 +4,7 @@ using Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -20,16 +21,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetContracts()
+        public async Task<IActionResult> GetContracts()
         {
-            var contracts = _repository.GetAll();
+            var contracts = await _repository.GetAllAsync();
             return Ok(contracts);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetContract(int id)
+        public async Task<IActionResult> GetContract(int id)
         {
-            var contract = _repository.GetById(id);
+            var contract = await _repository.GetByIdAsync(id);
             if (contract == null)
             {
                 return NotFound();
@@ -38,10 +39,10 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateContract([FromBody] Contract contract)
+        public async Task<IActionResult> CreateContract([FromBody] Contract contract)
         {
-            _repository.Add(contract);
-            if (_repository.SaveChanges())
+            await _repository.AddAsync(contract);
+            if (await _repository.SaveChangesAsync())
             {
                 return CreatedAtAction(nameof(GetContract), new { id = contract.ContractId }, contract);
             }
@@ -49,9 +50,9 @@ namespace Backend.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateContract(int id, [FromBody] Contract updatedContract)
+        public async Task<IActionResult> UpdateContract(int id, [FromBody] Contract updatedContract)
         {
-            var contract = _repository.GetById(id);
+            var contract = await _repository.GetByIdAsync(id);
             if (contract == null)
             {
                 return NotFound();
@@ -61,8 +62,8 @@ namespace Backend.Controllers
             contract.UserId = updatedContract.UserId;
             contract.ServiceId = updatedContract.ServiceId;
 
-            _repository.Update(contract);
-            if (_repository.SaveChanges())
+            await _repository.UpdateAsync(contract);
+            if (await _repository.SaveChangesAsync())
             {
                 return Ok(contract);
             }
@@ -71,16 +72,16 @@ namespace Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteContract(int id)
+        public async Task<IActionResult> DeleteContract(int id)
         {
-            var contract = _repository.GetById(id);
+            var contract = await _repository.GetByIdAsync(id);
             if (contract == null)
             {
                 return NotFound();
             }
 
-            _repository.Delete(contract);
-            if (_repository.SaveChanges())
+            await _repository.DeleteAsync(contract);
+            if (await _repository.SaveChangesAsync())
             {
                 return NoContent();
             }

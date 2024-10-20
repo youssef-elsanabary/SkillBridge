@@ -1,13 +1,15 @@
 ﻿using Backend.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
     public interface IProposalRepository
     {
-        List<Proposal> GetAll();
-        Proposal GetById(int id);
-        void Add(Proposal proposal);
-        bool SaveChanges();
+        Task<List<Proposal>> GetAllAsync();
+        Task<Proposal> GetByIdAsync(int id);
+        Task<List<Proposal>> GetByServiceIdAsync(int serviceId); 
+        Task AddAsync(Proposal proposal);
+        Task<bool> SaveChangesAsync();
     }
 }

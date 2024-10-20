@@ -3,6 +3,8 @@ using Backend.Models;
 using Backend.Repository;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore; 
 
 namespace Backend.Repositories
 {
@@ -15,34 +17,34 @@ namespace Backend.Repositories
             _context = context;
         }
 
-        public List<Contract> GetAll()
+        public async Task<List<Contract>> GetAllAsync()
         {
-            return _context.Contracts.ToList();
+            return await _context.Contracts.ToListAsync();
         }
 
-        public Contract GetById(int id)
+        public async Task<Contract> GetByIdAsync(int id)
         {
-            return _context.Contracts.Find(id);
+            return await _context.Contracts.FindAsync(id);
         }
 
-        public void Add(Contract contract)
+        public async Task AddAsync(Contract contract)
         {
-            _context.Contracts.Add(contract);
+            await _context.Contracts.AddAsync(contract);
         }
 
-        public void Update(Contract contract)
+        public async Task UpdateAsync(Contract contract)
         {
-            _context.Contracts.Update(contract);
+            _context.Contracts.Update(contract); 
         }
 
-        public void Delete(Contract contract)
+        public async Task DeleteAsync(Contract contract)
         {
             _context.Contracts.Remove(contract);
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChangesAsync()
         {
-            return _context.SaveChanges() > 0;
+            return await Task.FromResult(_context.SaveChanges() > 0);
         }
     }
 }

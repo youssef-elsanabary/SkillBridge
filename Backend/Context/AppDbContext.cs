@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Context
-{
-    //    
+{   
 
     public class AppDbContext : DbContext
     {
@@ -23,56 +22,58 @@ namespace Backend.Context
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Services)
                 .WithOne(s => s.Freelancer)
-                .HasForeignKey(s => s.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(s => s.UserId);
+
+
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Contracts)
                 .WithOne(c => c.User)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(c => c.UserId);
+
+
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Reviews)
                 .WithOne(r => r.Buyer)
-                .HasForeignKey(r => r.BuyerId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(r => r.BuyerId);
+
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Proposals)
                 .WithOne(p => p.User)
-                .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(p => p.UserId);
+
 
             modelBuilder.Entity<Contract>()
                 .HasOne(c => c.Service)
                 .WithMany()
-                .HasForeignKey(c => c.ServiceId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(c => c.ServiceId);
+
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Sender)
                 .WithMany(u => u.SentMessages)
-                .HasForeignKey(m => m.SenderId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(m => m.SenderId);
+
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Receiver)
                 .WithMany(u => u.ReceivedMessages)
-                .HasForeignKey(m => m.ReceiverId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(m => m.ReceiverId);
+
 
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.User)
                 .WithMany()
-                .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(p => p.UserId);
+
 
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Contract)
                 .WithMany()
-                .HasForeignKey(p => p.ContractId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(p => p.ContractId);
+                
 
                 
         }

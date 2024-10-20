@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Backend.Utils;
 using Backend.Repositories;
 using Backend.Repository;
+using System.Reflection;
 
 
 namespace Backend
@@ -35,6 +36,7 @@ namespace Backend
                 });
             builder.Services.AddAuthorization();
 
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
             // Register repositories for DI
             builder.Services.AddScoped<IContractRepository, ContractRepository>();
             builder.Services.AddScoped<IServiceRepository, ServiceRepository>();

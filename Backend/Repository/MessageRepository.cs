@@ -1,10 +1,12 @@
 ﻿using Backend.Context;
 using Backend.Models;
 using Backend.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace Backend.Repository
+namespace Backend.Repositories
 {
     public class MessageRepository : IMessageRepository
     {
@@ -15,19 +17,43 @@ namespace Backend.Repository
             _context = context;
         }
 
-        public List<Message> GetAll()
+        public async Task<List<Message>> GetMessagesAsync(int senderId, int receiverId)
         {
-            return _context.Messages.ToList();
+            return await _context.Messages
+                                 .Where(m => (m.SenderId == senderId && m.ReceiverId == receiverId) ||
+                                             (m.SenderId == receiverId && m.ReceiverId == senderId)) 
+                                 //.OrderBy(m => m.Timestamp)
+                                             .ToListAsync();
         }
 
-        public void Add(Message message)
+        public async Task<Message> GetByIdAsync(int id)
         {
-            _context.Messages.Add(message);
+            return await _context.Messages.FindAsync(id);
         }
 
-        public bool SaveChanges()
+        public async Task<List<Message>> GetAllAsync()
         {
-            return _context.SaveChanges() > 0;
+            return await _context.Messages.ToListAsync();
+        }
+
+        public async Task AddAsync(Message message)
+        {
+            await _context.Messages.AddAsync(message);
+        }
+
+        public async Task UpdateAsync(Message message)
+        {
+            _context.Messages.Update(message);
+        }
+
+        public async Task DeleteAsync(Message message)
+        {
+            _context.Messages.Remove(message);
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

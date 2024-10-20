@@ -2,6 +2,8 @@
 using Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -18,16 +20,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProposals()
+        public async Task<IActionResult> GetProposals()
         {
-            var proposals = _repository.GetAll();
+            var proposals = await _repository.GetAllAsync();
             return Ok(proposals);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProposal(int id)
+        public async Task<IActionResult> GetProposal(int id)
         {
-            var proposal = _repository.GetById(id);
+            var proposal = await _repository.GetByIdAsync(id);
             if (proposal == null)
             {
                 return NotFound();
@@ -35,11 +37,22 @@ namespace Backend.Controllers
             return Ok(proposal);
         }
 
-        [HttpPost]
-        public IActionResult CreateProposal([FromBody] Proposal proposal)
+        [HttpGet("service/{serviceId}")] 
+        public async Task<IActionResult> GetProposalsByServiceId(int serviceId)
         {
-            _repository.Add(proposal);
-            if (_repository.SaveChanges())
+            var proposals = await _repository.GetByServiceIdAsync(serviceId);
+            if (proposals == null || !proposals.Any())
+            {
+                return NotFound("No proposals found for this service.");
+            }
+            return Ok(proposals);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProposal([FromBody] Proposal proposal)
+        {
+            await _repository.AddAsync(proposal);
+            if (await _repository.SaveChangesAsync())
             {
                 return CreatedAtAction(nameof(GetProposal), new { id = proposal.ProposalId }, proposal);
             }
