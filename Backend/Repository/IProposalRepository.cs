@@ -8,7 +8,8 @@ namespace Backend.Repository
     {
         Task<List<Proposal>> GetAllAsync();
         Task<Proposal> GetByIdAsync(int id);
-        Task<List<Proposal>> GetByServiceIdAsync(int serviceId); 
+        Task<List<Proposal>> GetByServiceIdAsync(int serviceId);
+        void Delete(Proposal proposal);
         Task AddAsync(Proposal proposal);
         Task<bool> SaveChangesAsync();
     }

@@ -24,6 +24,10 @@ namespace Backend.Repository
         {
             return await Task.FromResult(_context.Proposals.Find(id));
         }
+        public void Delete(Proposal proposal)
+        {
+            _context.Proposals.Remove(proposal);
+        }
 
         public async Task<List<Proposal>> GetByServiceIdAsync(int serviceId) 
         {

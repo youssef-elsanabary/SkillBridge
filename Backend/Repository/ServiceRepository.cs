@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Backend.Repository
 {
@@ -49,6 +50,37 @@ namespace Backend.Repository
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+        public IQueryable<Service> SearchServices(string searchTerm)
+        {
+            return _context.Services
+                .Where(s => s.Title.Contains(searchTerm) || s.Description.Contains(searchTerm));
+        }
+        public async Task<(List<Service>, int totalCount)> GetPaginatedAsync(int pageNumber, int pageSize)
+        {
+
+            var totalCount = await _context.Services.CountAsync();
+            var services = await _context.Services
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (services, totalCount);
+        }
+
+        public async Task<(List<Service>, int totalCount)> GetPaginatedServicesAsync(int pageNumber, int pageSize, string searchTerm = "")
+        {
+            var query = string.IsNullOrEmpty(searchTerm) ?
+                _context.Services :
+                SearchServices(searchTerm);
+
+            var totalCount = await query.CountAsync();
+            var services = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (services, totalCount);
         }
     }
 }
