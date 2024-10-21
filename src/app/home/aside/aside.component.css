@@ -1,0 +1,85 @@
+li{
+    color: black;
+}
+
+.accordion-button{
+    font-size: 20px;
+    font-weight: 550;
+    color:black;
+    position: static;
+}
+.user-name{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 550;
+    color:black;
+}
+.user-img{
+    height: 60px;
+    width: 60px;
+    /* background-image: url(".");
+    background-size: 100%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat */
+}
+#ahmed{ 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;     
+    background-color:  whitesmoke;   
+}
+#flush-collapseOne{
+    border: 0;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius: 10px;
+    background-color:  whitesmoke;        
+}
+.title{
+    margin-left: 70px;
+}
+.firsst-list{
+    columns: 2;
+    padding-left: 0px;
+    list-style: none;}
+.fli{
+    margin-bottom: 50px;
+}
+.ffff{
+    color: green;
+    font-weight: 500;
+}
+.perfrances-li{ 
+    list-style: none;
+    padding-left: 5px;
+}
+.ul-child-1{
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-bottom: 15px;
+}
+.lastt-li{
+    list-style: none;
+    padding-left: 25px;
+}
+.kjoo{            
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top:30px;
+    border: 0;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.lastt-li-child{
+    color:black;
+    margin-bottom: 5px;
+    }
+.ashraf{
+    list-style: none;
+    padding-bottom: 10px; ;}
+.aaaa{ 
+    color: RGB(20, 168, 0);
+    font-size: 14px;
+    font-family: Neue Montreal;
+    font-weight: 500;
+}

@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { HeaderComponent } from "../../core/header/header.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Profile } from '../../_modules/profile';
+import { ProfileService } from '../../_services/profile.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +24,7 @@ export class RegisterComponent implements OnInit,OnDestroy {
   sub : Subscription|null = null;
   fName : string = "";
   LName : string = "";
-
+ 
   ngOnDestroy(): void {
     this.sub?.unsubscribe
   }  

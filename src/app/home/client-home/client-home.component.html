@@ -1,11 +1,15 @@
 <app-header></app-header>
-<div class="HomeContainer">
-    <div class="addContainer">
-    <button class="addService" (click)="addService()">Add new service</button>
+<div class="HomeContainer g-3 row">
+    <div class="col-8">
+        <div class="addContainer">
+            <button class="addService" (click)="addService()">Add new service</button>
+        </div>
+        <app-all-services></app-all-services>
     </div>
-
-    <!-- service -->
-    <app-all-services></app-all-services>
-
+    <div class="col-1"></div>
+    <div class="col-3">
+        <app-aside></app-aside>
+    </div>
 </div>
+
 <app-footer></app-footer>

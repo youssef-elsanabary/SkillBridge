@@ -16,8 +16,6 @@ export class HeaderComponent implements OnInit {
   url : string = "";
   ngOnInit(): void {
     this.url = this.router.url
-    console.log(this.url);
-    
   }
   
 }

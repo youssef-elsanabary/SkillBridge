@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="div_container">
+    <div class="main-content row" >
+        <h4 class="header col-10" >User name</h4>
+        <!-- <button class="edit col-2 rounded-circle" ></button> -->
+        @if (profile.username != "") {
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">{{profile.username}}</label>
+        </div>
+    }@else {
+        <div class="mb-3"> 
+            <label for="formGroupExampleInput" class="form-label">the bio has no data</label>
+        </div>
+    }
+    </div>
+    <!--  -->
+    <div class="main-content row" >
+        <h4 class="header col-10" >Bio</h4>
+        <button class="edit col-2 rounded-circle" ></button>
+        @if (profile.bio != "") {
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">{{profile.bio}}</label>
+        </div>
+    }@else {
+        <div class="mb-3"> 
+            <label for="formGroupExampleInput" class="form-label">the bio has no data</label>
+        </div>
+    }
+    </div>
+    <!--  -->
+    <div class="main-content row" >
+        <h4 class="header col-10" >Cv</h4>
+        <button class="edit col-2 rounded-circle" ></button>
+        @if (profile.cvFile !="") {
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">{{profile.cvFile}}</label>
+        </div>
+    }@else {
+        <div class="mb-3"> 
+            <label for="formGroupExampleInput" class="form-label">the cv has no data</label>
+        </div>
+    }
+    </div>
+    <!--  -->
+    <div class="main-content row" >
+        <h4 class="header col-10" >Skills</h4>
+        <button class="edit col-2 rounded-circle" ></button>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">{{profile.skills}}</label>
+        </div>
+    </div>
+    <!--  -->
+    <div class="main-content row" >
+        <h4 class="header col-10" >Services</h4>
+        @for (item of allServices; track item) {
+            <div class="services_div " (click)="serviceDetails(item.serviceId!)" >
+                <h6 class="header " >{{item.title}}</h6>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">{{item.description}}</label><br>
+                    <label for="formGroupExampleInput" class="form-label">{{item.price}}</label><br>
+                    <label for="formGroupExampleInput" class="form-label">{{item.status}}</label>
+                </div>
+            </div>
+        }@empty {
+            <div class="mb-3"> 
+                <label for="formGroupExampleInput" class="form-label">This user has no services</label>
+            </div>
+        }
+    </div>
+</div>
+<app-footer></app-footer>

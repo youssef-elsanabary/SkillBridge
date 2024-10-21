@@ -14,7 +14,5 @@ export class FooterComponent {
   url : string = "";
   ngOnInit(): void {
     this.url = this.router.url
-    console.log("footerurl" + " " +this.url);
-    
   }
 }

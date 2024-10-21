@@ -1,1 +1,26 @@
-<p>edit-services works!</p>
+<app-header></app-header>
+<div class="editServiceContainer">
+    <h4 class="header">Edit Service</h4>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Service Title" name="Title" [(ngModel)]="oldService.title">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Description</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Description" name="Description" [(ngModel)]="oldService.description">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Price</label>
+        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Service Price" name="Price" [(ngModel)]="oldService.price">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Category</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Category" name="Category" [(ngModel)]="oldService.category">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Status</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Status" name="Status" [(ngModel)]="oldService.status">
+    </div>
+    <button class="view" (click)="done()">Edit</button>
+</div>
+<app-footer></app-footer>

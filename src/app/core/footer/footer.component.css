@@ -8,8 +8,8 @@
     margin: auto;
     margin-bottom: 25px;
 }
-a{
-    color: black(172, 81, 81);
+.a{
+    color: white;
 }
 .footer{
     grid-column: 1/3;

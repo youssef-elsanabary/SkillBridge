@@ -1,0 +1,169 @@
+.gooo{
+    margin-right: 15px;
+    font-family: Neue Montreal;
+    text-decoration-line: none;
+}
+.gooo:hover{
+    color: rgb(6, 180, 6);
+}
+a{
+    letter-spacing:  1px;
+}
+.underline2{
+    padding-left: 20px;
+    font-weight: 350;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius :0px;
+    border-bottom-style: solid;
+    border-bottom-width :0.666667px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: border-box; 
+    margin-bottom: 0px;
+}
+.small1{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+}
+.small2{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+.small3{
+    color: #9a9897;
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 30px;
+}
+.user-img{
+    height: 40px;
+    width: 40px;
+    background-image: url("../images/user.png");
+    background-size: 100%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat
+}
+.user-name{
+    padding-left: 20px;
+}
+#ahmed{
+    margin-bottom: 10px;
+}
+   
+   
+.type1{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color:black;
+}
+.type2{
+    color: black;
+    text-decoration-line: none;
+    font-size: 28px;
+}
+.type2:hover{
+    color: rgb(6, 180, 6);
+    text-decoration-line: solid;
+}
+.underline1{
+    margin-right: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius :0px;
+    border-bottom-style: solid;
+    border-bottom-width :0.666667px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: border-box; 
+}
+.information{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box; 
+    font-family: Neue Montreal;
+}
+.paragraph-1{
+    color: #737271;
+    font-size: 25px;
+}
+h5{
+    margin-bottom: 25px;
+}
+.btn-1{
+    border-radius: 20px;
+    color:#605f5f;
+    background:#d3d2d1 ;
+    border:0 ;
+    padding: 2px 12px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+.last{
+    margin-right: 30px; 
+    text-decoration: none;
+    color:#605f5f;
+    font-size: 14px;
+}
+.text-55{
+    padding-left: 25px;
+}
+.text-56{
+    padding-left: 56px;
+    margin-left: 5px;
+}
+.heart-img{
+    position: absolute;
+    right: 10px; top: 20px;
+}
+.dislike-img{
+    position: absolute ;
+    right: 60px;  top: 20px;
+}
+.img-15{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+}
+.img-16{
+    height: 50px;
+    width: 50px;
+    bottom: -16px;
+    margin-right: 5px;
+    position: absolute;
+}
+.img-parent12{
+    position: relative ;
+}
+.btn-sm{
+    font-size: 16px;
+    background-color: green;
+    width: 50%;
+    text-align: center;
+}
+.btn-sm:hover{
+    background-color: rgb(189, 199, 189);
+}
+.buttons-parent{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+.prposal-container{
+    margin-top: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 15px;
+}
+.prposal_div{
+    background-color: rgb(230, 230, 230);
+    width: 99%;
+    padding-top: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}

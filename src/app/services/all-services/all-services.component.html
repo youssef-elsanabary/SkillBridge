@@ -1,28 +1,69 @@
-@if (allService == []) {
-    <div></div>
-}
 
-<div class="information">
-    <!-- <button class="rounded-circle  edit"></button>
-    <img class="dislike-img" src="images/dislike.png" alt="" width="25px" height="25px">
-    <img class="heart-img" src="images/heart.png" alt=""   width="25px" height="25px"> -->
-      
+@if(userRole == "Client"){
+@for (item of allService; track item){
+<div class="information" (click)="serviceDetails(item.serviceId)">
+  <div id="ahmed" class="row" (click)="openProfile(item.userId)"> 
+    <div class="user-img rounded-circle col-1"></div>
+    <span class="user-name col-11 " >{{serviceUser.username}}</span> 
+  </div>
+    <!-- grid -->
+    <div class="row">
+    <div class="small1 col-10" name="postedDate">{{clacDate(item.createdDate)}} days ago</div>
+    
+    <div class="col-2 row gap-2">
+    <button class="rounded-circle  edit col-6" (click)="editService(item.serviceId)"></button>
+    <button class="rounded-circle col-6 delete" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
 
-    <div class="small1">Posted 33 minutes ago</div>
+    <!-- Delete Service -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-delete-services></app-delete-services>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="serviceDeleted()">delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- End Delete Service -->
+    <!-- <button class="rounded-circle  delete col-6" (click)="deleteService(item.serviceId)"></button> -->
+    </div>
+    </div>
+    <!--  -->
+    <div class="type1" > <a  class="type2"  href="" name="title" >{{item.title}}</a></div>
+    <div class="small2">Fixed-price - Entry level - Est. Budget: <span name="price"  >{{item.price}}</span></div>
 
-    <div class="type1" > <a  class="type2"  href="" >Basic Arabic Proofreader Needed </a></div>
-    <div class="small2">Fixed-price - Entry level - Est. Budget: $30</div>
+    <p class="paragraph-1" name="description">{{item.description}}</p>
 
-    <p class="paragraph-1">We are seeking a detail-oriented proofreader with a strong command of the Arabic language to review and edit various documents for accuracy and clarity. The ideal candidate should have a keen eye for grammatical errors, punctuation, and formatting inconsistencies. Experience in proofreading different types of content is a plus. If you are passionate about language and can deliver high-quality work within deadlines, we would love to hear from you!</p>
-
-    <button class="btn-1"> Proofreading</button>
-    <button class="btn-1">Arabic</button>
-    <button class="btn-1">English</button>
-    <button class="btn-1">Translation</button>
-<nav >
-<a class="last" href="">  <img class="verify-img img-15" src= "../images/verify.png" alt=""> <span class="text-55">Payment verified</span></a>
-    <a class="last  img-parent12" href=""><img   class="star-img img-16" src="../images/rating.png" alt=""> <span class="text-56">$2K+ spent</span></a>
-    <a class="last" href="">  <img class="location-img img-15"  src="../images/location.png" alt=""><span class="text-55">United States</span></a>
-</nav>
+    <button class="btn-1" name="category">{{item.category}}</button>
     <p class="small3">Proposals: Less than 5</p>
 </div>
+}}@else{
+    @for (item of allService; track item){
+        <div class="information" (click)="serviceDetails(item.serviceId)">
+          <div id="ahmed" (click)="openProfile(item.userId)">
+            <img class="user-img rounded-circle" src="assets/images/user.png"  alt="">
+            <span class="user-name " >{{serviceUser.username}}</span> 
+          </div>
+            <!-- grid -->
+            <div class="small1 col-10" name="postedDate">{{clacDate(item.createdDate)}} days ago</div>
+            
+            <!--  -->
+            <div class="type1" > <a  class="type2"  href="" name="title" >{{item.title}}</a></div>
+            <div class="small2">Fixed-price - Entry level - Est. Budget: <span name="price"  >{{item.price}}</span></div>
+        
+            <p class="paragraph-1" name="description">{{item.description}}</p>
+        
+            <button class="btn-1" name="category">{{item.category}}</button>
+            
+            <p class="small3">Proposals: Less than 5</p>
+        </div>
+        }
+    }

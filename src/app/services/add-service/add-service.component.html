@@ -1,1 +1,30 @@
-<p>add-service works!</p>
+<app-header></app-header>
+<div class="addServiceContainer">
+    <h4 class="header">Add New Service</h4>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Service Title" name="Title" [(ngModel)]="newService.title">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Description</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Description" name="Description" [(ngModel)]="newService.description">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Price</label>
+        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Service Price" name="Price" [(ngModel)]="newService.price">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Category</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Category" name="Category" [(ngModel)]="newService.category">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Status</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Service Status" name="Status" [(ngModel)]="newService.status">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">CreatedData</label>
+        <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Created Data" name="date" [(ngModel)]="newService.createdDate">
+    </div>
+    <button class="view" (click)="add()">Add</button>
+</div>
+<app-footer></app-footer>

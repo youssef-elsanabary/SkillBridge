@@ -37,13 +37,12 @@ export class LoginComponent implements OnInit,OnDestroy {
       {next : response=>{
         // this.status = response.status;
         localStorage.setItem("token", response.body.token);
-        let t : {unique_name :string , role : string} =jwtDecode(response.body.token)
+        let t : {unique_name :string , role : string ,Id :number} =jwtDecode(response.body.token)
         if(t.role == "Client"){
           this.router.navigateByUrl("/home/HomeClient")
         }else{
           this.router.navigateByUrl("/home");
         }
-
       },
       //error
       error : e=>{

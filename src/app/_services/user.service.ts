@@ -6,5 +6,10 @@ import { Base } from '../_modules/base';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(public http:HttpClient, public base : Base) { }
+  constructor(public http:HttpClient) { }
+  url : string = 'https://localhost:7234/api/Users'
+  getById(id : number){
+    return this.http.get<any>(this.url+"/"+id)
+  }
 }
+ 

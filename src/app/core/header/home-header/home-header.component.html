@@ -1,3 +1,28 @@
+<!-- <header>
+  <nav class="up-nav row">
+      <a href="#" class="col-10"> upwork </a>
+      <div class="col-1"></div>
+      <div class="dropdown col-1  "   style="align-self: start;">
+        <button class=" btn rounded-circle profileImg  dropdown-item " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </button>
+        <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="navigateProfile()">Your Profile </a></li>
+        <li><a class="dropdown-item" href="#">Status and trends</a></li>
+        
+        <li><a class="dropdown-item" href="#"><hr class="line-hr"></a></li>
+        <li><a class="dropdown-item" href="#">Membership plans</a></li>
+        <li><a class="dropdown-item" href="#">Connects</a></li>
+        <li><a class="dropdown-item" href="#">Theme : Light </a></li>
+        <li><a class="dropdown-item" href="#">Account setting</a></li>
+        <li><a class="dropdown-item" href="#"><hr class="line-hr"></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/account/logout']">Logout</a></li>
+        
+        </ul>
+        </div> 
+  </nav>
+
+</header> -->
+
 <header>
 <div class="row up-nav">
 <div class="logo  col-1">
@@ -74,7 +99,8 @@
 <div class="col-1">
 
 </div>
-<!-- ************************************** -->
+
+
 <div class="col-3  row"  style="background-color: rgb(255, 255, 255);">
 
 <div class=" col-3 input-group">
@@ -91,7 +117,7 @@
 </div>
 </div>
 </div>
-<!-- left nav  -->
+
 
 <div class="col-2  row"  style="background-color: rgb(255, 255, 255); "> 
 <div class="dropdown   yousef col-3"   style="align-self: start;">
@@ -120,7 +146,7 @@
 <button class=" btn rounded-circle profileImg  dropdown-item " type="button" data-bs-toggle="dropdown" aria-expanded="false">
 </button>
 <ul class="dropdown-menu">
-<li><a class="dropdown-item" [routerLink]="['/home/profile']">Your Profile </a></li>
+<li><a class="dropdown-item" (click)="navigateProfile()">Your Profile </a></li>
 <li><a class="dropdown-item" href="#">Status and trends</a></li>
 
 <li><a class="dropdown-item" href="#"><hr class="line-hr"></a></li>

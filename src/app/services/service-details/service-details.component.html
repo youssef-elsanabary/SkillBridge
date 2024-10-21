@@ -1,0 +1,98 @@
+<app-header></app-header>
+@if (userRole == "Freelancer") {
+<div class="container   father">
+  <div class="  parent1">
+    <div class="information">
+      <!-- <img class="dislike-img" src="images/dislike.png" alt="" width="25px" height="25px">
+      <img class="heart-img" src="images/heart.png" alt=""   width="25px" height="25px"> -->
+      <div id="ahmed" class="row"> 
+        <div class="user-img rounded-circle col-1"></div>
+        <span class="user-name col-11 " >{{user.username}}</span> 
+      </div>
+
+      <div class="small1">{{clacDate(one.createdDate)}} days ago</div>
+
+      <div class="type1" > <a  class="type2"  href="" >{{one.title}} </a></div>
+      <div class="small2">Fixed-price - Entry level - Est. Budget: $<span>{{one.price}}</span></div>
+
+      <p class="paragraph-1">{{one.description}}</p>
+
+      <button class="btn-1"> {{one.category}}</button>
+    <p class="small3">Proposals: Less than 5</p>  
+    <!-- prposal -->
+<div class="prposal-container row" >
+  <h4 class="header col-10" >prposal</h4>
+  @for (item of allPrposal; track item) {
+      <div class="prposal_div row" >
+          <div class="mb-3 col-8">
+              <label for="formGroupExampleInput" class="form-label">{{item.status}}</label><br>
+              <label for="formGroupExampleInput" class="form-label">{{item.proposalDate}}</label><br>
+          </div>
+          <div class="col-4">
+
+          </div>
+      </div>
+  }@empty {
+      <div class="mb-3"> 
+          <label for="formGroupExampleInput" class="form-label">This services has no prposal</label>
+      </div>
+  }
+</div>
+<!-- button -->
+    <div class="buttons-parent">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="addProposel()" >apply</button>
+        <button type="button" class="btn btn-primary btn-sm">review</button></div>    
+    </div>
+  </div>
+</div>
+}@else {
+  <div class="container   father">
+  <div class="  parent1">
+    <div class="information">
+      <!-- <img class="dislike-img" src="images/dislike.png" alt="" width="25px" height="25px">
+      <img class="heart-img" src="images/heart.png" alt=""   width="25px" height="25px"> -->
+        <div id="ahmed" class="row"> 
+          <div class="user-img col-1"></div>
+        <span class="user-name col-11" >{{user.username}}</span> 
+      </div>
+
+      <div class="small1">{{clacDate(one.createdDate)}} days ago</div>
+
+      <div class="type1" > <a  class="type2"  href="" >{{one.title}} </a></div>
+      <div class="small2">Fixed-price - Entry level - Est. Budget: $<span>{{one.price}}</span></div>
+
+      <p class="paragraph-1">{{one.description}}</p>
+
+      <button class="btn-1"> {{one.category}}</button>
+    <p class="small3">Proposals: Less than 5</p>  
+<!-- prposal -->
+<div class="prposal-container row" >
+  <h4 class="header col-10" >prposal</h4>
+  @for (item of allPrposal; track item) {
+    <div class="prposal_div">
+      <div id="ahmed" class="row"> 
+        <div class="user-img rounded-circle col-1"></div>
+        <span class="user-name col-11 " >name</span> 
+      </div>
+      <div class="prposal_div row " >
+          <div class="mb-3 col-6">
+              <label for="formGroupExampleInput" class="form-label">{{item.status}}</label><br>
+              <label for="formGroupExampleInput" class="form-label">{{item.proposalDate}}</label><br>
+          </div>
+          <div class="buttons-parent col-6 row">
+            <button type="button" class="btn btn-secondary btn-sm " (click)="makeContract()">accept</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="deletePrposal()">reject</button>   
+        </div>
+      </div>
+    </div>
+  }@empty {
+      <div class="mb-3"> 
+          <label for="formGroupExampleInput" class="form-label">This services has no prposal</label>
+      </div>
+  }
+</div>
+    </div>
+  </div>
+</div>
+}
+<app-footer></app-footer>

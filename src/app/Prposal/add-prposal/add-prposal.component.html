@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="div_container">
+    <h4 class="header">New Prposal</h4>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Description</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="prposal Description" name="Title" [(ngModel)]="newPrposal.status">
+    </div>
+    <button class="view" (click)="addPrrposal()">Approve</button>
+    <button type="button" class="dismiss-btn view" data-bs-dismiss="modal">Close</button>
+</div>
+<app-footer></app-footer>

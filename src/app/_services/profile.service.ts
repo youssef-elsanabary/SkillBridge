@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from '../_modules/profile';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
-  constructor(public httpClient : HttpClient , public router :Router) { }
-  url : string = "https://localhost:7234/api/Profiles"
-  
-  add(profile : Profile){
-    return this.httpClient.post<any>(this.url,profile,{observe:"response"});
+export class ProfileService implements OnInit {
+  constructor(public httpClient : HttpClient , public router :Router ,public userServices : UserService) { }
+  ngOnInit(): void {
+    this.url = this.userServices.url
   }
-  getAll(){
-    return this.httpClient.get<any>(this.url)
+    url :string = ""
+  
+  profileById(id : number){
+    return this.httpClient.get<any>(this.url+"/"+id+"/profiles");
   }
 }
