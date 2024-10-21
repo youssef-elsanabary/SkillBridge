@@ -12,5 +12,7 @@ namespace Backend.Repository
         Task UpdateAsync(Contract contract);
         Task DeleteAsync(Contract contract);
         Task<bool> SaveChangesAsync();
+        Task<List<Contract>> GetByServiceIdAsync(int serviceId); // New method
+        Task<List<Contract>> GetByUserIdAsync(int userId); // New method
     }
 }

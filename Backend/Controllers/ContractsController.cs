@@ -61,6 +61,9 @@ namespace Backend.Controllers
             contract.Status = updatedContract.Status;
             contract.UserId = updatedContract.UserId;
             contract.ServiceId = updatedContract.ServiceId;
+            contract.duration = updatedContract.duration;
+            contract.price = updatedContract.price;
+
 
             await _repository.UpdateAsync(contract);
             if (await _repository.SaveChangesAsync())
@@ -88,5 +91,29 @@ namespace Backend.Controllers
 
             return BadRequest("Could not delete the contract.");
         }
+       
+        [HttpGet("services/{serviceId}")]
+        public async Task<IActionResult> GetContractsByServiceId(int serviceId)
+        {
+            var contracts = await _repository.GetByServiceIdAsync(serviceId);
+            if (contracts == null || !contracts.Any())
+            {
+                return NotFound();
+            }
+            return Ok(contracts);
+        }
+
+       
+        [HttpGet("users/{userId}")]
+        public async Task<IActionResult> GetContractsByUserId(int userId)
+        {
+            var contracts = await _repository.GetByUserIdAsync(userId);
+            if (contracts == null || !contracts.Any())
+            {
+                return NotFound();
+            }
+            return Ok(contracts);
+        }
+
     }
 }

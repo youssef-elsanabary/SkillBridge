@@ -46,5 +46,19 @@ namespace Backend.Repositories
         {
             return await Task.FromResult(_context.SaveChanges() > 0);
         }
+        public async Task<List<Contract>> GetByServiceIdAsync(int serviceId)
+        {
+            return await _context.Contracts
+                .Where(c => c.ServiceId == serviceId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Contract>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Contracts
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
+        }
+
     }
 }

@@ -9,6 +9,10 @@ using Backend.Repositories;
 using Backend.Repository;
 using System.Reflection;
 using Backend.Models;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using DotNetEnv;
+
 
 
 namespace Backend
@@ -18,6 +22,7 @@ namespace Backend
        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            Env.Load();
 
             var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
             builder.Services.AddControllers();
@@ -50,10 +55,22 @@ namespace Backend
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            var stripeApiKey = builder.Configuration["Stripe:SecretKey"];
+            var stripeApiKey = Environment.GetEnvironmentVariable("SecretKey");
+
+            var cloudinaryConfig = new CloudinaryDotNet.Account(
+                Environment.GetEnvironmentVariable("CloudName"),
+                Environment.GetEnvironmentVariable("ApiKey"),
+                Environment.GetEnvironmentVariable("ApiSecret")
+            );
             builder.Services.AddScoped<PaymentService>();
             builder.Services.AddSingleton(new StripeClient(stripeApiKey));
-            
+
+            // Create Cloudinary object and register it as a singleton
+            var cloudinary = new Cloudinary(cloudinaryConfig);
+            builder.Services.AddSingleton(cloudinary);
+            builder.Services.AddSingleton<CloudinaryService>();
+
+
             builder.Services.AddSignalR();
             builder.Services.AddCors(options =>
             {

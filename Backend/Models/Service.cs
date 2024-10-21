@@ -16,7 +16,7 @@ namespace Backend.Models
         public string? Description { get; set; }
         [Required]
         public double Price { get; set; }
-        [Required]
+        
         public string? Category { get; set; }
         [Required]
         public string? Status { get; set; } = "Active";

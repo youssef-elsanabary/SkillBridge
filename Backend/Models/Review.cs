@@ -12,7 +12,7 @@ namespace Backend.Models
         public int BuyerId { get; set; }
         [Required]
         public int Rating { get; set; }
-        [Required]
+    
         public string Comment { get; set; }
         
 
