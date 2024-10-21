@@ -43,6 +43,12 @@ namespace Backend.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("duration")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("price")
+                        .HasColumnType("float");
+
                     b.HasKey("ContractId");
 
                     b.HasIndex("ServiceId");
@@ -181,7 +187,6 @@ namespace Backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")

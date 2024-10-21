@@ -16,7 +16,7 @@ namespace Backend.Models
             public DateTime PaymentDate { get; set; } = DateTime.Now;
             [Required]
             public double Amount { get; set; }
-            [Required]
+            
             public string PaymentStatus { get; set; }
 
             

@@ -7,10 +7,9 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<ProfileDto, User>()
-            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
+            .ForMember(dest => dest.Image, opt => opt.Ignore()); // Image is handled separately
+        CreateMap<User, ProfileDto>();
         CreateMap<RegisterDto, User>();
         CreateMap<LoginDto, User>();
-        CreateMap<User, ProfileDto>(); 
-      
     }
 }

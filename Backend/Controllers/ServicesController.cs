@@ -26,7 +26,7 @@ namespace Backend.Controllers
         //    return Ok(services);
         //}
         [HttpGet]
-        public async Task<IActionResult> GetAllServices(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAllServices(int pageNumber = 1, int pageSize = 5)
         {
             var (services, totalCount) = await _repository.GetPaginatedServicesAsync(pageNumber, pageSize);
 
@@ -117,7 +117,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetPaginatedServices(int pageNumber = 1, int pageSize = 10, string searchTerm = "")
+        public async Task<IActionResult> GetPaginatedServices(int pageNumber = 1, int pageSize = 5, string searchTerm = "")
         {
             var (services, totalCount) = await _repository.GetPaginatedServicesAsync(pageNumber, pageSize, searchTerm);
             var result = new
