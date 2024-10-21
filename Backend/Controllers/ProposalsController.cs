@@ -36,6 +36,24 @@ namespace Backend.Controllers
             }
             return Ok(proposal);
         }
+                [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProposal(int id)
+        {
+            var proposal = await _repository.GetByIdAsync(id);
+            if (proposal == null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(proposal);
+
+            if (await _repository.SaveChangesAsync())
+            {
+                return NoContent();
+            }
+
+            return BadRequest("Could not delete the proposal.");
+        }
 
         [HttpGet("service/{serviceId}")] 
         public async Task<IActionResult> GetProposalsByServiceId(int serviceId)
@@ -58,5 +76,7 @@ namespace Backend.Controllers
             }
             return BadRequest("Could not create the proposal.");
         }
+
+
     }
 }

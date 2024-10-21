@@ -19,11 +19,24 @@ namespace Backend.Controllers
             _repository = repository;
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> GetAllServices()
+        //{
+        //    var services = await _repository.GetAllAsync();
+        //    return Ok(services);
+        //}
         [HttpGet]
-        public async Task<IActionResult> GetAllServices()
+        public async Task<IActionResult> GetAllServices(int pageNumber = 1, int pageSize = 10)
         {
-            var services = await _repository.GetAllAsync();
-            return Ok(services);
+            var (services, totalCount) = await _repository.GetPaginatedServicesAsync(pageNumber, pageSize);
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                Services = services
+            };
+
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
@@ -102,5 +115,21 @@ namespace Backend.Controllers
 
             return BadRequest("Could not delete the service.");
         }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> GetPaginatedServices(int pageNumber = 1, int pageSize = 10, string searchTerm = "")
+        {
+            var (services, totalCount) = await _repository.GetPaginatedServicesAsync(pageNumber, pageSize, searchTerm);
+            var result = new
+            {
+                TotalCount = totalCount,
+                Services = services
+            };
+
+            return Ok(result);
+        }
+       
+
+
     }
 }

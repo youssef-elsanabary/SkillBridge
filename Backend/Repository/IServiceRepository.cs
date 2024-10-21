@@ -12,6 +12,8 @@ namespace Backend.Repository
         Task AddAsync(Service service); 
         Task UpdateAsync(Service service); 
         Task DeleteAsync(Service service); 
-        Task<bool> SaveChangesAsync(); 
+        Task<bool> SaveChangesAsync();
+        IQueryable<Service> SearchServices(string searchTerm);
+        Task<(List<Service>, int totalCount)> GetPaginatedServicesAsync(int pageNumber, int pageSize, string searchTerm = "");
     }
 }

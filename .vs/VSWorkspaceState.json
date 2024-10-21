@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
-    "\\Backend\\bin\\Debug",
-    "\\Backend\\bin\\Debug\\net8.0",
-    "\\Backend\\bin\\Release",
+    "\\Backend\\Context",
+    "\\Backend\\Controllers",
+    "\\Backend\\DTO",
     "\\Backend\\Migrations",
     "\\Backend\\Models",
     "\\Backend\\obj",
     "\\Backend\\Properties",
     "\\Backend\\Utils"
   ],
-  "SelectedNode": "\\Backend\\Controllers\\MessagesController.cs.cs",
+  "SelectedNode": "\\Backend\\Context",
   "PreviewInSolutionExplorer": false
 }

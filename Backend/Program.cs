@@ -8,6 +8,7 @@ using Backend.Utils;
 using Backend.Repositories;
 using Backend.Repository;
 using System.Reflection;
+using Backend.Models;
 
 
 namespace Backend
@@ -50,10 +51,9 @@ namespace Backend
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var stripeApiKey = builder.Configuration["Stripe:SecretKey"];
-
             builder.Services.AddScoped<PaymentService>();
             builder.Services.AddSingleton(new StripeClient(stripeApiKey));
-
+            
             builder.Services.AddSignalR();
             builder.Services.AddCors(options =>
             {

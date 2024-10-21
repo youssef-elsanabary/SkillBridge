@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Backend.Utils
 {
- 
+
     public class PaymentService
     {
         private readonly StripeClient _client;
