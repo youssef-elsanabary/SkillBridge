@@ -13,10 +13,70 @@
         </div>
     }
     </div>
-    <!--  -->
+
+<!-- Job titles -->
+<div class="main-content row" >
+    <h4 class="header col-10" >Job Titles </h4>
+    <!-- Edit titles -->          
+    <button class="edit col-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal4"></button>   
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngClass]="{'hidden': !isModalVisible}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Job Title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Job Title</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Job Title" name="Description" [(ngModel)]="profile.description">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="editProfile()" data-bs-dismiss="modal">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- End edit bio -->
+    @if (profile.description != "") {
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">{{profile.description}}</label>
+    </div>
+}@else {
+    <div class="mb-3"> 
+        <label for="formGroupExampleInput" class="form-label">user hasn't added his job title yet!</label>
+    </div>
+}
+</div>
+
+    <!-- Profile Bio  -->
     <div class="main-content row" >
         <h4 class="header col-10" >Bio</h4>
-        <button class="edit col-2 rounded-circle" ></button>
+        <!-- Edit Bio -->          
+        <button class="edit col-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>   
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngClass]="{'hidden': !isModalVisible}">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Bio</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Bio</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Bio" name="Description" [(ngModel)]="profile.bio">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="editProfile()" data-bs-dismiss="modal" >Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- End edit bio -->
         @if (profile.bio != "") {
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">{{profile.bio}}</label>
@@ -27,10 +87,34 @@
         </div>
     }
     </div>
-    <!--  -->
+
+
+    <!-- Profile Cv File -->
     <div class="main-content row" >
         <h4 class="header col-10" >Cv</h4>
-        <button class="edit col-2 rounded-circle" ></button>
+        <!-- Edit cv file -->          
+        <button class="edit col-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal1"></button>   
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isModalVisible">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Cv</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">CV File</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="CV File" name="Description" [(ngModel)]="profile.cvFile">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="editProfile()" data-bs-dismiss="modal" >Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- End Cv file -->
         @if (profile.cvFile !="") {
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">{{profile.cvFile}}</label>
@@ -41,10 +125,34 @@
         </div>
     }
     </div>
-    <!--  -->
+
+
+    <!-- Profile Skills -->
     <div class="main-content row" >
         <h4 class="header col-10" >Skills</h4>
-        <button class="edit col-2 rounded-circle" ></button>
+        <!-- Edit skills -->          
+        <button class="edit col-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal2"></button>   
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngClass]="{'hidden': !isModalVisible}">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Skills</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Skills</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Skills" name="Description" [(ngModel)]="profile.skills">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="editProfile()" data-bs-dismiss="modal" >Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- End edit skills -->
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">{{profile.skills}}</label>
         </div>
@@ -53,7 +161,48 @@
     <div class="main-content row" >
         <h4 class="header col-10" >Services</h4>
         @for (item of allServices; track item) {
-            <div class="services_div " (click)="serviceDetails(item.serviceId!)" >
+            @if (item.userId == t.Id) {
+            <div class="row main-content">
+                <div class="small1 col-10" name="postedDate">{{clacDate(item.createdDate)}} days ago</div>
+                
+                <div class="col-2 row gap-2">
+                <button class="rounded-circle  edit col-6" (click)="editService(item.serviceId)" data-bs-dismiss="modal"></button>
+                <button class="rounded-circle col-6 delete" data-bs-toggle="modal" data-bs-target="#exampleModalDelete"></button>
+            
+                <!-- Delete Service -->
+                <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                            Do you want to delete this service
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="serviceDeleted(item.serviceId!)" data-bs-dismiss="modal">delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <!-- End Delete Service -->
+                
+                </div>
+                <!--  -->
+                <div class="type1" > <a  class="type2"  href="" name="title" >{{item.title}}</a></div>
+                <div class="small2">Fixed-price : <span name="price"  >{{item.price}}</span></div>
+            
+                <p class="paragraph-1" name="description">{{item.description}}</p>
+            
+                <button class="btn-1" name="category">{{item.category}}</button>
+                <p class="small3">Proposals: Less than 5</p>
+            </div>
+        }@else {
+            <div class="main-content" (click)="serviceDetails(item.serviceId!)" >
                 <h6 class="header " >{{item.title}}</h6>
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">{{item.description}}</label><br>
@@ -61,6 +210,7 @@
                     <label for="formGroupExampleInput" class="form-label">{{item.status}}</label>
                 </div>
             </div>
+        }    
         }@empty {
             <div class="mb-3"> 
                 <label for="formGroupExampleInput" class="form-label">This user has no services</label>

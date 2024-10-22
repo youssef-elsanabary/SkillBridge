@@ -26,7 +26,11 @@
 <header>
 <div class="row up-nav">
 <div class="logo  col-1">
+    @if (t.role == "Client") {
+    <a class="a-logo" [routerLink]="['/home//HomeClient']" > upwork </a>
+  }@else {
     <a class="a-logo" [routerLink]="['/home']" > upwork </a>
+  }
   </div>
          <div class="dropdown col-1" style="margin-left: 5px ;">
     <button class=" btn-joo btn btn-white  dropdown-toggle  navText" type="button" data-bs-toggle="dropdown" aria-expanded="false">

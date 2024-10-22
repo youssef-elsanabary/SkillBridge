@@ -10,11 +10,15 @@ import { PrposalServiceService } from '../../_services/prposal-service.service';
 import { differenceInDays } from 'date-fns';
 import { UserService } from '../../_services/user.service';
 import { User } from '../../_modules/user';
+import { ContractService } from '../../_services/contract.service';
+import { Contract } from '../../_modules/contract';
+import { AddContractComponent } from "../../_contract/add-contract/add-contract.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-service-details',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent],
+  imports: [HeaderComponent, FooterComponent, AddContractComponent, CommonModule],
   templateUrl: './service-details.component.html',
   styleUrl: './service-details.component.css'
 })
@@ -24,15 +28,19 @@ export class ServiceDetailsComponent implements OnInit {
     public router :Router,
     public activatedRoute : ActivatedRoute,
     public prposalServices : PrposalServiceService,
-    public userServices : UserService
+    public userServices : UserService,
+    public contracrService: ContractService
     ){}
   serviceId : number = 0;
   //userId : number = 0;
   userRole : string ="";
   allPrposal :Prposal[] = [];
   prposal : Prposal = new Prposal(0,0,new Date(),"");
+  contract : Contract = new Contract(0,0,"",0,0,new Date);
   one : Service = new Service(0,"","",0,"","",new Date());
   user : User = new User("","","","","","");
+  // prposalUser : User = new User("","","","","","");
+
   token = localStorage.getItem('token');
   t : {unique_name :string , role : string ,Id :number} =jwtDecode(this.token!);
 
@@ -56,12 +64,14 @@ export class ServiceDetailsComponent implements OnInit {
             })
             //////////////
             this.showprposal(this.one.serviceId!);
+            this.getServiceContract(this.one.serviceId!);
           },error : e =>{
             return e;
           }
         })
       }
     )
+   console.log(this.contract);
    
   }
   addProposel(){
@@ -71,24 +81,55 @@ export class ServiceDetailsComponent implements OnInit {
     this.prposalServices.getPrposalByServiceId(id).subscribe({
       next : data => {
         this.allPrposal = data;
+        this.allPrposal.forEach((item)=>{
+          this.userServices.getById(item.userId).subscribe({
+            next:data=>{
+              //this.prposalUser=data;
+              item.user =data
+            }
+          })
+        })
       },error : e =>{
         return e ;
       }
     }
     );
   }
-  deletePrposal(){
-    this.prposalServices.deletePrposal(this.prposal.proposalId!) //wrong state because of prposal id
+  deletePrposal(prposalNumber : number){
+    this.prposalServices.deletePrposal(prposalNumber).subscribe({
+      next : deleted =>{
+        this.allPrposal = this.allPrposal.filter(item => item.proposalId !== prposalNumber);
+        
+      },error : err =>{
+        return err; 
+      }
+    }) 
   }
   clacDate(date : Date){
     let currentDate : Date = new Date();
     let differance = differenceInDays(currentDate,date);
     return differance;
   }
-  makeContract(){
-    
+  getServiceContract(id : number){
+    this.contracrService.getContractByServiceId(id).subscribe({
+      next : success =>{
+        this.contract = success
+        console.log("contract sucess");
+        
+      },error : err =>{
+        console.log("contract error"+err);
+        
+        return err
+      }
+    })
   }
-  getUserData(id : number){
-    
-  }
+  // makeContract(){
+  //   this.contracrService.addContract(this.newContract).subscribe({
+  //     next : success =>{
+
+  //     },error:err =>{
+  //       return err;
+  //     }
+  //   })
+  // }
 }

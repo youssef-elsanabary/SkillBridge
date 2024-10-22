@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.userRole=this.activatRoute.snapshot.params['role']
     this.newuser.role = this.userRole
+    //this.newuser.username = this.fName + "" +this.LName
     }
 
   register(){
@@ -41,14 +42,12 @@ export class RegisterComponent implements OnInit,OnDestroy {
           this.accountService.isAuth = true;
           alert("Registration Done")
           this.router.navigateByUrl("account/login")
-          // if(this.newuser.role=="Client"){
-          //   this.router.navigateByUrl("HomeClient")
-          // }else{
-          // this.router.navigateByUrl("home");
-          // }
+          
         },//error
         error : r =>{
           alert("Registration Failed")
+          console.log(r);
+          
         }
       }
     )

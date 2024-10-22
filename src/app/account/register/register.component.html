@@ -23,7 +23,7 @@
                 <div class="first-name">
                     <label for="first" class="first"> First name </label>
                      <input id="first" name="fname" type="text"
-                        [(ngModel)]="newuser.userName" #fname="ngModel"
+                        [(ngModel)]="newuser.username" #fname="ngModel"
                         required>
                         <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" id="error">
                             <div *ngIf="fname.hasError('required')" >First Name is required.</div>

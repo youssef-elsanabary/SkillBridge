@@ -12,11 +12,14 @@ import { UserService } from '../../_services/user.service';
 import { AddComponent } from "../../user/add/add.component";
 import { ServiceService } from '../../_services/service.service';
 import { Service } from '../../_modules/service';
+import { DeleteComponent } from '../../user/delete/delete.component';
+import { DeleteServicesComponent } from '../../services/delete-services/delete-services.component';
+import { differenceInDays, differenceInHours } from 'date-fns';
 
 @Component({
   selector: 'app-profile-details',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, AddComponent],
+  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, AddComponent,DeleteServicesComponent],
   templateUrl: './profile-details.component.html',
   styleUrl: './profile-details.component.css',
   providers:[DatePipe]
@@ -32,8 +35,7 @@ export class ProfileDetailsComponent  implements OnInit{
     ){
     this.updateTime()
   }
-  
-  currentContent : string ="";
+  isModalVisible: boolean = true;
   currentTime: string | null = "50";
   userId : number = 0;
   token = localStorage.getItem('token');
@@ -43,7 +45,6 @@ export class ProfileDetailsComponent  implements OnInit{
   
   ngOnInit(): void {
     this.userId = this.activatedRoute.snapshot.params['id'];
-
     this.activatedRoute.params.subscribe(
       p=>{
         this.userService.getById(p['id']).subscribe({          
@@ -73,7 +74,42 @@ updateTime() {
   const now = new Date();
   this.currentTime = this.datePipe.transform(now, 'h:mm:ss a');
 }
-showContent(data:string){
-  this.currentContent = data
+editProfile(){
+  this.userService.editById(this.userId,this.profile).subscribe({
+    next : success =>{
+      this.closeModal();
+      console.log("edit bio Done");
+      //this.closeModal();
+      // this.router.navigateByUrl("/home/profile/"+this.userId)
+      console.log(this.profile);    
+    },error :err=>{
+      return err;
+    }
+  })
+  this.closeModal();
+}
+closeModal() {
+  this.isModalVisible = false;
+}
+clacDate(date : Date){
+  let currentDate : Date = new Date();
+  let differance = differenceInDays(currentDate,date);
+  if(differance >= 1){
+    return differance
+  }else{
+    return differenceInHours(currentDate,date);
+  }
+}
+editService(id? : number){
+  this.router.navigateByUrl("home/service/edit/"+id)
+} 
+serviceDeleted(id : number){
+      this.servicesServices.deleteService(id).subscribe({
+        next : success => {
+          console.log("service deleted");
+        },error : failed =>{
+           console.log("service not deleted");
+        }
+      })
 }
 }

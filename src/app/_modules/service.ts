@@ -1,3 +1,6 @@
+import { Contract } from "./contract";
+import { User } from "./user";
+
 export class Service {
     constructor(
         public userId : number,
@@ -8,6 +11,8 @@ export class Service {
         public status : string,
         public createdDate : Date,
         public serviceId? : number,
+        public user? : User,
+        public contract? :Contract
     // "serviceId": 0,
     // "userId": 0,
     // "title": "string",

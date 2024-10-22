@@ -1,0 +1,17 @@
+<div class="editServiceContainer">
+    <h4 class="header">Add Contract</h4>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Description</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contract Description" name="Title" [(ngModel)]="newContract.status">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Duration in days</label>
+        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Duration in days" name="Description" [(ngModel)]="newContract.duration">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Price in EGP</label>
+        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Price in EGP" name="Price" [(ngModel)]="newContract.price">
+    </div>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" (click)="makeContract()" data-bs-dismiss="modal"> Done </button>
+</div> 

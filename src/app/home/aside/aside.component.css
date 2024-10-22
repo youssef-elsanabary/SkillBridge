@@ -17,13 +17,15 @@ li{
 .user-img{
     height: 60px;
     width: 60px;
-    /* background-image: url(".");
+    background-color: lightgray;
+    background-image: url("../images/user.png");
     background-size: 100%;
     background-position-x: 50%;
     background-position-y: 50%;
-    background-repeat: no-repeat */
+    background-repeat: no-repeat
 }
 #ahmed{ 
+    padding: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;     
     background-color:  whitesmoke;   
@@ -34,8 +36,8 @@ li{
     border-bottom-right-radius: 10px;
     background-color:  whitesmoke;        
 }
-.title{
-    margin-left: 70px;
+.row{
+   margin: 0px;
 }
 .firsst-list{
     columns: 2;

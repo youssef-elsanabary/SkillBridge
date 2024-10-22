@@ -24,7 +24,8 @@ export class EditServicesComponent implements OnInit {
   ngOnInit(): void {
     this.serviceId=this.activateRoute.snapshot.params['id']
     this.oldService.serviceId = this.serviceId
-    this.oldService.userId = this.t.Id
+    this.oldService.userId = this.t.Id;
+    this.getServiceDetails();
   }
   done(){
     console.log(this.oldService.serviceId);
@@ -41,5 +42,14 @@ export class EditServicesComponent implements OnInit {
         })
       }
     )
+  }
+  getServiceDetails(){
+    this.service.serviceById(this.serviceId).subscribe({
+      next:data=>{
+        this.oldService = data;
+      },error:err =>{
+        return err;
+      }
+    })
   }
 }

@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddPrposalComponent implements OnInit {
   constructor(private prposalServices : PrposalServiceService , private router : Router ,private activatedRoute : ActivatedRoute){}
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.newPrposal.userId = this.t.Id
     this.newPrposal.status
     this.activatedRoute.queryParams.subscribe(params => {

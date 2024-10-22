@@ -1,7 +1,13 @@
 <div class="aside1 bg-white  ">
 
-    <div id="ahmed" > <img class="user-img" src="images/user.png"  alt=""> <span class="user-name " (click)="profileRoute()">{{userName}}</span> 
-    <p class="title"> job-title</p></div>
+    <div id="ahmed" class="row">
+      <div class="user-img col-5 rounded-circle"></div>
+       <!-- <img class="user-img col-5" src="images/user.png"  alt="">  -->
+       <div class="col-7">
+       <span class="user-name " (click)="profileRoute()">{{user.username}}</span> 
+       <p class="title"> {{t.role}}</p>
+      </div>
+  </div>
 
 
 

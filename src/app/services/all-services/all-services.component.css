@@ -67,6 +67,9 @@
 .type2{
     color: black;
     text-decoration-line: none;
+    font-size: larger;
+    font-weight: 600;
+    font-style: italic;
 }
 .type2:hover{
     color: rgb(6, 180, 6);
@@ -139,4 +142,31 @@
 }
 .img-parent12{
     position: relative ;
+}
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+.paginationButton {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+.paginationButton[disabled] {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+.searchInpt{
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

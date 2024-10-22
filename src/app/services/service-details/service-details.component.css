@@ -149,6 +149,7 @@ h5{
     background-color: rgb(189, 199, 189);
 }
 .buttons-parent{
+    margin-top: 10px;
     display: flex;
     justify-content: flex-end;
     gap: 5px;
@@ -156,14 +157,34 @@ h5{
 .prposal-container{
     margin-top: 10px;
     background-color: whitesmoke;
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px;
+    border-bottom: 1px solid lightgray;
 }
 .prposal_div{
-    background-color: rgb(230, 230, 230);
-    width: 99%;
+    background-color: white(230, 230, 230);
     padding-top: 10px;
     margin: auto;
     margin-bottom: 10px;
     border-radius: 15px;
+}
+.view{
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+    padding: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 2px 5px;
+}
+.setting{
+    border-radius: 10px;
+    background-color: green;
+    border: 2px solid green;
+    color: white;
+    padding: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px; 
+    margin: 2px 5px;
 }

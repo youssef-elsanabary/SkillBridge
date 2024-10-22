@@ -3,8 +3,6 @@
 <div class="container   father">
   <div class="  parent1">
     <div class="information">
-      <!-- <img class="dislike-img" src="images/dislike.png" alt="" width="25px" height="25px">
-      <img class="heart-img" src="images/heart.png" alt=""   width="25px" height="25px"> -->
       <div id="ahmed" class="row"> 
         <div class="user-img rounded-circle col-1"></div>
         <span class="user-name col-11 " >{{user.username}}</span> 
@@ -13,35 +11,45 @@
       <div class="small1">{{clacDate(one.createdDate)}} days ago</div>
 
       <div class="type1" > <a  class="type2"  href="" >{{one.title}} </a></div>
-      <div class="small2">Fixed-price - Entry level - Est. Budget: $<span>{{one.price}}</span></div>
+      <div class="small2">Fixed-price Budget: $<span>{{one.price}}</span></div>
 
       <p class="paragraph-1">{{one.description}}</p>
 
       <button class="btn-1"> {{one.category}}</button>
     <p class="small3">Proposals: Less than 5</p>  
-    <!-- prposal -->
+<!-- prposal -->
 <div class="prposal-container row" >
   <h4 class="header col-10" >prposal</h4>
   @for (item of allPrposal; track item) {
-      <div class="prposal_div row" >
-          <div class="mb-3 col-8">
-              <label for="formGroupExampleInput" class="form-label">{{item.status}}</label><br>
-              <label for="formGroupExampleInput" class="form-label">{{item.proposalDate}}</label><br>
-          </div>
-          <div class="col-4">
-
-          </div>
+    <div class="prposal-container">
+      <!-- prposal user data -->
+      <div id="ahmed" class="row"> 
+        <div class="user-img rounded-circle col-1"></div>
+        <span class="user-name col-11 " >{{item.user?.username}}</span> 
       </div>
+      <!-- prposal details -->
+       <div class="prposal-details row">
+        <div class="prposal-data col-8">
+          <p>{{item.status}}</p>
+          <p>{{item.proposalDate}}</p>
+        </div>
+      </div>
+    </div>
   }@empty {
       <div class="mb-3"> 
           <label for="formGroupExampleInput" class="form-label">This services has no prposal</label>
       </div>
   }
 </div>
-<!-- button -->
-    <div class="buttons-parent">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="addProposel()" >apply</button>
-        <button type="button" class="btn btn-primary btn-sm">review</button></div>    
+<!-- button     if this service has a contract this button will be deleted-->
+ @if (contract.status == "") {
+  <div class="buttons-parent">
+    <button type="button" class="view" (click)="addProposel()" >apply</button>
+    <button type="button" class="setting">review</button>
+  </div> 
+}
+<div>contract : {{contract.status}}</div>
+<!-- End of pprposal -->
     </div>
   </div>
 </div>
@@ -49,8 +57,6 @@
   <div class="container   father">
   <div class="  parent1">
     <div class="information">
-      <!-- <img class="dislike-img" src="images/dislike.png" alt="" width="25px" height="25px">
-      <img class="heart-img" src="images/heart.png" alt=""   width="25px" height="25px"> -->
         <div id="ahmed" class="row"> 
           <div class="user-img col-1"></div>
         <span class="user-name col-11" >{{user.username}}</span> 
@@ -69,20 +75,40 @@
 <div class="prposal-container row" >
   <h4 class="header col-10" >prposal</h4>
   @for (item of allPrposal; track item) {
-    <div class="prposal_div">
+    <div class="prposal-container">
+      <!-- prposal user data -->
       <div id="ahmed" class="row"> 
         <div class="user-img rounded-circle col-1"></div>
-        <span class="user-name col-11 " >name</span> 
+        <span class="user-name col-11 " >{{item.user?.username}}</span> 
       </div>
-      <div class="prposal_div row " >
-          <div class="mb-3 col-6">
-              <label for="formGroupExampleInput" class="form-label">{{item.status}}</label><br>
-              <label for="formGroupExampleInput" class="form-label">{{item.proposalDate}}</label><br>
-          </div>
-          <div class="buttons-parent col-6 row">
-            <button type="button" class="btn btn-secondary btn-sm " (click)="makeContract()">accept</button>
-            <button type="button" class="btn btn-primary btn-sm" (click)="deletePrposal()">reject</button>   
+      <!-- prposal details -->
+       <div class="prposal-details row">
+        <div class="prposal-data col-8">
+          <p>{{item.status}}</p>
+          <p>{{item.proposalDate}}</p>
         </div>
+        @if (one.userId == t.Id && contract.status == "") {
+        <div class="prposal-control col-4">
+          <button type="button" class="view" data-bs-toggle="modal" data-bs-target="#exampleModal">accept</button>
+          <!-- Accept Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <app-add-contract [sId]="serviceId" ></app-add-contract>
+                </div>
+              </div>
+              <!-- End of Accept Modal -->
+            </div>
+          </div>
+        <button type="button" class="setting" (click)="deletePrposal(item.proposalId!)" >reject</button>
+
+        </div>
+      }
       </div>
     </div>
   }@empty {
@@ -91,6 +117,7 @@
       </div>
   }
 </div>
+<!-- End of pprposal -->
     </div>
   </div>
 </div>

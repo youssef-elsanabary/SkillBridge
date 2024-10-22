@@ -5,6 +5,7 @@ import { MassegeComponent } from "../massege/massege.component";
 import { ClientHomeComponent } from "./client-home/client-home.component";
 import { AddServiceComponent } from "../services/add-service/add-service.component";
 import { ProfileDetailsComponent } from "../profile/profile-details/profile-details.component";
+import { EditProfileComponent } from "../profile/edit-profile/edit-profile.component";
 
 export const homeRoutes : Routes = [
     {path :"",component:HomeComponent},
@@ -12,6 +13,7 @@ export const homeRoutes : Routes = [
     {path :"finance",loadChildren:()=>import("../Finances/Finance.routes").then(a=>a.financeRoutes)},
     {path:"Massege",component:MassegeComponent},
     {path:"profile/:id",component:ProfileDetailsComponent},
+    {path:"profile/edit/:id",component:EditProfileComponent},
     {path:"service",loadChildren:()=> import("../services/service.route").then(a=>a.ServiceRoutes)},
 
 ]

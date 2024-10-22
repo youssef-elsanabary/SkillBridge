@@ -11,7 +11,15 @@ import { ServiceService } from '../../_services/service.service';
 })
 export class DeleteServicesComponent {
   constructor(private activatedRoute : ActivatedRoute, private router : Router, private servic:ServiceService){}
+  
+  makeContract(){
+    console.log("hamadaaaaaaaa");
+    
+  }
+
   serviceDeleted(){
+    console.log("delete");
+    
     this.activatedRoute.params.subscribe(
       p=>{
         this.servic.deleteService(p['id']).subscribe({
@@ -20,7 +28,7 @@ export class DeleteServicesComponent {
             this.router.navigateByUrl("/home/HomeClient")
           },error : failed =>{
             console.log(failed);
-            
+             
           }
         })
       }
