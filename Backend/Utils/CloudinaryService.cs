@@ -13,27 +13,20 @@ namespace Backend.Utils
             _cloudinary = cloudinary;
         }
 
-        public async Task<string> UploadImageAsync(IFormFile imageFile)
+
+        public async Task<ImageUploadResult> UploadImageAsync(IFormFile file)
         {
-            if (imageFile == null || imageFile.Length == 0)
-                return null;
+            using var stream = file.OpenReadStream();
 
-            using (var stream = imageFile.OpenReadStream())
+            var uploadParams = new ImageUploadParams()
             {
-                var uploadParams = new ImageUploadParams
-                {
-                    File = new FileDescription(imageFile.FileName, stream),
-                    Transformation = new Transformation().Crop("fill").Gravity("face").Width(500).Height(500)
-                };
+                File = new FileDescription(file.FileName, stream),
+                Transformation = new Transformation().Width(500).Height(500).Crop("fill")
+            };
 
-                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
-
-                if (uploadResult.Error != null)
-                    throw new Exception(uploadResult.Error.Message);
-
-                return uploadResult.SecureUrl.ToString();
-            }
+            return await _cloudinary.UploadAsync(uploadParams);
         }
     }
-
 }
+
+

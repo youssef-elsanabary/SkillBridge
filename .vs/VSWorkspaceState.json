@@ -11,6 +11,6 @@
     "\\Backend\\Properties",
     "\\Backend\\Utils"
   ],
-  "SelectedNode": "\\Backend\\Backend.sln",
+  "SelectedNode": "\\Backend\\Controllers\\UsersController.cs",
   "PreviewInSolutionExplorer": false
 }

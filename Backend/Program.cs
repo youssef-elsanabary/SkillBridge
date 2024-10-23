@@ -43,7 +43,6 @@ namespace Backend
             builder.Services.AddAuthorization();
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
-            // Register repositories for DI
             builder.Services.AddScoped<IContractRepository, ContractRepository>();
             builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
             builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
@@ -65,7 +64,7 @@ namespace Backend
             builder.Services.AddScoped<PaymentService>();
             builder.Services.AddSingleton(new StripeClient(stripeApiKey));
 
-            // Create Cloudinary object and register it as a singleton
+            
             var cloudinary = new Cloudinary(cloudinaryConfig);
             builder.Services.AddSingleton(cloudinary);
             builder.Services.AddSingleton<CloudinaryService>();

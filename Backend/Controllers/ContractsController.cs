@@ -10,7 +10,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class ContractsController : ControllerBase
     {
         private readonly IContractRepository _repository;

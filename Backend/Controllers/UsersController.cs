@@ -1,6 +1,8 @@
-﻿using Backend.DTO;
+﻿using AutoMapper;
+using Backend.DTO;
 using Backend.Models;
 using Backend.Repository;
+using Backend.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,14 +11,18 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;  
+        private readonly CloudinaryService _cloudinaryService; 
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserRepository userRepository, IMapper mapper, CloudinaryService cloudinaryService)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
+            _cloudinaryService = cloudinaryService;
         }
 
 
@@ -90,30 +96,63 @@ namespace Backend.Controllers
             var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null) return NotFound();
 
-            var profile = new ProfileDto
-            {
-                Image = user.Image,
-                Description = user.Description,
-                Bio = user.Bio,
-                Skills = user.Skills,
-                CvFile = user.CvFile
-            };
+            var profileDto = _mapper.Map<ProfileDto>(user);
 
-            return Ok(profile);
+
+            return Ok(profileDto);
         }
 
-     
+
         [HttpPost("{id}/profiles")]
-        public async Task<IActionResult> CreateOrUpdateUserProfile(int id, [FromBody] ProfileDto profileDto)
+        public async Task<IActionResult> CreateUserProfile(int id, [FromForm] ProfileDto profileDto, IFormFile imageFile = null)
+        {
+
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user != null)
+            {
+                return BadRequest("User already exists. Use PUT to update the profile.");
+            }
+
+
+            var newUser = new User
+            {
+                Id = id,
+                Description = profileDto.Description,
+                Bio = profileDto.Bio,
+                Skills = profileDto.Skills,
+                CvFile = profileDto.CvFile
+            };
+
+
+            if (imageFile != null)
+            {
+                var uploadResult = await _cloudinaryService.UploadImageAsync(imageFile);
+                newUser.Image = uploadResult.SecureUrl.ToString();
+            }
+
+            await _userRepository.AddUserAsync(newUser);
+            await _userRepository.SaveAsync();
+
+            return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);
+        }
+
+
+
+        [HttpPut("{id}/profiles")]
+        public async Task<IActionResult> CreateOrUpdateUserProfile(int id, [FromForm] ProfileDto profileDto, IFormFile imageFile = null)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null) return NotFound();
 
-            user.Image = profileDto.Image?? user.Image;
-            user.Description = profileDto.Description ?? user.Description;
-            user.Bio = profileDto.Bio ?? user.Bio;
-            user.Skills = profileDto.Skills ?? user.Skills;
-            user.CvFile = profileDto.CvFile ?? user.CvFile;
+           
+            _mapper.Map(profileDto, user);
+
+      
+            if (imageFile != null)
+            {
+                var uploadResult = await _cloudinaryService.UploadImageAsync(imageFile);
+                user.Image = uploadResult.SecureUrl.ToString(); 
+            }
 
             await _userRepository.UpdateUserAsync(user);
             await _userRepository.SaveAsync();
@@ -121,7 +160,6 @@ namespace Backend.Controllers
             return Ok(user);
         }
 
-  
         [HttpDelete("{id}/profiles")]
         public async Task<IActionResult> DeleteUserProfile(int id)
         {
