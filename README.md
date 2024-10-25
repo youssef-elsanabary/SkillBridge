@@ -11,16 +11,7 @@ A full-stack freelancing platform built with ASP.NET Core and Angular, featuring
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Setup Instructions](#setup-instructions)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Database Setup](#database-setup)
-  - [Running the Application](#running-the-application)
-- [SignalR Integration](#signalr-integration)
-  - [Real-Time Messaging](#real-time-messaging)
-  - [Enabling SSL/TLS](#enabling-ssltls)
-- [Database Structure](#database-structure)
-- [Contributing](#contributing)
-- [License](#license)
+ 
 
 ---
 
@@ -35,13 +26,12 @@ A full-stack freelancing platform built with ASP.NET Core and Angular, featuring
 
 ## Technology Stack
 
-- **Backend**: ASP.NET Core 8
+- **Backend**: ASP.NET Core 
 - **Frontend**: Angular (latest version)
-- **Database**: PostgreSQL (Entity Framework Core)
+- **Database**: SQL Server (Entity Framework Core)
 - **Real-Time Communication**: SignalR
 - **Payment Gateway**: Stripe
 - **Authentication**: JWT with role-based access control
-- **Deployment**: Docker, Kubernetes
 
 ## Setup Instructions
 
@@ -49,13 +39,6 @@ A full-stack freelancing platform built with ASP.NET Core and Angular, featuring
 
 - .NET SDK (latest version)
 - Node.js and npm
-- PostgreSQL
-- Docker (optional for containerized development)
+- SQL Server
 - Stripe account for payment integration
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/freelancing-platform.git
-   cd freelancing-platform
