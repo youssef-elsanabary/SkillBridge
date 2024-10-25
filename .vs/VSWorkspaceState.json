@@ -2,15 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
-    "\\Backend\\Context",
-    "\\Backend\\Controllers",
-    "\\Backend\\DTO",
-    "\\Backend\\Migrations",
-    "\\Backend\\Models",
-    "\\Backend\\obj",
     "\\Backend\\Properties",
-    "\\Backend\\Utils"
+    "\\Backend\\Shared\\Utils"
   ],
-  "SelectedNode": "\\Backend\\Controllers\\UsersController.cs",
+  "SelectedNode": "\\Backend\\Backend.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -21,7 +21,7 @@ namespace Backend.Context
         {
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Services)
-                .WithOne(s => s.Freelancer)
+                .WithOne()
                 .HasForeignKey(s => s.UserId)
                  .OnDelete(DeleteBehavior.NoAction);
 

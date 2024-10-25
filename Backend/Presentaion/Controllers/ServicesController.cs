@@ -13,10 +13,12 @@ namespace Backend.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly IServiceRepository _repository;
+        
 
         public ServicesController(IServiceRepository repository)
         {
             _repository = repository;
+           
         }
 
         //[HttpGet]
