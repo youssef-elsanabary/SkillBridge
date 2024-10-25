@@ -43,6 +43,8 @@ CREATE TABLE Contracts (
     ContractId INT PRIMARY KEY IDENTITY(1,1),
     ServiceId INT NOT NULL,
     UserId INT NOT NULL,
+    Duration INT NOT NULL,
+    Price INT NEOT NULL,
     Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Pending', 'Active', 'Completed', 'Cancelled')),
     CreatedDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId),
