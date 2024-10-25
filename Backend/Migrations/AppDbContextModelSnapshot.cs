@@ -22,42 +22,6 @@ namespace Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Backend.Models.Contract", b =>
-                {
-                    b.Property<int>("ContractId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContractId"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("duration")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("price")
-                        .HasColumnType("float");
-
-                    b.HasKey("ContractId");
-
-                    b.HasIndex("ServiceId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Contracts");
-                });
-
             modelBuilder.Entity("Backend.Models.Message", b =>
                 {
                     b.Property<int>("MessageId")
@@ -67,7 +31,6 @@ namespace Backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ReceiverId")
@@ -133,7 +96,6 @@ namespace Backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
@@ -193,24 +155,26 @@ namespace Backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FreelancerId")
+                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("ServiceId");
+
+                    b.HasIndex("FreelancerId");
 
                     b.HasIndex("UserId");
 
@@ -261,23 +225,46 @@ namespace Backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Backend.Models.Contract", b =>
+            modelBuilder.Entity("Contract", b =>
                 {
-                    b.HasOne("Backend.Models.Service", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                    b.Property<int>("ContractId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasOne("Backend.Models.User", "User")
-                        .WithMany("Contracts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContractId"));
 
-                    b.Navigation("Service");
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
-                    b.Navigation("User");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ContractId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.HasIndex("ServiceId")
+                        .IsUnique();
+
+                    b.ToTable("Contracts");
                 });
 
             modelBuilder.Entity("Backend.Models.Message", b =>
@@ -301,7 +288,7 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Models.Payment", b =>
                 {
-                    b.HasOne("Backend.Models.Contract", "Contract")
+                    b.HasOne("Contract", "Contract")
                         .WithMany()
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -359,12 +346,48 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.Service", b =>
                 {
                     b.HasOne("Backend.Models.User", "Freelancer")
+                        .WithMany()
+                        .HasForeignKey("FreelancerId");
+
+                    b.HasOne("Backend.Models.User", null)
                         .WithMany("Services")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Freelancer");
+                });
+
+            modelBuilder.Entity("Contract", b =>
+                {
+                    b.HasOne("Backend.Models.User", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.User", "Freelancer")
+                        .WithMany("Contracts")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.Service", "Service")
+                        .WithOne("Contract")
+                        .HasForeignKey("Contract", "ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Freelancer");
+
+                    b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("Backend.Models.Service", b =>
+                {
+                    b.Navigation("Contract");
                 });
 
             modelBuilder.Entity("Backend.Models.User", b =>

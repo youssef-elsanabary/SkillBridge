@@ -10,7 +10,7 @@ namespace Backend.Models
         public int SenderId { get; set; }
         [Required]
         public int ReceiverId { get; set; }
-        [Required]
+  
         public string? Content { get; set; }
 
 

@@ -4,7 +4,7 @@ using Backend.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories
 {
@@ -34,7 +34,7 @@ namespace Backend.Repositories
 
         public async Task UpdateAsync(Contract contract)
         {
-            _context.Contracts.Update(contract); 
+            _context.Contracts.Update(contract);
         }
 
         public async Task DeleteAsync(Contract contract)
@@ -46,6 +46,7 @@ namespace Backend.Repositories
         {
             return await Task.FromResult(_context.SaveChanges() > 0);
         }
+
         public async Task<List<Contract>> GetByServiceIdAsync(int serviceId)
         {
             return await _context.Contracts
@@ -53,12 +54,18 @@ namespace Backend.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<Contract>> GetByUserIdAsync(int userId)
+        public async Task<List<Contract>> GetByClientIdAsync(int clientId)
         {
             return await _context.Contracts
-                .Where(c => c.UserId == userId)
+                .Where(c => c.ClientId == clientId)
                 .ToListAsync();
         }
 
+        public async Task<List<Contract>> GetByFreelancerIdAsync(int freelancerId)
+        {
+            return await _context.Contracts
+                .Where(c => c.FreelancerId == freelancerId)
+                .ToListAsync();
+        }
     }
 }

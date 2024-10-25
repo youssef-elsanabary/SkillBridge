@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class Sehhh : Migration
+    public partial class uopsdhhhhhhhhhhhh : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,7 @@ namespace Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SenderId = table.Column<int>(type: "int", nullable: false),
                     ReceiverId = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,16 +64,22 @@ namespace Backend.Migrations
                     ServiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FreelancerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.ServiceId);
+                    table.ForeignKey(
+                        name: "FK_Services_Users_FreelancerId",
+                        column: x => x.FreelancerId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Services_Users_UserId",
                         column: x => x.UserId,
@@ -88,11 +94,12 @@ namespace Backend.Migrations
                     ContractId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: false),
+                    FreelancerId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    price = table.Column<double>(type: "float", nullable: true),
-                    duration = table.Column<int>(type: "int", nullable: true)
+                    Price = table.Column<double>(type: "float", nullable: true),
+                    Duration = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,10 +108,16 @@ namespace Backend.Migrations
                         name: "FK_Contracts_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
-                        principalColumn: "ServiceId");
+                        principalColumn: "ServiceId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Contracts_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Contracts_Users_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Contracts_Users_FreelancerId",
+                        column: x => x.FreelancerId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
@@ -118,7 +131,7 @@ namespace Backend.Migrations
                     ServiceId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     ProposalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -191,14 +204,20 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contracts_ServiceId",
+                name: "IX_Contracts_ClientId",
                 table: "Contracts",
-                column: "ServiceId");
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contracts_UserId",
+                name: "IX_Contracts_FreelancerId",
                 table: "Contracts",
-                column: "UserId");
+                column: "FreelancerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contracts_ServiceId",
+                table: "Contracts",
+                column: "ServiceId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_ReceiverId",
@@ -239,6 +258,11 @@ namespace Backend.Migrations
                 name: "IX_Reviews_ServiceId",
                 table: "Reviews",
                 column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Services_FreelancerId",
+                table: "Services",
+                column: "FreelancerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_UserId",

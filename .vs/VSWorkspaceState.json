@@ -2,9 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
-    "\\Backend\\Properties",
-    "\\Backend\\Shared\\Utils"
+    "\\Backend\\DataAccess",
+    "\\Backend\\DataAccess\\Context",
+    "\\Backend\\DataAccess\\Models",
+    "\\Backend\\Presentaion",
+    "\\Backend\\Properties"
   ],
-  "SelectedNode": "\\Backend\\Backend.sln",
+  "SelectedNode": "\\Backend\\DataAccess\\Context\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

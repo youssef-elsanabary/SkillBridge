@@ -6,13 +6,13 @@ namespace Backend.Models
     {
         [Required]
         public int ProposalId { get; set; }
-        [Required]
+   
         public int ServiceId { get; set; }
-        [Required]
+   
         public int UserId { get; set; }
-        [Required]
+    
         public DateTime ProposalDate { get; set; }
-        [Required]
+   
         public string? Status { get; set; }
 
         public virtual Service? Service { get; set; }

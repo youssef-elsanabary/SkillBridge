@@ -26,17 +26,24 @@ namespace Backend.Context
                  .OnDelete(DeleteBehavior.NoAction);
 
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Contracts)
-                .WithOne(c => c.User)
-                .HasForeignKey(c => c.UserId)
-             .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Contract>()
+                .HasOne(c => c.Client)
+                .WithMany()
+                .HasForeignKey(c => c.ClientId)
+                .OnDelete(DeleteBehavior.NoAction); 
+
+            modelBuilder.Entity<Contract>()
+                .HasOne(c => c.Freelancer)
+                .WithMany()
+                .HasForeignKey(c => c.FreelancerId)
+                .OnDelete(DeleteBehavior.NoAction); 
 
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Reviews)
                 .WithOne(r => r.Buyer)
                 .HasForeignKey(r => r.BuyerId)
+
              .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<User>()
@@ -45,11 +52,12 @@ namespace Backend.Context
                 .HasForeignKey(p => p.UserId)
              .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Contract>()
-                .HasOne(c => c.Service)
-                .WithMany()
-                .HasForeignKey(c => c.ServiceId)
-             .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Service>()
+                .HasOne(s => s.Contract)
+                .WithOne(c => c.Service)
+                .HasForeignKey<Contract>(c => c.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade); 
+
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Sender)
@@ -64,6 +72,11 @@ namespace Backend.Context
                 .HasForeignKey(m => m.ReceiverId)
              .OnDelete(DeleteBehavior.NoAction);
 
+               modelBuilder.Entity<User>()
+                .HasMany(u => u.Contracts) 
+                .WithOne(c => c.Freelancer)
+                .HasForeignKey(c => c.FreelancerId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.User)

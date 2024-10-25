@@ -14,12 +14,10 @@ namespace Backend.Controllers
     public class ContractsController : ControllerBase
     {
         private readonly IContractRepository _repository;
-      
 
         public ContractsController(IContractRepository repository)
         {
             _repository = repository;
-           
         }
 
         [HttpGet]
@@ -61,11 +59,11 @@ namespace Backend.Controllers
             }
 
             contract.Status = updatedContract.Status;
-            contract.UserId = updatedContract.UserId;
+            contract.ClientId = updatedContract.ClientId;
+            contract.FreelancerId = updatedContract.FreelancerId;
             contract.ServiceId = updatedContract.ServiceId;
-            contract.duration = updatedContract.duration;
-            contract.price = updatedContract.price;
-
+            contract.Duration = updatedContract.Duration;
+            contract.Price = updatedContract.Price;
 
             await _repository.UpdateAsync(contract);
             if (await _repository.SaveChangesAsync())
@@ -93,7 +91,7 @@ namespace Backend.Controllers
 
             return BadRequest("Could not delete the contract.");
         }
-       
+
         [HttpGet("services/{serviceId}")]
         public async Task<IActionResult> GetContractsByServiceId(int serviceId)
         {
@@ -105,11 +103,10 @@ namespace Backend.Controllers
             return Ok(contracts);
         }
 
-       
-        [HttpGet("users/{userId}")]
-        public async Task<IActionResult> GetContractsByUserId(int userId)
+        [HttpGet("clients/{clientId}")]
+        public async Task<IActionResult> GetContractsByClientId(int clientId)
         {
-            var contracts = await _repository.GetByUserIdAsync(userId);
+            var contracts = await _repository.GetByClientIdAsync(clientId);
             if (contracts == null || !contracts.Any())
             {
                 return NotFound();
@@ -117,5 +114,15 @@ namespace Backend.Controllers
             return Ok(contracts);
         }
 
+        [HttpGet("freelancers/{freelancerId}")]
+        public async Task<IActionResult> GetContractsByFreelancerId(int freelancerId)
+        {
+            var contracts = await _repository.GetByFreelancerIdAsync(freelancerId);
+            if (contracts == null || !contracts.Any())
+            {
+                return NotFound();
+            }
+            return Ok(contracts);
+        }
     }
 }

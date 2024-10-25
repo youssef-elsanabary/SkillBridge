@@ -8,13 +8,13 @@ namespace Backend.Models
 
             [Required]
             public int PaymentId { get; set; }
-            [Required]
+          
             public int UserId { get; set; }
-            [Required]
+         
             public int ContractId { get; set; }
-            [Required]
+     
             public DateTime PaymentDate { get; set; } = DateTime.Now;
-            [Required]
+      
             public double Amount { get; set; }
             
             public string PaymentStatus { get; set; }

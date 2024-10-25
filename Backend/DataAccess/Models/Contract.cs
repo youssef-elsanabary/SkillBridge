@@ -1,27 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Backend.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Backend.Models
+public class Contract
 {
-    public class Contract
-    {
+    [Required]
+    public int ContractId { get; set; }
 
-        [Required]
-        public int ContractId { get; set; }
-        [Required]
-        public int ServiceId { get; set; }
-        [Required]
-        public int UserId { get; set; }
-      
-        public string Status { get; set; } 
-      
-        public DateTime CreatedDate { get; set; }
+    public int ServiceId { get; set; }
 
-        public double? price { get; set; }
 
-        public int? duration { get; set; }
+    public int ClientId { get; set; }
+    public int FreelancerId { get; set; }  
 
-     
-        public virtual User User { get; set; }
-        public virtual Service? Service { get; set; }
-    }
+    public string Status { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public double? Price { get; set; }
+    public int? Duration { get; set; }
+
+ 
+    public virtual User Client { get; set; }   
+    public virtual User Freelancer { get; set; }   
+    public virtual Service? Service { get; set; }  
 }

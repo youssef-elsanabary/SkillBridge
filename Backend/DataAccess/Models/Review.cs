@@ -6,11 +6,11 @@ namespace Backend.Models
     {
         [Required]
         public int ReviewId  { get; set; }
-        [Required]
+       
         public int ServiceId { get; set; }
-        [Required]
+       
         public int BuyerId { get; set; }
-        [Required]
+     
         public int Rating { get; set; }
     
         public string Comment { get; set; }

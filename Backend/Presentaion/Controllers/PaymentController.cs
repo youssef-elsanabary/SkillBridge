@@ -24,3 +24,7 @@ public class PaymentsController : ControllerBase
         return Ok(new { id = session.Id });
     }
 }
+
+
+
+
