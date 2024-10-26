@@ -308,7 +308,7 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.Proposal", b =>
                 {
                     b.HasOne("Backend.Models.Service", "Service")
-                        .WithMany()
+                        .WithMany("Proposals")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,7 +375,7 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Models.Service", "Service")
                         .WithOne("Contract")
                         .HasForeignKey("Contract", "ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Client");
@@ -388,6 +388,8 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.Service", b =>
                 {
                     b.Navigation("Contract");
+
+                    b.Navigation("Proposals");
                 });
 
             modelBuilder.Entity("Backend.Models.User", b =>

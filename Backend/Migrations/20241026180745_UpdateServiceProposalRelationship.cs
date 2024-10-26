@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class uopsdhhhhhhhhhhhh : Migration
+    public partial class UpdateServiceProposalRelationship : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -108,8 +108,7 @@ namespace Backend.Migrations
                         name: "FK_Contracts_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
-                        principalColumn: "ServiceId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ServiceId");
                     table.ForeignKey(
                         name: "FK_Contracts_Users_ClientId",
                         column: x => x.ClientId,

@@ -56,7 +56,7 @@ namespace Backend.Context
                 .HasOne(s => s.Contract)
                 .WithOne(c => c.Service)
                 .HasForeignKey<Contract>(c => c.ServiceId)
-                .OnDelete(DeleteBehavior.Cascade); 
+                .OnDelete(DeleteBehavior.NoAction); 
 
 
             modelBuilder.Entity<Message>()
@@ -91,8 +91,17 @@ namespace Backend.Context
                 .HasForeignKey(p => p.ContractId)
              .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Service>()
+                .HasMany(s => s.Proposals)   
+                .WithOne(p => p.Service)     
+                .HasForeignKey(p => p.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade);  
 
 
         }
+
+
+
     }
-}
+    }
+
