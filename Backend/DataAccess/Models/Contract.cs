@@ -10,8 +10,9 @@ public class Contract
 
 
     public int ClientId { get; set; }
-    public int FreelancerId { get; set; }  
-    public string Status { get; set; }
+    public int FreelancerId { get; set; }
+    public string Status { get; set; } 
+                                                                            
     public DateTime CreatedDate { get; set; }
     public double? Price { get; set; }
     public int? Duration { get; set; }

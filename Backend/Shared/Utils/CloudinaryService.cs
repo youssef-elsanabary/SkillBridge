@@ -13,7 +13,6 @@ namespace Backend.Utils
             _cloudinary = cloudinary;
         }
 
-
         public async Task<ImageUploadResult> UploadImageAsync(IFormFile file)
         {
             using var stream = file.OpenReadStream();
