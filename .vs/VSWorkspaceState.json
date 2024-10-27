@@ -2,14 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
-    "\\Backend\\Context",
-    "\\Backend\\Controllers",
-    "\\Backend\\DTO",
-    "\\Backend\\Migrations",
-    "\\Backend\\Models",
-    "\\Backend\\obj",
-    "\\Backend\\Properties",
-    "\\Backend\\Utils"
+    "\\Backend\\DataAccess",
+    "\\Backend\\DataAccess\\Context",
+    "\\Backend\\DataAccess\\Models",
+    "\\Backend\\Presentaion",
+    "\\Backend\\Properties"
   ],
   "SelectedNode": "\\Backend\\Backend.sln",
   "PreviewInSolutionExplorer": false
