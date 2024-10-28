@@ -54,5 +54,11 @@ namespace Backend.Repository
         {
             await _context.SaveChangesAsync();
         }
+
+        public async Task<User> GetUserByVerificationTokenAsync(string token)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(user => user.VerificationToken == token);
+        }
     }
 }

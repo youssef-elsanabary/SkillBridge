@@ -40,6 +40,24 @@ namespace Backend.Controllers
             }
             return Ok(contract);
         }
+        [HttpGet("/contracts/services/{serviceId}")]
+        public async Task<IActionResult> GetContractByServiceId(int serviceId)
+        {
+           
+            var contract = await _repository.GetByServiceIdAsync(serviceId);
+
+           
+            if (contract == null)
+            {
+                return NotFound();
+            }
+
+            
+            return Ok(contract);
+        }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> CreateContract([FromBody] Contract contract)

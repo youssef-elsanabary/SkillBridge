@@ -80,12 +80,13 @@ namespace Backend
             //builder.Services.AddSingleton(provider =>
             //{
             //    return new EmailService(
-            //        smtpHost: "smtp.gmail.com",     
-            //        smtpPort: 587,                        
-            //        fromEmail: "t98838629@gmail.com",   
+            //        smtpHost: "smtp.gmail.com",
+            //        smtpPort: 587,
+            //        fromEmail: "t98838629@gmail.com",
             //        fromPassword: "utgaffswjsrxnewa"
             //    );
             //});
+
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>

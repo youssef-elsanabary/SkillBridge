@@ -27,6 +27,10 @@ namespace Backend.Models
         public string? Skills { get; set; }
 
         public string? CvFile { get; set; }
+        public string? VerificationToken { get; set; }
+        public bool IsEmailVerified { get; set; }
+        
+
 
         public virtual List<Service>? Services { get; set; } = new List<Service>();
         public virtual List<Contract>? Contracts { get; set; } = new List<Contract>();
