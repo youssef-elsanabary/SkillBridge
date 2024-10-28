@@ -17,6 +17,7 @@ using Backend.Shared.Utils;
 
 
 
+
 namespace Backend
 {
     public class Program
@@ -75,6 +76,16 @@ namespace Backend
 
 
             builder.Services.AddSignalR();
+
+            //builder.Services.AddSingleton(provider =>
+            //{
+            //    return new EmailService(
+            //        smtpHost: "smtp.gmail.com",     
+            //        smtpPort: 587,                        
+            //        fromEmail: "t98838629@gmail.com",   
+            //        fromPassword: "utgaffswjsrxnewa"
+            //    );
+            //});
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>

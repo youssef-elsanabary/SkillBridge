@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241027210917_new")]
-    partial class @new
+    [Migration("20241028171906_Add")]
+    partial class Add
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,6 @@ namespace Backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PaymentStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
@@ -168,8 +167,8 @@ namespace Backend.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -256,9 +255,11 @@ namespace Backend.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("ContractId");
 
@@ -268,6 +269,8 @@ namespace Backend.Migrations
 
                     b.HasIndex("ServiceId")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Contracts");
                 });
@@ -294,7 +297,7 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.Payment", b =>
                 {
                     b.HasOne("Contract", "Contract")
-                        .WithMany()
+                        .WithMany("Payments")
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -302,7 +305,7 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Contract");
@@ -372,7 +375,7 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.HasOne("Backend.Models.User", "Freelancer")
-                        .WithMany("Contracts")
+                        .WithMany()
                         .HasForeignKey("FreelancerId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -380,8 +383,12 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Models.Service", "Service")
                         .WithOne("Contract")
                         .HasForeignKey("Contract", "ServiceId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Backend.Models.User", null)
+                        .WithMany("Contracts")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Client");
 
@@ -410,6 +417,11 @@ namespace Backend.Migrations
                     b.Navigation("SentMessages");
 
                     b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("Contract", b =>
+                {
+                    b.Navigation("Payments");
                 });
 #pragma warning restore 612, 618
         }

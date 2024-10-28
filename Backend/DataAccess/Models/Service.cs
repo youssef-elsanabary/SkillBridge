@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using Backend.BusinessLogic;
 
 namespace Backend.Models
 {
@@ -18,7 +19,8 @@ namespace Backend.Models
 
         public string? Category { get; set; }
 
-        public string? Status { get; set; } = "Active";
+        public ServiceStatus Status { get; set; } = ServiceStatus.Pending;
+
 
         public DateTime CreatedDate { get; set; }
 

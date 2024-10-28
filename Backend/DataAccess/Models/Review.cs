@@ -17,7 +17,6 @@ namespace Backend.Models
 
             public string? Comment { get; set; }
 
-            // Navigation properties
             public virtual User? Freelancer { get; set; }  
             public virtual User? Buyer { get; set; }       
         }

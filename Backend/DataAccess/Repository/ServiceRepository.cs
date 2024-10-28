@@ -1,21 +1,23 @@
-﻿using Backend.Context;
+﻿using Backend.BusinessLogic;
+using Backend.Context;
 using Backend.Models;
 using Backend.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Backend.Repository
 {
     public class ServiceRepository : IServiceRepository
     {
         private readonly AppDbContext _context;
+
         public ServiceRepository(AppDbContext context)
         {
             _context = context;
         }
+
         public async Task<List<Service>> GetAllAsync()
         {
             return await _context.Services.ToListAsync();
@@ -47,18 +49,20 @@ namespace Backend.Repository
         {
             _context.Services.Remove(service);
         }
+
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
         public IQueryable<Service> SearchServices(string searchTerm)
         {
             return _context.Services
                 .Where(s => s.Title.Contains(searchTerm) || s.Description.Contains(searchTerm));
         }
+
         public async Task<(List<Service>, int totalCount)> GetPaginatedAsync(int pageNumber, int pageSize)
         {
-
             var totalCount = await _context.Services.CountAsync();
             var services = await _context.Services
                 .Skip((pageNumber - 1) * pageSize)
@@ -70,9 +74,7 @@ namespace Backend.Repository
 
         public async Task<(List<Service>, int totalCount)> GetPaginatedServicesAsync(int pageNumber, int pageSize, string searchTerm = "")
         {
-            var query = string.IsNullOrEmpty(searchTerm) ?
-                _context.Services :
-                SearchServices(searchTerm);
+            var query = string.IsNullOrEmpty(searchTerm) ? _context.Services : SearchServices(searchTerm);
 
             var totalCount = await query.CountAsync();
             var services = await query
@@ -81,6 +83,17 @@ namespace Backend.Repository
                 .ToListAsync();
 
             return (services, totalCount);
+        }
+
+        public async Task<Service> UpdateServiceStatusAsync(int serviceId, ServiceStatus status)
+        {
+            var service = await _context.Services.FindAsync(serviceId);
+            if (service != null)
+            {
+                service.Status = status;
+                await _context.SaveChangesAsync();
+            }
+            return service;
         }
     }
 }

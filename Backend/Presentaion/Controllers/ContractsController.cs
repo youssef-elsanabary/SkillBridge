@@ -1,9 +1,12 @@
-﻿using Backend.Models;
+﻿using Backend.BusinessLogic;
+using Backend.Models;
 using Backend.Repositories;
 using Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Backend.Controllers
@@ -41,6 +44,19 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateContract([FromBody] Contract contract)
         {
+            
+            var service = await _repository.GetServiceByIdAsync(contract.ServiceId);
+            if (service == null)
+            {
+                return NotFound("Service not found.");
+            }
+
+                if (contract.Status == ContractStatus.InProgress)
+            {
+                return BadRequest("Cannot create a contract for an assigned service.");
+            }
+
+           
             await _repository.AddAsync(contract);
             if (await _repository.SaveChangesAsync())
             {
@@ -58,6 +74,19 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
+            if (contract.Status == ContractStatus.Completed)
+            {
+                
+                await _repository.DeleteAsync(contract);
+                await _repository.DeleteServiceByIdAsync(contract.ServiceId);
+                
+                return NoContent();
+            }
+
+            if (contract.Status == ContractStatus.InProgress)
+            {
+                
+            }
             contract.Status = updatedContract.Status;
             contract.ClientId = updatedContract.ClientId;
             contract.FreelancerId = updatedContract.FreelancerId;
@@ -74,6 +103,24 @@ namespace Backend.Controllers
             return BadRequest("Could not update the contract.");
         }
 
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteContract(int id)
+        //{
+        //    var contract = await _repository.GetByIdAsync(id);
+        //    if (contract == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    await _repository.DeleteAsync(contract);
+        //    if (await _repository.SaveChangesAsync())
+        //    {
+        //        return NoContent();
+        //    }
+
+        //    return BadRequest("Could not delete the contract.");
+        //}
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContract(int id)
         {
@@ -83,46 +130,18 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
+            contract.Status = ContractStatus.Canceled; 
+            var service = await _repository.GetServiceByIdAsync(contract.ServiceId);
             await _repository.DeleteAsync(contract);
-            if (await _repository.SaveChangesAsync())
+            if (service != null)
             {
-                return NoContent();
+                service.Status = ServiceStatus.Pending;
+                await _repository.UpdateAsync(service); 
             }
-
-            return BadRequest("Could not delete the contract.");
+           
+            return NoContent(); 
         }
 
-        [HttpGet("services/{serviceId}")]
-        public async Task<IActionResult> GetContractsByServiceId(int serviceId)
-        {
-            var contracts = await _repository.GetByServiceIdAsync(serviceId);
-            if (contracts == null || !contracts.Any())
-            {
-                return NotFound();
-            }
-            return Ok(contracts);
-        }
 
-        [HttpGet("clients/{clientId}")]
-        public async Task<IActionResult> GetContractsByClientId(int clientId)
-        {
-            var contracts = await _repository.GetByClientIdAsync(clientId);
-            if (contracts == null || !contracts.Any())
-            {
-                return NotFound();
-            }
-            return Ok(contracts);
-        }
-
-        [HttpGet("freelancers/{freelancerId}")]
-        public async Task<IActionResult> GetContractsByFreelancerId(int freelancerId)
-        {
-            var contracts = await _repository.GetByFreelancerIdAsync(freelancerId);
-            if (contracts == null || !contracts.Any())
-            {
-                return NotFound();
-            }
-            return Ok(contracts);
-        }
     }
 }

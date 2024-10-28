@@ -7,10 +7,11 @@
     "\\Backend\\DataAccess",
     "\\Backend\\DataAccess\\Context",
     "\\Backend\\DataAccess\\Models",
+    "\\Backend\\DataAccess\\Repository",
     "\\Backend\\Presentaion",
     "\\Backend\\Presentaion\\Controllers",
     "\\Backend\\Properties"
   ],
-  "SelectedNode": "\\Backend\\DataAccess\\Models\\Contract.cs",
+  "SelectedNode": "\\Backend\\DataAccess\\Context\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

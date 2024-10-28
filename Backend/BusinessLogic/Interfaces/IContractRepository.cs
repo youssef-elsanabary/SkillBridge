@@ -15,5 +15,11 @@ namespace Backend.Repository
         Task<List<Contract>> GetByServiceIdAsync(int serviceId);
         Task<List<Contract>> GetByClientIdAsync(int clientId);
         Task<List<Contract>> GetByFreelancerIdAsync(int freelancerId);
+
+        Task<Service> GetServiceByIdAsync(int serviceId);
+        Task DeleteServiceByIdAsync(int serviceId);
+        Task UpdateAsync(Service service);
+        Task<bool> CanCreateContractAsync(int serviceId);
+        Task DeleteContractAndServiceAsync(Contract contract);
     }
 }
