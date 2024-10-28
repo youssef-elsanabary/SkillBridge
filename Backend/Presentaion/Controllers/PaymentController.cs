@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
+
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
@@ -23,6 +24,8 @@ public class PaymentsController : ControllerBase
 
         return Ok(new { id = session.Id });
     }
+
+
 }
 
 

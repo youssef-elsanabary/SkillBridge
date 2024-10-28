@@ -39,6 +39,9 @@ namespace Backend.Migrations
                     b.Property<int>("SenderId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("MessageId");
 
                     b.HasIndex("ReceiverId");
@@ -122,20 +125,19 @@ namespace Backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rating")
+                    b.Property<int>("FreelancerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceId")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.HasKey("ReviewId");
 
                     b.HasIndex("BuyerId");
 
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("FreelancerId");
 
                     b.ToTable("Reviews");
                 });
@@ -332,15 +334,15 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Backend.Models.Service", "Service")
+                    b.HasOne("Backend.Models.User", "Freelancer")
                         .WithMany()
-                        .HasForeignKey("ServiceId")
+                        .HasForeignKey("FreelancerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Buyer");
 
-                    b.Navigation("Service");
+                    b.Navigation("Freelancer");
                 });
 
             modelBuilder.Entity("Backend.Models.Service", b =>

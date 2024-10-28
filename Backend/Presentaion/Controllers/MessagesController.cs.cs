@@ -71,7 +71,7 @@ namespace Backend.Controllers
             }
 
             message.Content = updatedMessage.Content;
-          //  message.Timestamp = updatedMessage.Timestamp;
+          message.Timestamp = updatedMessage.Timestamp;
 
             await _repository.UpdateAsync(message);
 

@@ -12,6 +12,8 @@ using Backend.Models;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using DotNetEnv;
+using Backend.BusinessLogic.Interfaces;
+using Backend.Shared.Utils;
 
 
 
@@ -64,7 +66,9 @@ namespace Backend
             builder.Services.AddScoped<PaymentService>();
             builder.Services.AddSingleton(new StripeClient(stripeApiKey));
 
-            
+            builder.Services.AddScoped<IAverageRatingService, AverageRatingService>();
+
+
             var cloudinary = new Cloudinary(cloudinaryConfig);
             builder.Services.AddSingleton(cloudinary);
             builder.Services.AddSingleton<CloudinaryService>();

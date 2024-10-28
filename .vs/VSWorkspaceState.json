@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
+    "\\Backend\\BusinessLogic",
+    "\\Backend\\BusinessLogic\\Interfaces",
     "\\Backend\\DataAccess",
     "\\Backend\\DataAccess\\Context",
     "\\Backend\\DataAccess\\Models",
     "\\Backend\\Presentaion",
+    "\\Backend\\Presentaion\\Controllers",
     "\\Backend\\Properties"
   ],
-  "SelectedNode": "\\Backend\\Backend.sln",
+  "SelectedNode": "\\Backend\\DataAccess\\Models\\Contract.cs",
   "PreviewInSolutionExplorer": false
 }

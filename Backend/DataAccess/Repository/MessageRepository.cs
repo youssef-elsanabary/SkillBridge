@@ -22,7 +22,7 @@ namespace Backend.Repositories
             return await _context.Messages
                                  .Where(m => (m.SenderId == senderId && m.ReceiverId == receiverId) ||
                                              (m.SenderId == receiverId && m.ReceiverId == senderId)) 
-                                 //.OrderBy(m => m.Timestamp)
+                                             .OrderBy(m => m.Timestamp)
                                              .ToListAsync();
         }
 
