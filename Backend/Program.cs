@@ -14,6 +14,7 @@ using CloudinaryDotNet.Actions;
 using DotNetEnv;
 using Backend.BusinessLogic.Interfaces;
 using Backend.Shared.Utils;
+using Backend.Services;
 
 
 
@@ -75,6 +76,16 @@ namespace Backend
 
 
             builder.Services.AddSignalR();
+
+            //builder.Services.AddSingleton(provider =>
+            //{
+            //    return new EmailService(
+            //        smtpHost: "smtp.gmail.com",     
+            //        smtpPort: 587,                        
+            //        fromEmail: "t98838629@gmail.com",   
+            //        fromPassword: "utgaffswjsrxnewa"
+            //    );
+            //});
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>

@@ -1,10 +1,11 @@
-﻿using Backend.Context;
+﻿using Backend.BusinessLogic;
+using Backend.Context;
 using Backend.Models;
 using Backend.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories
 {
@@ -44,7 +45,7 @@ namespace Backend.Repositories
 
         public async Task<bool> SaveChangesAsync()
         {
-            return await Task.FromResult(_context.SaveChanges() > 0);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<List<Contract>> GetByServiceIdAsync(int serviceId)
@@ -66,6 +67,55 @@ namespace Backend.Repositories
             return await _context.Contracts
                 .Where(c => c.FreelancerId == freelancerId)
                 .ToListAsync();
+        }
+
+     
+        public async Task<bool> CanCreateContractAsync(int serviceId)
+        {
+            var service = await _context.Services.FindAsync(serviceId);
+            return service != null && service.Status == ServiceStatus.Assigned;
+        }
+
+       
+        public async Task DeleteContractAndServiceAsync(Contract contract)
+        {
+            var service = await _context.Services.FindAsync(contract.ServiceId);
+
+           
+            _context.Contracts.Remove(contract);
+
+         
+            if (service != null)
+            {
+                if (contract.Status == ContractStatus.Completed)
+                {
+                    _context.Services.Remove(service);
+                }
+                else if (contract.Status == ContractStatus.Canceled)
+                {
+                    service.Status = ServiceStatus.Pending; 
+                    _context.Services.Update(service);
+                }
+            }
+        }
+        public async Task<Service> GetServiceByIdAsync(int serviceId)
+        {
+            return await _context.Services.FindAsync(serviceId);
+        }
+
+        public async Task DeleteServiceByIdAsync(int serviceId)
+        {
+            var service = await _context.Services.FindAsync(serviceId);
+            if (service != null)
+            {
+                _context.Services.Remove(service);
+                await _context.SaveChangesAsync();
+            }
+        }
+        public async Task UpdateAsync(Service service)
+        {
+            _context.Services.Update(service);
+            await _context.SaveChangesAsync();
         }
     }
 }

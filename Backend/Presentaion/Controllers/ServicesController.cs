@@ -13,25 +13,16 @@ namespace Backend.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly IServiceRepository _repository;
-        
 
         public ServicesController(IServiceRepository repository)
         {
             _repository = repository;
-           
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllServices()
-        //{
-        //    var services = await _repository.GetAllAsync();
-        //    return Ok(services);
-        //}
         [HttpGet]
         public async Task<IActionResult> GetAllServices(int pageNumber = 1, int pageSize = 5)
         {
             var (services, totalCount) = await _repository.GetPaginatedServicesAsync(pageNumber, pageSize);
-
             var result = new
             {
                 TotalCount = totalCount,
@@ -74,7 +65,6 @@ namespace Backend.Controllers
             return BadRequest("Could not create the service.");
         }
 
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateService(int id, [FromBody] Service updatedService)
         {
@@ -84,7 +74,8 @@ namespace Backend.Controllers
                 return NotFound($"Service with ID {id} not found.");
             }
 
-            service.Title = updatedService.Title;
+            service.Status = updatedService.Status;
+             service.Title = updatedService.Title;
             service.Description = updatedService.Description;
             service.Price = updatedService.Price;
             service.UserId = updatedService.UserId;
@@ -130,8 +121,5 @@ namespace Backend.Controllers
 
             return Ok(result);
         }
-       
-
-
     }
 }
