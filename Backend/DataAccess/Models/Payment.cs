@@ -13,7 +13,7 @@ namespace Backend.Models
         public double Amount { get; set; }
         public string? PaymentStatus { get; set; }
 
-        public virtual User User { get; set; }
-        public virtual Contract Contract { get; set; }
+        public virtual User? User { get; set; }
+        public virtual Contract? Contract { get; set; }
     }
 }
