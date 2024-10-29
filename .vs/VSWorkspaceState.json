@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
+    "\\Backend\\BusinessLogic",
+    "\\Backend\\BusinessLogic\\Interfaces",
     "\\Backend\\DataAccess",
-    "\\Backend\\DataAccess\\Models",
-    "\\Backend\\DataAccess\\Repository",
+    "\\Backend\\DataAccess\\Context",
     "\\Backend\\Presentaion",
     "\\Backend\\Presentaion\\Controllers",
     "\\Backend\\Properties",
     "\\Backend\\Shared",
     "\\Backend\\Shared\\Utils"
   ],
-  "SelectedNode": "\\Backend\\Program.cs",
+  "SelectedNode": "\\Backend\\Presentaion\\Controllers\\ContractsController.cs",
   "PreviewInSolutionExplorer": false
 }
