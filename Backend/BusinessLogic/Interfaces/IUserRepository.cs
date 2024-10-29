@@ -13,6 +13,7 @@ namespace Backend.Repository
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(int id);
         Task SaveAsync();
+        Task<User> GetUserByVerificationTokenAsync(string token);
     }
 }
 

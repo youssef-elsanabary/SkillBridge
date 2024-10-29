@@ -27,6 +27,12 @@ namespace Backend.Repositories
         {
             return await _context.Contracts.FindAsync(id);
         }
+        public async Task<Contract?> GetContractByServiceIdAsync(int serviceId)
+        {
+            return await _context.Contracts
+                .Where(c => c.ServiceId == serviceId)
+                .FirstOrDefaultAsync();
+        }
 
         public async Task AddAsync(Contract contract)
         {
@@ -117,5 +123,6 @@ namespace Backend.Repositories
             _context.Services.Update(service);
             await _context.SaveChangesAsync();
         }
+
     }
 }
